@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+
+# Internal strategy documents — keep out of the public GitHub Pages repo
+docs/
+
+# Local tooling config
+.claude/

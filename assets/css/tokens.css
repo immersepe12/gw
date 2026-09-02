@@ -1,0 +1,336 @@
+/* ==========================================================================
+   Generations Wellness — Design Tokens
+   Physician-directed HBOT · Modesto, CA
+   Source: docs/design-system.md (v1.0). Tokens + a few sanctioned utilities only.
+   --------------------------------------------------------------------------
+   REQUIRED GOOGLE FONTS — load in <head> BEFORE this stylesheet:
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+   Families/weights: Fraunces (display serif) 500, 600, italic 500/600, opsz 9..144.
+                     Source Sans 3 (body sans) 400, 600, 700, italic 400.
+   --------------------------------------------------------------------------
+   Contrast facts baked into these tokens (WCAG 2.1, computed — see doc §2.2):
+   · ink-900 on cream-100 13.31:1 · green-900 on cream-100 10.32:1
+   · white on green-900 11.11:1  · sage-200 on green-900 7.25:1
+   · gold-300 on green-900 8.45:1 (AA normal) · gold-600 on green-900 3.63:1 (LARGE ONLY)
+   · gold-500 on cream 1.66:1 — NEVER text on light; use gold-800 (5.50:1) instead
+   · Button labels on the gold gradient: ink-900 only (worst stop 4.67:1)
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------ color · greens */
+  --green-950: #02231D;   /* near-black green — footer base, deepest surfaces */
+  --green-900: #034439;   /* BRAND emerald (sampled from leaflet) */
+  --green-800: #075243;   /* raised surfaces on dark */
+  --green-700: #0B6B57;   /* links, outlines, success */
+  --green-600: #12836B;   /* decorative accents, icons on white */
+  --sage-100:  #E7EFE7;   /* chip/callout tint on light */
+  --sage-200:  #BFD6CB;   /* muted text on dark green */
+  --sage-300:  #9DBFB1;   /* decorative borders on dark (not text) */
+
+  /* ------------------------------------------------ color · golds */
+  --gold-200: #F9EBB9;    /* pale tint fills */
+  --gold-300: #F6E08E;    /* champagne (sampled gradient peak / emblem) */
+  --gold-400: #EFC956;    /* mid gold (sampled) */
+  --gold-500: #EDBB21;    /* brand gold (sampled gradient start) */
+  --gold-600: #CB8415;    /* deep amber (sampled gradient end) — large/decorative on dark */
+  --gold-700: #A96A0E;    /* focus ring on light */
+  --gold-800: #8A5A0A;    /* "gold ink" — the ONLY gold for text on light */
+
+  /* ------------------------------------------------ color · creams / ink */
+  --cream-50:  #FFFDF0;   /* card ivory */
+  --cream-100: #FBF7E2;   /* page background */
+  --cream-200: #F4ECC9;   /* alt band, hovers, disabled fills */
+  --white:     #FFFFFF;
+  --ink-900:   #2B2A29;   /* body text (sampled) */
+  --ink-600:   #57544D;   /* muted text */
+  --ink-400:   #8A857A;   /* disabled/decorative ONLY (3.41:1) */
+
+  /* ------------------------------------------------ color · functional */
+  --focus-ring:         var(--gold-700);
+  --focus-ring-on-dark: var(--gold-300);
+  --error:              #A33A2E;
+  --error-on-dark:      #F2B8AC;
+  --success:            var(--green-700);
+
+  /* ------------------------------------------------ semantic surfaces/text */
+  --surface-page:      var(--cream-100);
+  --surface-card:      var(--cream-50);
+  --surface-band:      var(--cream-200);
+  --surface-dark:      var(--green-900);
+  --surface-darkest:   var(--green-950);
+  --text-primary:      var(--ink-900);
+  --text-muted:        var(--ink-600);
+  --text-heading:      var(--green-900);
+  --text-on-dark:      var(--white);
+  --text-on-dark-muted: var(--sage-200);
+  --link:              var(--green-700);
+  --link-hover:        var(--green-900);
+
+  /* ------------------------------------------------ gradients (sampled stops) */
+  --grad-gold-banner:    linear-gradient(90deg,  #EDBB21 0%, #F6E08E 55%, #CB8415 100%);
+  --grad-gold-btn:       linear-gradient(100deg, #EDBB21 0%, #F6E08E 52%, #CB8415 100%);
+  --grad-gold-btn-hover: linear-gradient(100deg, #E0AE1B 0%, #EFD27A 52%, #B87411 100%);
+  --grad-gold-rule:      linear-gradient(90deg,  #CB8415 0%, #EDBB21 45%, #F6E08E 100%);
+  --grad-gold-rule-center: linear-gradient(90deg, transparent 0%, #CB8415 12%, #F6E08E 50%, #CB8415 88%, transparent 100%);
+  --grad-gold-text:      linear-gradient(92deg,  #F6E08E 0%, #EDBB21 55%, #F1CE5C 100%);
+  --grad-hero-surface:   linear-gradient(180deg, #034439 0%, #02231D 100%);
+
+  /* ------------------------------------------------ typography */
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Source Sans 3", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  /* fluid scale · 360px -> 1200px viewports (exact slopes) */
+  --text-display: clamp(2.75rem, 1.893rem + 3.81vw, 4.75rem);   /* 44 -> 76px */
+  --text-h1:      clamp(2.375rem, 1.679rem + 3.10vw, 4rem);     /* 38 -> 64px */
+  --text-h2:      clamp(1.875rem, 1.446rem + 1.90vw, 2.875rem); /* 30 -> 46px */
+  --text-h3:      clamp(1.5rem, 1.286rem + 0.95vw, 2rem);       /* 24 -> 32px */
+  --text-h4:      clamp(1.25rem, 1.143rem + 0.48vw, 1.5rem);    /* 20 -> 24px */
+  --text-h5:      clamp(1.125rem, 1.071rem + 0.24vw, 1.25rem);  /* 18 -> 20px */
+  --text-h6:      clamp(1rem, 0.9464rem + 0.24vw, 1.125rem);    /* 16 -> 18px */
+  --text-lead:    clamp(1.125rem, 1.018rem + 0.48vw, 1.375rem); /* 18 -> 22px */
+  --text-body:    clamp(1rem, 0.9464rem + 0.24vw, 1.125rem);    /* 16 -> 18px */
+  --text-small:   clamp(0.875rem, 0.8482rem + 0.12vw, 0.9375rem); /* 14 -> 15px */
+  --text-kicker:  clamp(0.75rem, 0.7232rem + 0.12vw, 0.8125rem);  /* 12 -> 13px */
+  --text-stat:    clamp(4rem, 3.143rem + 3.81vw, 6rem);         /* 64 -> 96px */
+
+  --leading-display: 1.02;
+  --leading-h1: 1.08;
+  --leading-h2: 1.12;
+  --leading-h3: 1.2;
+  --leading-h4: 1.3;
+  --leading-h5: 1.35;
+  --leading-h6: 1.4;
+  --leading-lead: 1.55;
+  --leading-body: 1.65;
+  --leading-small: 1.5;
+
+  --tracking-display: -0.015em;
+  --tracking-h1: -0.01em;
+  --tracking-h2: -0.008em;
+  --tracking-h3: -0.005em;
+  --tracking-kicker: 0.14em;
+  --tracking-wordmark: 0.32em;   /* footer text echo of the spaced logo wordmark */
+
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-display: 600;         /* Fraunces headings */
+  --weight-stat: 500;            /* Fraunces stat numerals */
+
+  /* ------------------------------------------------ spacing (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  /* fluid composites (360 -> 1200px) */
+  --space-section: clamp(3.5rem, 2.214rem + 5.71vw, 6.5rem);  /* 56 -> 104px */
+  --space-card:    clamp(1.5rem, 1.071rem + 1.90vw, 2.5rem);  /* 24 -> 40px  */
+  --space-hero:    clamp(5rem, 3.286rem + 7.62vw, 9rem);      /* 80 -> 144px */
+
+  /* ------------------------------------------------ layout */
+  --container-text:    42rem;   /* 672px prose */
+  --container-content: 70rem;   /* 1120px default */
+  --container-wide:    80rem;   /* 1280px hero/bleeds */
+  --container-pad:     clamp(1rem, 0.5rem + 2.22vw, 2rem);  /* 16 -> 32px */
+  --header-h: 3.75rem;          /* 60px; set 4.5rem (72px) at >=48em in layout CSS */
+  /* Breakpoints (reference only — custom props don't work in @media):
+     30em/480px · 48em/768px · 64em/1024px · 80em/1280px */
+
+  /* ------------------------------------------------ radii / borders */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --hairline-gold-color: #F6E6A5;                       /* sampled card border */
+  --border-hairline: 1px solid var(--hairline-gold-color);   /* on cream/ivory */
+  --border-hairline-neutral: 1px solid rgba(3, 68, 57, 0.10);
+  --border-hairline-on-dark: 1px solid rgba(246, 224, 142, 0.22);
+  --border-outline-btn: 1.5px solid var(--green-700);
+
+  /* ------------------------------------------------ shadows (green-tinted) */
+  --shadow-xs: 0 1px 2px rgba(3, 68, 57, 0.05);
+  --shadow-sm: 0 1px 2px rgba(3, 68, 57, 0.05), 0 2px 8px rgba(3, 68, 57, 0.06);
+  --shadow-md: 0 2px 4px rgba(3, 68, 57, 0.04), 0 10px 24px -8px rgba(3, 68, 57, 0.12);
+  --shadow-lg: 0 4px 8px rgba(3, 68, 57, 0.05), 0 24px 48px -16px rgba(3, 68, 57, 0.16);
+  --shadow-gold: 0 6px 20px -6px rgba(203, 132, 21, 0.45);
+
+  /* ------------------------------------------------ motion */
+  --motion-fast: 200ms;     /* hovers, focus, markers */
+  --motion-base: 260ms;     /* cards, accordion */
+  --motion-slow: 320ms;     /* drawer, large panels */
+  --motion-reveal: 400ms;   /* scroll-in reveals */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --stagger: 70ms;          /* sibling reveal offset, max 5 items */
+  --reveal-distance: 16px;
+
+  /* ------------------------------------------------ signature motif · breath rings
+     Concentric 1px rings, radii 72/120/172/228/288/352 (widening gaps = exhale).
+     Light: gold-600 @ .07 on cream. Dark: gold-300 @ .08 on green. Decorative only. */
+  --motif-rings-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720' fill='none' stroke='%23CB8415' stroke-opacity='.07' stroke-width='1'%3E%3Ccircle cx='360' cy='360' r='72'/%3E%3Ccircle cx='360' cy='360' r='120'/%3E%3Ccircle cx='360' cy='360' r='172'/%3E%3Ccircle cx='360' cy='360' r='228'/%3E%3Ccircle cx='360' cy='360' r='288'/%3E%3Ccircle cx='360' cy='360' r='352'/%3E%3C/svg%3E");
+  --motif-rings-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720' fill='none' stroke='%23F6E08E' stroke-opacity='.08' stroke-width='1'%3E%3Ccircle cx='360' cy='360' r='72'/%3E%3Ccircle cx='360' cy='360' r='120'/%3E%3Ccircle cx='360' cy='360' r='172'/%3E%3Ccircle cx='360' cy='360' r='228'/%3E%3Ccircle cx='360' cy='360' r='288'/%3E%3Ccircle cx='360' cy='360' r='352'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   Sanctioned utilities (recipes defined in docs/design-system.md)
+   ========================================================================== */
+
+/* --- section kicker ------------------------------------------------------ */
+.kicker {
+  font-family: var(--font-body);
+  font-size: var(--text-kicker);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--gold-800);            /* 5.50:1 on cream-100 */
+}
+.on-dark .kicker,
+.kicker--on-dark { color: var(--gold-300); }  /* 8.45:1 on green-900 */
+
+/* --- gold rule (section header underline / divider) ---------------------- */
+.gold-rule {
+  display: block;
+  width: 64px;
+  height: 3px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--grad-gold-rule);
+}
+.gold-rule--full {
+  width: 100%;
+  height: 2px;
+  background: var(--grad-gold-rule-center);
+}
+
+/* --- gold display-text gradient (dark green surfaces, >= h2 sizes only) --- */
+.text-gold-gradient {
+  color: var(--gold-400);                       /* fallback: 6.96:1 on green-900 */
+  background: var(--grad-gold-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- buttons ------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0.875rem 1.75rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  transition: transform var(--motion-fast) var(--ease-out),
+              box-shadow var(--motion-fast) var(--ease-out),
+              background-color var(--motion-fast) var(--ease-out),
+              color var(--motion-fast) var(--ease-out);
+}
+.btn--sm { min-height: 44px; padding: 0.625rem 1.25rem; font-size: 0.9375rem; }
+
+/* primary — gold gradient; label MUST stay ink-900 (worst stop 4.67:1) */
+.btn--primary {
+  background: var(--grad-gold-btn);
+  color: var(--ink-900);
+  box-shadow: var(--shadow-sm);
+}
+.btn--primary::before {           /* hover-gradient crossfade layer */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--grad-gold-btn-hover);
+  opacity: 0;
+  transition: opacity var(--motion-fast) var(--ease-out);
+}
+.btn--primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-gold); }
+.btn--primary:hover::before { opacity: 1; }
+.btn--primary:active { transform: translateY(0); box-shadow: var(--shadow-xs); }
+
+/* secondary — green outline on light surfaces */
+.btn--secondary {
+  background: transparent;
+  border: var(--border-outline-btn);           /* green-700, 5.99:1 vs cream */
+  color: var(--green-900);
+}
+.btn--secondary:hover { background: var(--green-900); border-color: var(--green-900); color: var(--cream-50); }
+.btn--secondary:active { background: var(--green-950); border-color: var(--green-950); }
+
+/* on-dark secondary — gold outline on green surfaces */
+.btn--secondary-on-dark {
+  background: transparent;
+  border: 1.5px solid var(--gold-300);          /* 8.45:1 vs green-900 */
+  color: var(--gold-300);
+}
+.btn--secondary-on-dark:hover { background: var(--gold-300); color: var(--green-900); }
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  background: var(--cream-200);
+  border-color: transparent;
+  color: var(--ink-400);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- focus (global default) ---------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: var(--focus-ring-on-dark);
+}
+
+/* --- motif helpers -------------------------------------------------------- */
+.motif-rings-light,
+.motif-rings-dark {
+  background-repeat: no-repeat;
+  background-size: 720px 720px;
+  background-position: right -220px top -220px;  /* anchor ~1/3 off-canvas */
+}
+.motif-rings-light { background-image: var(--motif-rings-light); }
+.motif-rings-dark  { background-image: var(--motif-rings-dark); }
+
+/* ==========================================================================
+   Reduced motion — non-negotiable guard (doc §10)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn--primary:hover { transform: none; }
+}
