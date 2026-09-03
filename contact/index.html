@@ -32,7 +32,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/main.css">
 
@@ -181,11 +181,15 @@
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
+    <div class="progress-line" aria-hidden="true"></div>
   </header>
 
   <main id="main">
-    <header class="page-hero">
+    <svg class="meridian" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true"><line x1="1" y1="0" x2="1" y2="100" pathLength="1"/></svg>
+    <header class="page-hero depth">
+      <div class="rings-static" aria-hidden="true"></div>
       <div class="container">
+        <span class="ghost ghost--page" aria-hidden="true" data-n="06"></span>
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <ol>
             <li><a href="/">Home</a></li>
@@ -193,22 +197,25 @@
           </ol>
         </nav>
         <p class="kicker kicker--on-dark">We're Ready When You Are</p>
-        <h1>Contact <em class="text-gold-gradient">Generations</em> Wellness</h1>
+        <h1 class="mask-on-load"><span class="line"><span class="line-inner">Contact <em class="text-gold-gradient">Generations</em> Wellness</span></span></h1>
         <p class="lead">One call starts it all: a brief conversation, then a physician assessment, then — if HBOT is right for you — a personalized plan. No pressure, no obligation.</p>
       </div>
     </header>
+    <div class="hero-end-sentinel" aria-hidden="true"></div>
 
     <!-- contact + map -->
-    <section class="section motif-rings-light">
+    <section class="section">
       <div class="container">
-        <div class="contact-grid">
-          <div class="reveal">
-            <div class="section-head" style="margin-bottom: var(--space-8);">
+        <div class="section-head reveal" style="margin-bottom: var(--space-8);">
               <p class="kicker">Reach Out</p>
               <h2>Schedule a Physician Consultation</h2>
               <span class="gold-rule"></span>
             </div>
-            <ul class="contact-list">
+        <div class="contact-grid">
+          <div class="reveal">
+            <div class="nap-panel depth">
+              <div class="rings-static" aria-hidden="true"></div>
+              <ul class="contact-list">
               <li>
                 <span class="chip-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
@@ -249,6 +256,7 @@
                 </div>
               </li>
             </ul>
+            </div>
             <aside class="note-careplan mt-8" role="note">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6l7-3z"/><path d="M12 8.5v4M12 15.5h.01"/></svg>
               <span>A physician assessment is required before beginning HBOT. Prefer to read first? See <a href="/faq/">answers to common questions before you call</a>.</span>
@@ -323,6 +331,7 @@
   <footer class="site-footer">
     <div class="footer-divider" aria-hidden="true"></div>
     <div class="footer-main">
+      <div class="footer-ghost" aria-hidden="true" data-word="Generations"></div>
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">

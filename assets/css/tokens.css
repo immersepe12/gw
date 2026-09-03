@@ -7,9 +7,9 @@
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-   Families/weights: Fraunces (display serif) 500, 600, italic 500/600, opsz 9..144.
+   Families/weights: Fraunces (display serif) 400, 500, 600, italic 400/500/600, opsz 9..144.
                      Source Sans 3 (body sans) 400, 600, 700, italic 400.
    --------------------------------------------------------------------------
    Contrast facts baked into these tokens (WCAG 2.1, computed — see doc §2.2):
@@ -184,6 +184,43 @@
      Light: gold-600 @ .07 on cream. Dark: gold-300 @ .08 on green. Decorative only. */
   --motif-rings-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720' fill='none' stroke='%23CB8415' stroke-opacity='.07' stroke-width='1'%3E%3Ccircle cx='360' cy='360' r='72'/%3E%3Ccircle cx='360' cy='360' r='120'/%3E%3Ccircle cx='360' cy='360' r='172'/%3E%3Ccircle cx='360' cy='360' r='228'/%3E%3Ccircle cx='360' cy='360' r='288'/%3E%3Ccircle cx='360' cy='360' r='352'/%3E%3C/svg%3E");
   --motif-rings-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720' fill='none' stroke='%23F6E08E' stroke-opacity='.08' stroke-width='1'%3E%3Ccircle cx='360' cy='360' r='72'/%3E%3Ccircle cx='360' cy='360' r='120'/%3E%3Ccircle cx='360' cy='360' r='172'/%3E%3Ccircle cx='360' cy='360' r='228'/%3E%3Ccircle cx='360' cy='360' r='288'/%3E%3Ccircle cx='360' cy='360' r='352'/%3E%3C/svg%3E");
+
+  /* ================================================ v2 "ATMOSPHERES" tokens
+     Spec: docs/design-v2-spec.md — dark-first brackets, gold-scarce, ledger craft. */
+
+  /* color · v2 depth */
+  --green-975: #011B16;                      /* hero/CTA base — deeper than green-950 */
+  --green-glow: rgba(18, 131, 107, 0.20);    /* radial ambient light on dark (decorative) */
+  --veil-gold: rgba(246, 224, 142, 0.055);   /* champagne atmosphere wash on dark (decorative) */
+  --ghost-on-dark: rgba(246, 224, 142, 0.08);  /* ghost numerals / outlined wordmark on dark */
+  --ghost-on-light: rgba(3, 68, 57, 0.055);    /* ghost numerals on cream */
+  --hairline-on-dark-v2: 1px solid rgba(246, 224, 142, 0.16);
+
+  /* static luminous gradient hairline — double-background trick (dark surfaces only) */
+  --border-luminous: linear-gradient(135deg, rgba(246, 224, 142, 0.55),
+                      rgba(246, 224, 142, 0.08) 40%, rgba(203, 132, 21, 0.35) 100%);
+
+  /* the one deliberate hard cream→dark boundary (CTA top edge only) */
+  --light-well: linear-gradient(180deg, rgba(1, 27, 22, 0), rgba(1, 27, 22, 1));
+
+  /* depth-stack layers (all static) */
+  --depth-base: linear-gradient(175deg, #011B16 0%, #02231D 45%, #034439 120%);
+  --depth-ambient: radial-gradient(90rem 60rem at 78% -20%, var(--green-glow), transparent 60%);
+  --depth-veil: radial-gradient(70rem 50rem at 10% 110%, var(--veil-gold), transparent 55%);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+  /* typography · v2 poster scale */
+  --text-poster: clamp(3.5rem, 1.8rem + 7.5vw, 8.25rem);   /* home h1: 56→132px */
+  --text-ghost: clamp(10rem, 24vw, 24rem);                  /* ghost numerals */
+
+  /* motion · v2 (supersedes the v1 --motion-* scale for new work) */
+  --ease-out-long: cubic-bezier(0.16, 1, 0.3, 1);   /* entrances, masks */
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);    /* hovers, small moves */
+  --dur-1: 180ms;   /* hovers, focus, markers */
+  --dur-2: 300ms;   /* accordion, card rise, rule draws */
+  --dur-3: 500ms;   /* section reveals, masks */
+  --dur-4: 700ms;   /* hero photo wipe, panel slides */
+  /* ambient (breath rings only): 9s, alternate, --ease-in-out */
 }
 
 /* ==========================================================================

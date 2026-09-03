@@ -32,7 +32,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/main.css">
 
@@ -144,11 +144,15 @@
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
+    <div class="progress-line" aria-hidden="true"></div>
   </header>
 
   <main id="main">
-    <header class="page-hero">
+    <svg class="meridian" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true"><line x1="1" y1="0" x2="1" y2="100" pathLength="1"/></svg>
+    <header class="page-hero depth">
+      <div class="rings-static" aria-hidden="true"></div>
       <div class="container">
+        <span class="ghost ghost--page" aria-hidden="true" data-n="04"></span>
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <ol>
             <li><a href="/">Home</a></li>
@@ -156,13 +160,14 @@
           </ol>
         </nav>
         <p class="kicker kicker--on-dark">Our Story &amp; Standards</p>
-        <h1>About <em class="text-gold-gradient">Generations</em> Wellness</h1>
+        <h1 class="mask-on-load"><span class="line"><span class="line-inner">About <em class="text-gold-gradient">Generations</em> Wellness</span></span></h1>
         <p class="lead">A physician-directed hyperbaric oxygen therapy center in downtown Modesto — built on the belief that honest medicine and warm care belong in the same room.</p>
       </div>
     </header>
+    <div class="hero-end-sentinel" aria-hidden="true"></div>
 
     <!-- mission -->
-    <section class="section motif-rings-light">
+    <section class="section">
       <div class="container">
         <div class="feature">
           <div class="feature-body reveal">
@@ -275,6 +280,7 @@
   <footer class="site-footer">
     <div class="footer-divider" aria-hidden="true"></div>
     <div class="footer-main">
+      <div class="footer-ghost" aria-hidden="true" data-word="Generations"></div>
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">

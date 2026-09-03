@@ -32,7 +32,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="preload" as="image" href="/assets/img/hero-chamber.webp" imagesrcset="/assets/img/hero-chamber-800.webp 800w, /assets/img/hero-chamber.webp 1502w" imagesizes="(min-width: 64em) 45vw, 100vw" type="image/webp">
@@ -158,56 +158,78 @@
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
+    <div class="progress-line" aria-hidden="true"></div>
   </header>
 
   <main id="main">
-    <!-- ============================== hero -->
-    <section class="hero">
-      <div class="container container--wide hero-inner">
-        <div>
+    <svg class="meridian" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true"><line x1="1" y1="0" x2="1" y2="100" pathLength="1"/></svg>
+    <!-- ============================== hero · "Surface" -->
+    <section class="hero depth" data-breathe>
+      <svg class="rings rings--live" viewBox="0 0 720 720" fill="none" aria-hidden="true">
+        <circle cx="360" cy="360" r="72" stroke-opacity=".20"/><circle cx="360" cy="360" r="120" stroke-opacity=".16"/><circle cx="360" cy="360" r="172" stroke-opacity=".13"/><circle cx="360" cy="360" r="228" stroke-opacity=".10"/><circle cx="360" cy="360" r="288" stroke-opacity=".08"/><circle cx="360" cy="360" r="352" stroke-opacity=".06"/>
+      </svg>
+      <div class="container container--wide">
+        <div class="hero-ledger">
           <p class="kicker kicker--on-dark">Physician-Directed Hyperbaric Medicine · Modesto, CA</p>
-          <h1>Physician-Directed <em class="text-gold-gradient">Hyperbaric</em> Oxygen Therapy in Modesto</h1>
-          <p class="lead">Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness — delivered as part of a physician-directed care plan, in the heart of downtown Modesto.</p>
-          <div class="hero-actions">
-            <a class="btn btn--primary" href="/contact/">Book a Physician Consultation</a>
-            <a class="btn btn--secondary-on-dark" href="/hyperbaric-oxygen-therapy/">How the Therapy Works</a>
+        </div>
+        <div class="hero-grid">
+          <h1 class="poster mask-on-load">
+            <span class="line"><span class="line-inner">Physician-Directed</span></span>
+            <span class="line"><span class="line-inner"><em class="text-gold-gradient">Hyperbaric</em> Oxygen</span></span>
+            <span class="line"><span class="line-inner">Therapy in Modesto</span></span>
+          </h1>
+          <div class="hero-media">
+            <img src="/assets/img/hero-chamber.webp"
+                 srcset="/assets/img/hero-chamber-800.webp 800w, /assets/img/hero-chamber.webp 1502w"
+                 sizes="(min-width: 64em) 45vw, 100vw"
+                 width="1502" height="1007" fetchpriority="high"
+                 alt="Patient resting comfortably inside a hyperbaric oxygen chamber at Generations Wellness">
+            <p class="hero-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6l7-3z"/><path d="M9 12l2 2 4-4.5"/></svg>
+              Physician-Directed Care
+            </p>
           </div>
-          <ul class="hero-trust">
+          <div class="hero-copy hero-stage hero-stage--1">
+            <p class="lead">Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness — delivered as part of a physician-directed care plan, in the heart of downtown Modesto.</p>
+            <div class="hero-actions">
+              <a class="btn btn--primary" href="/contact/">Book a Physician Consultation</a>
+              <a class="btn btn--secondary-on-dark" href="/hyperbaric-oxygen-therapy/">How the Therapy Works</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-strip hero-stage hero-stage--3">
+          <ul>
             <li>Physician assessment before every course</li>
             <li>1801 H Street, Suite C-1</li>
-            <li><a href="tel:+13692220979" style="color:inherit">(369)&nbsp;222-0979</a></li>
+            <li><a href="tel:+13692220979">(369)&nbsp;222-0979</a></li>
           </ul>
-        </div>
-        <div class="hero-media">
-          <img src="/assets/img/hero-chamber.webp"
-               srcset="/assets/img/hero-chamber-800.webp 800w, /assets/img/hero-chamber.webp 1502w"
-               sizes="(min-width: 64em) 45vw, 100vw"
-               width="1502" height="1007" fetchpriority="high"
-               alt="Patient resting comfortably inside a hyperbaric oxygen chamber at Generations Wellness">
-          <p class="hero-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6l7-3z"/><path d="M9 12l2 2 4-4.5"/></svg>
-            Physician-Directed Care
-          </p>
         </div>
       </div>
     </section>
+    <div class="hero-end-sentinel" aria-hidden="true"></div>
 
-    <!-- ============================== intro / what is HBOT -->
-    <section class="section motif-rings-light">
+    <!-- ============================== 01 · the therapy -->
+    <section class="section">
+      <span class="ghost ghost--tl" aria-hidden="true" data-n="01"></span>
+      <span class="vlabel" aria-hidden="true" data-label="The Therapy"></span>
       <div class="container">
-        <div class="section-head section-head--center reveal">
-          <p class="kicker">The Therapy</p>
-          <h2>Advanced Oxygen-Based Therapy for Healing <em>and</em> Recovery</h2>
-          <span class="gold-rule"></span>
+        <div class="section-head section-head--deck reveal">
+          <div class="head-main">
+            <p class="kicker">The Therapy</p>
+            <h2>Advanced Oxygen-Based Therapy for Healing <em>and</em> Recovery</h2>
+            <span class="gold-rule"></span>
+          </div>
           <p class="lead">Hyperbaric oxygen therapy helps deliver higher levels of oxygen to the body's tissues in a pressurized chamber. That increased oxygen availability may support the body's natural healing response — which is why HBOT is commonly used as part of a physician-directed care plan.</p>
         </div>
 
-        <div class="feature reveal">
-          <div class="feature-media">
-            <img src="/assets/img/oxygen-cells.webp" width="715" height="430" loading="lazy"
-                 alt="Illustration of oxygen molecules dissolving into the bloodstream alongside red blood cells">
+        <div class="split">
+          <div class="split-media reveal">
+            <div class="feature-media">
+              <img src="/assets/img/oxygen-cells.webp" width="715" height="430" loading="lazy"
+                   alt="Illustration of oxygen molecules dissolving into the bloodstream alongside red blood cells">
+            </div>
           </div>
-          <div class="feature-body">
+          <div class="split-body feature-body reveal">
             <p class="kicker">What Is HBOT?</p>
             <h2>What Is Hyperbaric Oxygen Therapy?</h2>
             <p>Inside a hyperbaric chamber, you breathe a higher concentration of oxygen under gently increased pressure. Under that pressure, extra oxygen dissolves directly into your blood plasma — reaching tissues where circulation or healing may be compromised.</p>
@@ -218,76 +240,102 @@
       </div>
     </section>
 
-    <!-- ============================== benefits preview -->
+    <!-- ============================== 02 · the index -->
     <section class="section section--card-bg">
+      <span class="ghost ghost--tl" aria-hidden="true" data-n="02"></span>
+      <span class="vlabel" aria-hidden="true" data-label="Why Oxygen Matters"></span>
       <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">Why Oxygen Matters</p>
-          <h2>How HBOT May Support Your Healing</h2>
-          <span class="gold-rule"></span>
+        <div class="section-head section-head--deck reveal">
+          <div class="head-main">
+            <p class="kicker">Why Oxygen Matters</p>
+            <h2>How HBOT May Support Your Healing</h2>
+            <span class="gold-rule"></span>
+          </div>
           <p class="lead">Every benefit below reflects the same mechanism — more oxygen, delivered where your body needs it most.</p>
         </div>
-        <div class="grid grid--3-tight reveal-group">
-          <article class="card reveal">
-            <span class="chip-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4 0-6.5-2.4-6.5-5.7C5.5 11 12 3.5 12 3.5s6.5 7.5 6.5 11.8c0 3.3-2.5 5.7-6.5 5.7z"/><path d="M9.5 14.5c0 1.4 1.1 2.5 2.5 2.5"/></svg>
-            </span>
-            <h3 class="h4-style"><a href="/benefits/" style="text-decoration:none;color:inherit">Wound Healing and Tissue Recovery</a></h3>
-            <p>Supports wound healing and tissue recovery by improving the oxygen supply that healing tissue depends on — session after session.</p>
-          </article>
-          <article class="card reveal">
-            <span class="chip-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="4.5"/><circle cx="16.5" cy="8" r="3"/><circle cx="18.5" cy="15.5" r="1.75"/></svg>
-            </span>
-            <h3 class="h4-style"><a href="/benefits/" style="text-decoration:none;color:inherit">Oxygen Delivery to Compromised Tissues</a></h3>
-            <p>Helps improve oxygen delivery to tissues where circulation is impaired — the areas that struggle most to heal on their own.</p>
-          </article>
-          <article class="card reveal">
-            <span class="chip-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18 12h3M16.3 7.7l2.1-2.1"/><path d="M8 21a4.5 4.5 0 1 1 8 0"/><path d="M5 21h14"/></svg>
-            </span>
-            <h3 class="h4-style"><a href="/benefits/" style="text-decoration:none;color:inherit">Recovery After Radiation-Related Tissue Injury</a></h3>
-            <p>May assist healing after radiation-related tissue injury, supporting tissue that needs long-term help rebuilding its blood supply.</p>
-          </article>
-        </div>
-        <p class="mt-8 reveal"><a href="/benefits/">See the full picture of who may benefit from HBOT →</a></p>
+        <ul class="index reveal-group">
+          <li class="reveal">
+            <a class="index-row" href="/benefits/">
+              <span class="idx" aria-hidden="true"></span>
+              <div class="index-title">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4 0-6.5-2.4-6.5-5.7C5.5 11 12 3.5 12 3.5s6.5 7.5 6.5 11.8c0 3.3-2.5 5.7-6.5 5.7z"/><path d="M9.5 14.5c0 1.4 1.1 2.5 2.5 2.5"/></svg>
+                </span>
+                <h3>Wound Healing and Tissue Recovery</h3>
+              </div>
+              <p class="index-desc">Supports wound healing and tissue recovery by improving the oxygen supply that healing tissue depends on — session after session.</p>
+              <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li class="reveal">
+            <a class="index-row" href="/benefits/">
+              <span class="idx" aria-hidden="true"></span>
+              <div class="index-title">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="4.5"/><circle cx="16.5" cy="8" r="3"/><circle cx="18.5" cy="15.5" r="1.75"/></svg>
+                </span>
+                <h3>Oxygen Delivery to Compromised Tissues</h3>
+              </div>
+              <p class="index-desc">Helps improve oxygen delivery to tissues where circulation is impaired — the areas that struggle most to heal on their own.</p>
+              <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li class="reveal">
+            <a class="index-row" href="/benefits/">
+              <span class="idx" aria-hidden="true"></span>
+              <div class="index-title">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18 12h3M16.3 7.7l2.1-2.1"/><path d="M8 21a4.5 4.5 0 1 1 8 0"/><path d="M5 21h14"/></svg>
+                </span>
+                <h3>Recovery After Radiation-Related Tissue Injury</h3>
+              </div>
+              <p class="index-desc">May assist healing after radiation-related tissue injury, supporting tissue that needs long-term help rebuilding its blood supply.</p>
+              <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+        </ul>
+        <p class="mt-8 ledger-line reveal"><a href="/benefits/">See the full picture of who may benefit from HBOT →</a></p>
       </div>
     </section>
 
-    <!-- ============================== stat band -->
+    <!-- ============================== the gauge -->
     <section class="section section--dark">
       <div class="container">
-        <div class="stats reveal-group">
-          <div class="reveal">
-            <span class="stat-number text-gold-gradient">20–40</span>
+        <div class="gauge">
+          <div class="gauge-primary reveal">
+            <span class="stat-number text-gold-gradient"><span class="stat-real" data-count>20–40</span></span>
             <span class="stat-label">Sessions in a typical course</span>
           </div>
-          <div class="reveal">
-            <span class="stat-number text-gold-gradient">90–120</span>
-            <span class="stat-label">Minutes per session</span>
-          </div>
-          <div class="reveal">
-            <span class="stat-number text-gold-gradient">100%</span>
-            <span class="stat-label">Oxygen-based therapy</span>
-          </div>
-          <div class="reveal">
-            <span class="stat-number text-gold-gradient">1st</span>
-            <span class="stat-label">Step is always a physician assessment</span>
+          <div class="gauge-list reveal-group">
+            <div class="gauge-item reveal">
+              <span class="stat-number text-gold-gradient"><span class="stat-real" data-count>90–120</span></span>
+              <span class="stat-label">Minutes per session</span>
+            </div>
+            <div class="gauge-item reveal">
+              <span class="stat-number text-gold-gradient"><span class="stat-real">100%</span></span>
+              <span class="stat-label">Oxygen-based therapy</span>
+            </div>
+            <div class="gauge-item reveal">
+              <span class="stat-number text-gold-gradient"><span class="stat-real">1st</span></span>
+              <span class="stat-label">Step is always a physician assessment</span>
+            </div>
           </div>
         </div>
         <p class="stat-note reveal">Session counts, lengths, and pressures are set individually by a physician — these figures describe a typical physician-directed course.</p>
       </div>
     </section>
 
-    <!-- ============================== why us -->
-    <section class="section">
+    <!-- ============================== 03 · the difference -->
+    <section class="section section--mosaic">
+      <span class="ghost ghost--tl" aria-hidden="true" data-n="03"></span>
+      <span class="vlabel" aria-hidden="true" data-label="The Generations Difference"></span>
       <div class="container">
-        <div class="section-head section-head--center reveal">
+        <div class="section-head reveal">
           <p class="kicker">The Generations Difference</p>
           <h2>Why Choose Generations Wellness</h2>
           <span class="gold-rule"></span>
         </div>
-        <div class="grid grid--4 reveal-group">
+        <div class="mosaic reveal-group">
           <article class="card card--featured reveal">
             <span class="chip-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5A2.5 2.5 0 0 1 7 3h1v4H7a2.5 2.5 0 0 1-2.5-1.5z"/><path d="M8 3v7a4 4 0 0 0 8 0V3"/><path d="M16 3h1a2.5 2.5 0 0 1 0 5h-1"/><path d="M12 14v3a3.5 3.5 0 0 0 7 0v-1"/><circle cx="19" cy="14" r="2"/></svg>
@@ -295,21 +343,21 @@
             <h3>Physician-Directed</h3>
             <p>A physician assessment is mandatory before starting HBOT. Treatment begins only after medical review confirms it's appropriate for your condition.</p>
           </article>
-          <article class="card card--featured reveal">
+          <article class="card reveal">
             <span class="chip-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6l7-3z"/><path d="M9 12l2 2 4-4.5"/></svg>
             </span>
             <h3>Safety &amp; Screening First</h3>
             <p>Medical screening, chamber safety protocols, and ongoing monitoring throughout your entire course of therapy.</p>
           </article>
-          <article class="card card--featured reveal">
+          <article class="card reveal">
             <span class="chip-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 7.5h6M9 11h6M9 14.5h3.5"/></svg>
             </span>
             <h3>Honest, Evidence-Consistent Guidance</h3>
             <p>We're candid about what HBOT is cleared for, what it may support, and what it is not — so you can decide with clear eyes.</p>
           </article>
-          <article class="card card--featured reveal">
+          <article class="card reveal">
             <span class="chip-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="7.5" r="2.75"/><circle cx="16.5" cy="9" r="2.25"/><path d="M3.5 20v-1.5a5 5 0 0 1 5-5 5 5 0 0 1 4.4 2.6"/><path d="M13.5 20v-1a4 4 0 0 1 7 -2.6"/></svg>
             </span>
@@ -320,51 +368,60 @@
       </div>
     </section>
 
-    <!-- ============================== local -->
-    <section class="section section--band">
+    <!-- ============================== the valley -->
+    <section class="valley">
+      <div class="valley-bg">
+        <img src="/assets/img/care-team.webp" width="715" height="430" loading="lazy"
+             alt="Care team member talking with a smiling patient beside a hyperbaric chamber">
+      </div>
+      <span class="vlabel vlabel--right vlabel--on-dark" aria-hidden="true" data-label="Rooted in the Central Valley"></span>
       <div class="container">
-        <div class="feature feature--flip">
-          <div class="feature-media reveal">
-            <img src="/assets/img/care-team.webp" width="715" height="430" loading="lazy"
-                 alt="Care team member talking with a smiling patient beside a hyperbaric chamber">
-          </div>
-          <div class="feature-body reveal">
-            <p class="kicker">Rooted in the Central Valley</p>
-            <h2>Serving Modesto <em>and</em> the Central Valley</h2>
-            <p>Our center sits on H Street in downtown Modesto, a short drive from anywhere in Stanislaus County via Highway 99. Patients visit us from Turlock, Ceres, Manteca, Ripon, Riverbank, Oakdale, and the Stockton area — many within a 15–40 minute drive.</p>
-            <p>Read about <a href="/about/">our physician-directed approach</a>, or find <a href="/contact/">directions to our Modesto center</a>.</p>
-            <aside class="note-careplan mt-6" role="note">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6l7-3z"/><path d="M12 8.5v4M12 15.5h.01"/></svg>
-              <span>HBOT is typically used as part of a comprehensive care plan and is not a replacement for your physician's medical treatment.</span>
-            </aside>
-          </div>
+        <div class="valley-panel reveal">
+          <p class="kicker">Rooted in the Central Valley</p>
+          <h2>Serving Modesto <em>and</em> the Central Valley</h2>
+          <p>Our center sits on H Street in downtown Modesto, a short drive from anywhere in Stanislaus County via Highway 99. Patients visit us from Turlock, Ceres, Manteca, Ripon, Riverbank, Oakdale, and the Stockton area — many within a 15–40 minute drive.</p>
+          <p>Read about <a href="/about/">our physician-directed approach</a>, or find <a href="/contact/">directions to our Modesto center</a>.</p>
+          <aside class="note-careplan mt-6" role="note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6l7-3z"/><path d="M12 8.5v4M12 15.5h.01"/></svg>
+            <span>HBOT is typically used as part of a comprehensive care plan and is not a replacement for your physician's medical treatment.</span>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- ============================== getting started -->
+    <!-- ============================== 04 · the protocol -->
     <section class="section">
+      <span class="ghost ghost--tl" aria-hidden="true" data-n="04"></span>
+      <span class="vlabel" aria-hidden="true" data-label="Getting Started"></span>
       <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">Getting Started</p>
-          <h2>Begin With a Physician Assessment</h2>
-          <span class="gold-rule"></span>
+        <div class="section-head section-head--deck reveal">
+          <div class="head-main">
+            <p class="kicker">Getting Started</p>
+            <h2>Begin With a Physician Assessment</h2>
+            <span class="gold-rule"></span>
+          </div>
           <p class="lead">Starting HBOT at Generations Wellness is deliberately simple — and deliberately careful.</p>
         </div>
-        <ol class="steps reveal-group">
-          <li class="reveal">
-            <h3>Reach out</h3>
-            <p>Call <a href="tel:+13692220979">(369)&nbsp;222-0979</a> or email us. A brief conversation helps us understand your situation and answer first questions.</p>
-          </li>
-          <li class="reveal">
-            <h3>Physician assessment</h3>
-            <p>A physician reviews your medical history and confirms whether HBOT is appropriate for your condition. This step is mandatory — for everyone.</p>
-          </li>
-          <li class="reveal">
-            <h3>Your personalized plan</h3>
-            <p>If HBOT is right for you, your physician designs a session plan — typically 20–40 sessions — and monitors your progress throughout.</p>
-          </li>
-        </ol>
+        <div class="steps-wrap" data-inview>
+          <div class="steps-track" aria-hidden="true"><div class="steps-fill"></div></div>
+          <ol class="steps reveal-group">
+            <li class="reveal">
+              <span class="step-ghost" aria-hidden="true"></span>
+              <h3>Reach out</h3>
+              <p>Call <a href="tel:+13692220979">(369)&nbsp;222-0979</a> or email us. A brief conversation helps us understand your situation and answer first questions.</p>
+            </li>
+            <li class="reveal">
+              <span class="step-ghost" aria-hidden="true"></span>
+              <h3>Physician assessment</h3>
+              <p>A physician reviews your medical history and confirms whether HBOT is appropriate for your condition. This step is mandatory — for everyone.</p>
+            </li>
+            <li class="reveal">
+              <span class="step-ghost" aria-hidden="true"></span>
+              <h3>Your personalized plan</h3>
+              <p>If HBOT is right for you, your physician designs a session plan — typically 20–40 sessions — and monitors your progress throughout.</p>
+            </li>
+          </ol>
+        </div>
         <div class="note-important mt-12 reveal" role="note">
           <span class="note-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L3 19h18L12 4z"/><path d="M12 10v4M12 16.75h.01"/></svg>
@@ -377,17 +434,22 @@
       </div>
     </section>
 
-    <!-- ============================== CTA -->
-    <section class="cta-band">
+    <!-- ============================== CTA · descent complete -->
+    <section class="cta-band section--dark" data-breathe>
+      <svg class="rings rings--live" viewBox="0 0 720 720" fill="none" aria-hidden="true">
+        <circle cx="360" cy="360" r="72" stroke-opacity=".20"/><circle cx="360" cy="360" r="120" stroke-opacity=".16"/><circle cx="360" cy="360" r="172" stroke-opacity=".13"/><circle cx="360" cy="360" r="228" stroke-opacity=".10"/><circle cx="360" cy="360" r="288" stroke-opacity=".08"/><circle cx="360" cy="360" r="352" stroke-opacity=".06"/>
+      </svg>
       <div class="container">
         <p class="kicker">Healing Starts With Oxygen</p>
-        <h2>Your Body. <em class="text-gold-gradient">Our Mission.</em></h2>
+        <h2 class="poster-sm reveal reveal-mask"><span class="line"><span class="line-inner">Your Body. <em class="text-gold-gradient">Our Mission.</em></span></span></h2>
         <p class="lead">Talk to us about whether physician-directed hyperbaric oxygen therapy fits your care plan — or start with <a href="/faq/" style="color:var(--gold-300)">common questions about HBOT, cost, and safety</a>.</p>
-        <div class="hero-actions">
-          <a class="btn btn--primary" href="/contact/">Request a Physician Consultation</a>
-          <a class="btn btn--secondary-on-dark" href="/faq/">Read the FAQ</a>
+        <div class="cta-base reveal">
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="/contact/">Request a Physician Consultation</a>
+            <a class="btn btn--secondary-on-dark" href="/faq/">Read the FAQ</a>
+          </div>
+          <p class="cta-phone">Prefer to talk? <a href="tel:+13692220979"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>(369) 222-0979</a></p>
         </div>
-        <p class="cta-phone">Prefer to talk? <a href="tel:+13692220979">(369) 222-0979</a></p>
       </div>
     </section>
   </main>
@@ -395,6 +457,7 @@
   <footer class="site-footer">
     <div class="footer-divider" aria-hidden="true"></div>
     <div class="footer-main">
+      <div class="footer-ghost" aria-hidden="true" data-word="Generations"></div>
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
