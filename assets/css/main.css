@@ -571,7 +571,7 @@ html:not(.js) .page-hero { margin-top: 0; }
 .hero-grid { display: grid; gap: var(--space-8); }
 .hero h1 {
   color: var(--white);
-  max-width: 14ch;
+  max-width: none; /* line spans own the breaks; a ch-cap would re-wrap them */
 }
 .hero-copy { max-width: 46ch; }
 .hero-copy .lead { color: var(--sage-200); }
@@ -670,8 +670,10 @@ html:not(.js) .page-hero { margin-top: 0; }
     z-index: 1;
     margin-right: calc(var(--container-pad) * -1);
     align-self: stretch;
-    min-height: 30rem;
+    min-height: 24rem;
+    max-height: 64vh;
   }
+  .hero-media img { height: 100%; }
   .hero-copy { grid-column: 1 / 6; grid-row: 2; z-index: 2; padding-block: var(--space-8) var(--space-4); }
 }
 @media (max-width: 63.9375em) {
