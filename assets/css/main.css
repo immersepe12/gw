@@ -1459,7 +1459,7 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
     linear-gradient(175deg, #011B16 0%, #02231D 55%, #05382E 130%);
   color: var(--text-on-dark);
 }
-.cta-band > * { position: relative; z-index: 1; }
+.cta-band > :not(.rings) { position: relative; z-index: 1; }
 .cta-band .lead a { color: var(--gold-300); }
 .cta-band .rings {
   width: min(60vw, 46rem);
