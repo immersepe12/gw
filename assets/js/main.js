@@ -90,7 +90,8 @@
       mTick = false;
       var doc = document.documentElement;
       var max = doc.scrollHeight - window.innerHeight;
-      meridian.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max) : 1);
+      /* 1.35× overshoot keeps the drawn tip ahead of the viewport */
+      meridian.style.setProperty('--p', max > 0 ? Math.min(1.35, 1.35 * window.scrollY / max) : 1);
     };
     window.addEventListener('scroll', function () {
       if (!mTick) { mTick = true; requestAnimationFrame(updateMeridian); }
@@ -114,7 +115,17 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.25 });
     items.forEach(function (el) { io.observe(el); });
-    setTimeout(function () { revealAll(); io.disconnect(); }, 2500);
+    /* failsafe scoped to the current viewport: rescue stragglers the observer
+       missed without cancelling below-fold entrances */
+    setTimeout(function () {
+      items.forEach(function (el) {
+        if (!el.classList.contains('is-visible') &&
+            el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add('is-visible');
+          io.unobserve(el);
+        }
+      });
+    }, 2500);
   } else {
     revealAll();
   }
@@ -164,12 +175,12 @@
         var s = document.createElement('span');
         s.className = 'stat-count';
         s.style.setProperty('--n', n);
-        s.setAttribute('aria-hidden', 'true');
         frag.appendChild(s);
       });
       if (!ok) return;
       var wrap = document.createElement('span');
       wrap.className = 'stat-anim';
+      wrap.setAttribute('aria-hidden', 'true');
       wrap.appendChild(frag);
       el.parentNode.insertBefore(wrap, el.nextSibling);
       el.classList.add('stat-real--replaced');

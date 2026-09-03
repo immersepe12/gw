@@ -123,7 +123,7 @@ strong { font-weight: var(--weight-bold); }
 .container--text { max-width: var(--container-text); }
 
 .section { padding-block: var(--space-section); position: relative; }
-.section--band { background: var(--surface-band); }
+.section--band { background: #F7F1D8; }
 .section--card-bg { background: var(--surface-card); }
 
 main { position: relative; }
@@ -203,12 +203,15 @@ main { position: relative; }
 .depth .ghost, .section--dark .ghost, .ghost--on-dark { color: var(--ghost-on-dark); }
 .ghost--tl { top: -0.05em; left: -0.12em; }
 .ghost--page { top: 0; right: -0.06em; left: auto; font-size: calc(var(--text-ghost) * 0.62); }
+@media (max-width: 47.9375em) {
+  .ghost--page { display: none; }
+}
 
 /* vertical labels */
 .vlabel {
   position: absolute;
   top: var(--space-section);
-  left: max(0.6rem, calc(50% - 40rem - 1.5rem));
+  left: max(1.75rem, calc(50% - 40rem - 1.5rem));
   writing-mode: vertical-rl;
   font-family: var(--font-body);
   font-size: var(--text-kicker);
@@ -242,7 +245,7 @@ main { position: relative; }
 /* the oxygen meridian — scroll-drawn spine */
 .meridian {
   position: absolute;
-  inset: 0 auto 0 calc(50% - min(50vw, 40rem) + 1rem);
+  inset: 0 auto 0 4px;
   width: 2px;
   height: 100%;
   pointer-events: none;
@@ -262,7 +265,9 @@ main { position: relative; }
     animation: meridian-draw linear both;
     animation-timeline: scroll(root);
   }
-  @keyframes meridian-draw { to { stroke-dashoffset: 0; } }
+  /* overshoot to -0.35 so the drawn tip leads the viewport instead of
+     hovering at its top edge (scroll fraction ≠ main-height fraction) */
+  @keyframes meridian-draw { to { stroke-dashoffset: -0.35; } }
 }
 .meridian.js-meridian line { animation: none; stroke-dashoffset: calc(1 - var(--p, 1)); }
 
@@ -452,6 +457,7 @@ main { position: relative; }
   }
   .js .site-nav .nav-cta .btn { width: 100%; }
   .nav-open { overflow: hidden; }
+  .nav-open .site-header { z-index: 60; }
   .nav-open::before {
     content: "";
     position: fixed;
@@ -516,7 +522,7 @@ html:not(.js) .page-hero { margin-top: 0; }
 }
 .poster-sm { font-size: calc(var(--text-poster) * 0.62); line-height: 1.02; letter-spacing: -0.015em; font-variation-settings: "opsz" 144; }
 
-.line { display: block; overflow: clip; }
+.line { display: block; overflow: clip; padding-block-end: 0.12em; margin-block-end: -0.12em; }
 .line-inner { display: inline-block; }
 
 /* load-time mask (hero/page-hero h1) — LCP-safe start per spec §6.A */
@@ -537,6 +543,23 @@ html:not(.js) .page-hero { margin-top: 0; }
               opacity var(--dur-2) linear;
 }
 .js .reveal-mask.is-visible .line-inner { transform: translateY(0); opacity: 1; }
+.js .reveal-mask .line:nth-child(2) .line-inner { transition-delay: 120ms; }
+
+/* 404 */
+.hero--404 { min-height: 72svh; }
+.hero--404 .hero-404-inner { position: relative; text-align: center; }
+.hero--404 h1 { color: var(--white); max-width: 20ch; margin-inline: auto; }
+.hero--404 .lead { color: var(--sage-200); margin: var(--space-5) auto 0; }
+.hero--404 .hero-actions { justify-content: center; }
+.hero--404 .rings-static {
+  position: absolute;
+  inset: 0;
+  background-image: var(--motif-rings-dark);
+  background-repeat: no-repeat;
+  background-size: 640px 640px;
+  background-position: right -220px top -240px;
+  pointer-events: none;
+}
 
 /* --------------------------------------------------------------- hero (home) */
 .hero {
@@ -603,7 +626,8 @@ html:not(.js) .page-hero { margin-top: 0; }
   clip-path: inset(0 0 0 100%);
   animation: photo-wipe var(--dur-4) var(--ease-out-long) 150ms forwards;
 }
-@keyframes photo-wipe { to { clip-path: inset(0 0 0 0); } }
+/* end past the offset frame — clip-path clips box-shadow */
+@keyframes photo-wipe { to { clip-path: inset(-2px -34px -34px -2px); } }
 .hero-badge {
   position: absolute;
   left: var(--space-5);
@@ -645,7 +669,13 @@ html:not(.js) .page-hero { margin-top: 0; }
   height: 24px;
   background: var(--gold-600);
 }
-.hero-strip a { color: inherit; }
+.hero-strip a {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: var(--space-2);
+}
 
 /* staged entrance for hero support content */
 .js .hero-stage {
@@ -928,6 +958,7 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
 }
 @media (max-width: 63.9375em) {
   .index-arrow { position: absolute; right: 0; top: var(--space-6); }
+  .index-title { padding-right: 2.5rem; }
 }
 
 /* --------------------------------------------------------------- stat gauge */
@@ -969,10 +1000,10 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
 }
 @media (min-width: 64em) {
   .gauge { grid-template-columns: repeat(12, 1fr); align-items: start; }
-  .gauge-primary { grid-column: 1 / 6; }
-  .gauge-list { grid-column: 7 / 13; display: grid; gap: var(--space-8); }
-  .stat-note { margin-left: auto; text-align: right; }
-  .stat-note::before { margin-left: auto; }
+  .gauge-primary { grid-column: 1 / 6; grid-row: 1; }
+  .gauge-list { grid-column: 7 / 13; grid-row: 1 / span 2; display: grid; gap: var(--space-8); }
+  /* footnote closes the gauge composition under the anchor stat */
+  .gauge .stat-note { grid-column: 1 / 6; grid-row: 2; align-self: end; margin-top: var(--space-10); }
 }
 
 /* pressure counters — truth-first (spec §6.C) */
@@ -996,14 +1027,16 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
 .mosaic { display: grid; gap: var(--space-6); position: relative; z-index: 1; }
 @media (min-width: 48em) { .mosaic { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 64em) {
-  .mosaic > :nth-child(even) { transform: translateY(4.5rem); }
+  /* `translate`, not `transform` — the reveal system resets `transform` and
+     would silently flatten the offset */
+  .mosaic > :nth-child(even) { translate: 0 4.5rem; }
   .section--mosaic { padding-bottom: calc(var(--space-section) + 4.5rem); }
 }
 
 /* --------------------------------------------------------------- generic grids */
 .grid { display: grid; gap: var(--space-6); }
 @media (min-width: 48em) {
-  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--2 { grid-template-columns: repeat(2, 1fr); align-items: start; }
   .grid--3 { grid-template-columns: repeat(3, 1fr); }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1126,8 +1159,12 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
 }
 .section--dark .checklist li,
 .depth .checklist li { color: var(--cream-100); }
+.section--dark .checklist li strong,
+.depth .checklist li strong { color: var(--cream-50); }
 .section--dark .checklist svg,
 .depth .checklist svg { color: var(--gold-300); }
+.section--dark .checklist a,
+.depth .checklist a { color: var(--gold-300); }
 
 /* --------------------------------------------------------------- stat/steps */
 .steps {
@@ -1259,9 +1296,9 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
   width: 100%;
   height: 112%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.06) brightness(1.04);
+  filter: grayscale(1) contrast(1.08) brightness(0.82);
   mix-blend-mode: screen;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 @supports (animation-timeline: view()) {
   .valley-bg img {
@@ -1278,8 +1315,18 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(115deg, rgba(246, 224, 142, 0.10), rgba(203, 132, 21, 0.14));
+  background: linear-gradient(180deg, rgba(1, 27, 22, 0.28), rgba(1, 27, 22, 0.18)),
+              linear-gradient(115deg, rgba(246, 224, 142, 0.10), rgba(203, 132, 21, 0.14));
   pointer-events: none;
+}
+@media (max-width: 63.9375em) {
+  .valley { padding-block: 0 var(--space-section); }
+  .valley-bg {
+    position: relative;
+    inset: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .valley .container { margin-top: -4rem; position: relative; z-index: 2; }
 }
 .valley-panel {
   position: relative;
@@ -1402,26 +1449,23 @@ a.index-row:hover .index-title h3 { text-decoration-color: var(--gold-500); colo
 
 /* --------------------------------------------------------------- CTA band */
 .cta-band {
+  position: relative;
   padding-block: var(--space-section);
   overflow: visible;
   text-align: left;
+  /* self-sufficient dark surface — the band can never render on cream again */
+  background-color: var(--green-975);
+  background-image: var(--depth-veil), var(--depth-ambient),
+    linear-gradient(175deg, #011B16 0%, #02231D 55%, #05382E 130%);
+  color: var(--text-on-dark);
 }
-.cta-band::before {
-  content: "";
-  position: absolute;
-  top: -160px;
-  left: 0;
-  right: 0;
-  height: 160px;
-  background: var(--light-well);
-  pointer-events: none;
-  z-index: 2;
-}
+.cta-band > * { position: relative; z-index: 1; }
+.cta-band .lead a { color: var(--gold-300); }
 .cta-band .rings {
   width: min(60vw, 46rem);
   aspect-ratio: 1;
-  right: -8rem;
-  bottom: -12rem;
+  right: -14rem;
+  bottom: -16rem;
 }
 .cta-band .kicker { color: var(--gold-300); }
 .cta-band h2 { color: var(--cream-50); margin-top: var(--space-4); max-width: 14ch; }
@@ -1513,21 +1557,6 @@ address { font-style: normal; }
 .contact-list p { color: var(--sage-200); }
 .contact-list address p { color: var(--sage-200); }
 
-.hours-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: var(--space-4);
-  font-size: var(--text-small);
-}
-.hours-table th, .hours-table td {
-  text-align: left;
-  padding: var(--space-2) 0;
-  border-bottom: var(--border-hairline-neutral);
-  font-weight: var(--weight-regular);
-  color: var(--text-muted);
-}
-.hours-table th { color: var(--text-primary); font-weight: var(--weight-semibold); }
-
 .map-frame {
   border-radius: var(--radius-lg);
   overflow: clip;
@@ -1539,6 +1568,8 @@ address { font-style: normal; }
   width: 100%;
   height: min(60vh, 460px);
   border: 0;
+  /* pull the raw Google palette toward the site's warm monochrome */
+  filter: grayscale(0.88) sepia(0.22) saturate(0.85);
 }
 
 /* --------------------------------------------------------------- prose */
@@ -1600,7 +1631,7 @@ address { font-style: normal; }
 .footer-main .container { position: relative; z-index: 1; }
 .footer-grid { display: grid; gap: var(--space-10); }
 @media (min-width: 48em) {
-  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: var(--space-8); }
+  .footer-grid { grid-template-columns: 1.3fr 0.95fr 1.15fr 1.3fr; gap: var(--space-8); }
   .footer-grid > * + * { border-left: var(--hairline-on-dark-v2); padding-left: var(--space-8); }
 }
 .footer-brand img { width: 72px; height: auto; }
@@ -1698,6 +1729,59 @@ address { font-style: normal; }
 @media (min-width: 48em) {
   :root { --header-h: 4.5rem; }
   .brand-mark { width: 46px; height: 46px; }
+}
+
+/* --------------------------------------------------------------- on-dark focus rings */
+.depth :focus-visible,
+.section--dark :focus-visible,
+.cta-band :focus-visible,
+.footer-main :focus-visible,
+.footer-bottom :focus-visible,
+.nap-panel :focus-visible,
+.js .site-header:not(.past-hero) :focus-visible {
+  outline-color: var(--focus-ring-on-dark);
+}
+
+/* --------------------------------------------------------------- mobile header call button */
+.header-call {
+  display: none;
+}
+@media (max-width: 47.9375em) {
+  .header-call {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-left: auto;
+  }
+  .header-call svg { width: 18px; height: 18px; }
+  .header-inner { gap: var(--space-3); }
+}
+
+/* --------------------------------------------------------------- print */
+@media print {
+  .js .reveal,
+  .js .hero-stage,
+  .js .mask-on-load .line-inner,
+  .js .reveal-mask .line-inner {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .js .hero-media { clip-path: none !important; animation: none !important; }
+  .meridian, .rings, .rings-static, .ghost, .step-ghost, .footer-ghost,
+  .vlabel, .progress-line, .grain { display: none !important; }
+  .hero, .page-hero, .section--dark, .cta-band, .footer-main, .footer-bottom, .nap-panel {
+    background: #fff !important;
+  }
+  .hero *, .page-hero *, .section--dark *, .cta-band *,
+  .footer-main *, .footer-bottom *, .nap-panel * {
+    color: #000 !important;
+  }
+  .text-gold-gradient {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: #000 !important;
+  }
 }
 
 /* --------------------------------------------------------------- reduced motion: the static page IS the design */

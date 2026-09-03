@@ -175,6 +175,7 @@
         </div>
       </nav>
       <a class="btn btn--primary btn--sm header-cta" href="tel:+13692220979">Call (369) 222-0979</a>
+      <a class="btn btn--primary btn--sm header-call" href="tel:+13692220979"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Call</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="visually-hidden">Menu</span>
         <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -195,6 +196,7 @@
             <li><a href="/">Home</a></li>
             <li><span aria-current="page">Contact</span></li>
           </ol>
+        </div>
         </nav>
         <p class="kicker kicker--on-dark">We're Ready When You Are</p>
         <h1 class="mask-on-load"><span class="line"><span class="line-inner">Contact <em class="text-gold-gradient">Generations</em> Wellness</span></span></h1>
@@ -277,7 +279,8 @@
 
     <!-- areas we serve -->
     <section class="section section--card-bg">
-      <div class="container container--text">
+      <span class="vlabel" aria-hidden="true" data-label="Beyond Modesto"></span>
+      <div class="container">
         <div class="section-head reveal">
           <p class="kicker">Beyond Modesto</p>
           <h2>Areas We Serve</h2>
@@ -297,7 +300,9 @@
           <h2>What Happens After You Reach Out</h2>
           <span class="gold-rule"></span>
         </div>
-        <ol class="steps reveal-group">
+        <div class="steps-wrap" data-inview>
+          <div class="steps-track" aria-hidden="true"><div class="steps-fill"></div></div>
+          <ol class="steps reveal-group">
           <li class="reveal">
             <h3>A brief phone conversation</h3>
             <p>We listen to what's going on, answer first questions, and set up your assessment. See <a href="/hyperbaric-oxygen-therapy/">what to expect at a session</a> beforehand if you're curious.</p>
@@ -315,7 +320,10 @@
     </section>
 
     <!-- CTA -->
-    <section class="cta-band">
+    <section class="cta-band" data-breathe>
+      <svg class="rings rings--live" viewBox="0 0 720 720" fill="none" aria-hidden="true">
+        <circle cx="360" cy="360" r="72" stroke-opacity=".20"/><circle cx="360" cy="360" r="120" stroke-opacity=".16"/><circle cx="360" cy="360" r="172" stroke-opacity=".13"/><circle cx="360" cy="360" r="228" stroke-opacity=".10"/><circle cx="360" cy="360" r="288" stroke-opacity=".08"/><circle cx="360" cy="360" r="352" stroke-opacity=".06"/>
+      </svg>
       <div class="container">
         <p class="kicker">Healing Starts With Oxygen</p>
         <h2>Your Body. <em class="text-gold-gradient">Our Mission.</em></h2>
