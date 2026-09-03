@@ -210,7 +210,7 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 
   /* typography · v2 poster scale */
-  --text-poster: clamp(3.1rem, 1.9rem + 4.4vw, 6.25rem);   /* home h1: 50→100px */
+  --text-poster: clamp(3rem, 1.85rem + 4.1vw, 5.75rem);    /* home h1: 48→92px */
   --text-ghost: clamp(10rem, 24vw, 24rem);                  /* ghost numerals */
 
   /* motion · v2 (supersedes the v1 --motion-* scale for new work) */

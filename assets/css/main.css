@@ -307,12 +307,12 @@ main { position: relative; }
 }
 .site-header.past-hero { box-shadow: var(--shadow-sm); }
 
-/* transparent-over-dark start (JS-enhanced; cream bar is the safe default) */
+/* dark-over-hero start (JS-enhanced; cream bar is the safe default) */
 .js .site-header:not(.past-hero) {
-  background: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  border-bottom-color: transparent;
+  background: rgba(1, 27, 22, 0.62);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom-color: rgba(246, 224, 142, 0.14);
   box-shadow: none;
 }
 .js .site-header:not(.past-hero) .brand-name { color: var(--white); }
@@ -696,7 +696,7 @@ html:not(.js) .page-hero { margin-top: 0; }
   .hero h1 { grid-column: 1 / 9; grid-row: 1; z-index: 2; text-shadow: 0 2px 28px rgba(1, 27, 22, 0.55); }
   .hero h1 .line { white-space: nowrap; }
   .hero-media {
-    grid-column: 7 / 13;
+    grid-column: 8 / 13;
     grid-row: 1 / span 2;
     z-index: 1;
     margin-right: calc(var(--container-pad) * -1);
