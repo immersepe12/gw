@@ -29,7 +29,19 @@ python3 -m http.server 8080
 
 Then open http://localhost:8080 — all internal URLs are root-absolute, so serve from the repo root.
 
-## Deploying to GitHub Pages
+## Deploying to Vercel (current plan)
+
+1. Push this repo to GitHub, then in Vercel: **Add New → Project → Import** `immersepe12/gw`.
+2. Framework preset: **Other** (plain static site — no build command, output directory is the repo root). Deploy.
+3. `vercel.json` sets `"trailingSlash": true` so `/about` redirects to `/about/`, matching every canonical URL.
+4. Project → Settings → Domains: add `www.generationswellness.net` (primary) and `generationswellness.net` (redirect to www). DNS at the registrar:
+   - `www` → CNAME → `cname.vercel-dns.com`
+   - Apex `generationswellness.net` → A → `76.76.21.21`
+5. After DNS propagates, submit `https://www.generationswellness.net/sitemap.xml` in Google Search Console.
+
+`404.html` at the repo root is served automatically for unknown routes. The `CNAME`/`.nojekyll` files are GitHub Pages artifacts — harmless on Vercel, kept in case of a future switch.
+
+## Deploying to GitHub Pages (alternative)
 
 1. Push this repository to GitHub (`main` branch).
 2. Repo → Settings → Pages → Source: **Deploy from a branch**, branch `main`, folder `/ (root)`.
