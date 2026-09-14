@@ -1,0 +1,7 @@
+{
+  "name": "generations-wellness-tokens",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Generations Wellness design tokens + self-hosted brand webfonts. tokens.css is copied verbatim from assets/css/tokens.css by the ds-src build.",
+  "files": ["css"]
+}

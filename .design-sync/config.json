@@ -1,0 +1,79 @@
+{
+  "shape": "package",
+  "pkg": "generations-wellness-ds",
+  "globalName": "GW",
+  "buildCmd": "npm --prefix .design-sync/ds-src run build",
+  "cssEntry": "./styles/main.css",
+  "tokensPkg": "generations-wellness-tokens",
+  "tokensGlob": "css/tokens.css",
+  "extraFonts": [
+    "../ds-tokens/css/fonts.css"
+  ],
+  "overrides": {
+    "SectionHead": {
+      "cardMode": "column",
+      "viewport": "1000x520"
+    },
+    "CtaBand": {
+      "cardMode": "column",
+      "viewport": "1280x800"
+    },
+    "Hero": {
+      "cardMode": "column",
+      "viewport": "1280x1040"
+    },
+    "PageHero": {
+      "cardMode": "column",
+      "viewport": "1280x780"
+    },
+    "SiteHeader": {
+      "cardMode": "column",
+      "viewport": "1280x300"
+    },
+    "SiteFooter": {
+      "cardMode": "column",
+      "viewport": "1280x1000"
+    },
+    "ValleyPanel": {
+      "cardMode": "column",
+      "viewport": "1200x1150"
+    },
+    "ContactGrid": {
+      "cardMode": "column",
+      "viewport": "1280x1100"
+    },
+    "Split": {
+      "cardMode": "column",
+      "viewport": "1200x820"
+    },
+    "Feature": {
+      "cardMode": "column",
+      "viewport": "1200x820"
+    },
+    "Gauge": {
+      "cardMode": "column",
+      "viewport": "1100x720"
+    },
+    "Steps": {
+      "cardMode": "column",
+      "viewport": "1100x760"
+    },
+    "IndexList": {
+      "cardMode": "column",
+      "viewport": "1100x860"
+    },
+    "IndexRow": {
+      "cardMode": "column",
+      "viewport": "1100x420"
+    },
+    "Section": {
+      "cardMode": "column",
+      "viewport": "1200x950"
+    },
+    "Mosaic": {
+      "cardMode": "column",
+      "viewport": "1200x950"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
