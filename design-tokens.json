@@ -1,0 +1,701 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Generations Wellness design tokens — generated from assets/css/tokens.css (v2 'Atmospheres'). Source of truth for values is tokens.css; component recipes live in assets/css/main.css.",
+  "color": {
+    "green": {
+      "950": {
+        "$type": "color",
+        "$value": "#02231D"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#034439"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#075243"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#0B6B57"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#12836B"
+      },
+      "975": {
+        "$type": "color",
+        "$value": "#011B16"
+      }
+    },
+    "sage": {
+      "100": {
+        "$type": "color",
+        "$value": "#E7EFE7"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#BFD6CB"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#9DBFB1"
+      }
+    },
+    "gold": {
+      "200": {
+        "$type": "color",
+        "$value": "#F9EBB9"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#F6E08E"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#EFC956"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#EDBB21"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#CB8415"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#A96A0E"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#8A5A0A"
+      }
+    },
+    "cream": {
+      "50": {
+        "$type": "color",
+        "$value": "#FFFDF0"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#FBF7E2"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#F4ECC9"
+      }
+    },
+    "functional": {
+      "white": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "#A33A2E"
+      },
+      "error-on-dark": {
+        "$type": "color",
+        "$value": "#F2B8AC"
+      },
+      "hairline-gold-color": {
+        "$type": "color",
+        "$value": "#F6E6A5"
+      }
+    },
+    "ink": {
+      "900": {
+        "$type": "color",
+        "$value": "#2B2A29"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#57544D"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#8A857A"
+      }
+    }
+  },
+  "gradient": {
+    "gold-banner": {
+      "$type": "string",
+      "$value": "linear-gradient(90deg,  #EDBB21 0%, #F6E08E 55%, #CB8415 100%)",
+      "$description": "CSS gradient; use as-is"
+    },
+    "gold-btn": {
+      "$type": "string",
+      "$value": "linear-gradient(100deg, #EDBB21 0%, #F6E08E 52%, #CB8415 100%)",
+      "$description": "CSS gradient; use as-is"
+    },
+    "gold-btn-hover": {
+      "$type": "string",
+      "$value": "linear-gradient(100deg, #E0AE1B 0%, #EFD27A 52%, #B87411 100%)",
+      "$description": "CSS gradient; use as-is"
+    },
+    "gold-rule": {
+      "$type": "string",
+      "$value": "linear-gradient(90deg,  #CB8415 0%, #EDBB21 45%, #F6E08E 100%)",
+      "$description": "CSS gradient; use as-is"
+    },
+    "gold-rule-center": {
+      "$type": "string",
+      "$value": "linear-gradient(90deg, transparent 0%, #CB8415 12%, #F6E08E 50%, #CB8415 88%, transparent 100%)",
+      "$description": "CSS gradient; use as-is"
+    },
+    "gold-text": {
+      "$type": "string",
+      "$value": "linear-gradient(92deg,  #F6E08E 0%, #EDBB21 55%, #F1CE5C 100%)",
+      "$description": "CSS gradient; use as-is"
+    },
+    "hero-surface": {
+      "$type": "string",
+      "$value": "linear-gradient(180deg, #034439 0%, #02231D 100%)",
+      "$description": "CSS gradient; use as-is"
+    }
+  },
+  "fontFamily": {
+    "display": {
+      "$type": "fontFamily",
+      "$value": [
+        "Fraunces",
+        "Iowan Old Style",
+        "Palatino Linotype",
+        "Georgia",
+        "serif"
+      ]
+    },
+    "body": {
+      "$type": "fontFamily",
+      "$value": [
+        "Source Sans 3",
+        "-apple-system",
+        "Segoe UI",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
+    }
+  },
+  "typography": {
+    "size": {
+      "display": {
+        "$type": "string",
+        "$value": "clamp(2.75rem, 1.893rem + 3.81vw, 4.75rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "h1": {
+        "$type": "string",
+        "$value": "clamp(2.375rem, 1.679rem + 3.10vw, 4rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "h2": {
+        "$type": "string",
+        "$value": "clamp(1.875rem, 1.446rem + 1.90vw, 2.875rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "h3": {
+        "$type": "string",
+        "$value": "clamp(1.5rem, 1.286rem + 0.95vw, 2rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "h4": {
+        "$type": "string",
+        "$value": "clamp(1.25rem, 1.143rem + 0.48vw, 1.5rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "h5": {
+        "$type": "string",
+        "$value": "clamp(1.125rem, 1.071rem + 0.24vw, 1.25rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "h6": {
+        "$type": "string",
+        "$value": "clamp(1rem, 0.9464rem + 0.24vw, 1.125rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "lead": {
+        "$type": "string",
+        "$value": "clamp(1.125rem, 1.018rem + 0.48vw, 1.375rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "body": {
+        "$type": "string",
+        "$value": "clamp(1rem, 0.9464rem + 0.24vw, 1.125rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "small": {
+        "$type": "string",
+        "$value": "clamp(0.875rem, 0.8482rem + 0.12vw, 0.9375rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "kicker": {
+        "$type": "string",
+        "$value": "clamp(0.75rem, 0.7232rem + 0.12vw, 0.8125rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "stat": {
+        "$type": "string",
+        "$value": "clamp(4rem, 3.143rem + 3.81vw, 6rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "poster": {
+        "$type": "string",
+        "$value": "clamp(3rem, 1.85rem + 4.1vw, 5.75rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      },
+      "ghost": {
+        "$type": "string",
+        "$value": "clamp(10rem, 24vw, 24rem)",
+        "$description": "Fluid clamp(); 360→1200px viewports"
+      }
+    },
+    "lineHeight": {
+      "display": {
+        "$type": "number",
+        "$value": 1.02
+      },
+      "h1": {
+        "$type": "number",
+        "$value": 1.08
+      },
+      "h2": {
+        "$type": "number",
+        "$value": 1.12
+      },
+      "h3": {
+        "$type": "number",
+        "$value": 1.2
+      },
+      "h4": {
+        "$type": "number",
+        "$value": 1.3
+      },
+      "h5": {
+        "$type": "number",
+        "$value": 1.35
+      },
+      "h6": {
+        "$type": "number",
+        "$value": 1.4
+      },
+      "lead": {
+        "$type": "number",
+        "$value": 1.55
+      },
+      "body": {
+        "$type": "number",
+        "$value": 1.65
+      },
+      "small": {
+        "$type": "number",
+        "$value": 1.5
+      }
+    },
+    "letterSpacing": {
+      "display": {
+        "$type": "dimension",
+        "$value": "-0.015em"
+      },
+      "h1": {
+        "$type": "dimension",
+        "$value": "-0.01em"
+      },
+      "h2": {
+        "$type": "dimension",
+        "$value": "-0.008em"
+      },
+      "h3": {
+        "$type": "dimension",
+        "$value": "-0.005em"
+      },
+      "kicker": {
+        "$type": "dimension",
+        "$value": "0.14em"
+      },
+      "wordmark": {
+        "$type": "dimension",
+        "$value": "0.32em"
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700
+      },
+      "display": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "stat": {
+        "$type": "fontWeight",
+        "$value": 500
+      }
+    }
+  },
+  "space": {
+    "1": {
+      "$type": "dimension",
+      "$value": "0.25rem"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "0.5rem"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "0.75rem"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "1rem"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "1.25rem"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "1.5rem"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "2rem"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "2.5rem"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "3rem"
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "4rem"
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "5rem"
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "6rem"
+    },
+    "32": {
+      "$type": "dimension",
+      "$value": "8rem"
+    },
+    "section": {
+      "$type": "string",
+      "$value": "clamp(3.5rem, 2.214rem + 5.71vw, 6.5rem)"
+    },
+    "card": {
+      "$type": "string",
+      "$value": "clamp(1.5rem, 1.071rem + 1.90vw, 2.5rem)"
+    },
+    "hero": {
+      "$type": "string",
+      "$value": "clamp(5rem, 3.286rem + 7.62vw, 9rem)"
+    }
+  },
+  "layout": {
+    "container-text": {
+      "$type": "dimension",
+      "$value": "42rem"
+    },
+    "container-content": {
+      "$type": "dimension",
+      "$value": "70rem"
+    },
+    "container-wide": {
+      "$type": "dimension",
+      "$value": "80rem"
+    },
+    "container-pad": {
+      "$type": "string",
+      "$value": "clamp(1rem, 0.5rem + 2.22vw, 2rem)"
+    },
+    "header-h": {
+      "$type": "dimension",
+      "$value": "3.75rem"
+    }
+  },
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "999px"
+    }
+  },
+  "border": {
+    "hairline": {
+      "$type": "string",
+      "$value": "1px solid var(--hairline-gold-color)"
+    },
+    "hairline-neutral": {
+      "$type": "string",
+      "$value": "1px solid rgba(3, 68, 57, 0.10)"
+    },
+    "hairline-on-dark": {
+      "$type": "string",
+      "$value": "1px solid rgba(246, 224, 142, 0.22)"
+    },
+    "outline-btn": {
+      "$type": "string",
+      "$value": "1.5px solid var(--green-700)"
+    },
+    "luminous": {
+      "$type": "string",
+      "$value": "linear-gradient(135deg, rgba(246, 224, 142, 0.55),\n                      rgba(246, 224, 142, 0.08) 40%, rgba(203, 132, 21, 0.35) 100%)"
+    }
+  },
+  "shadow": {
+    "xs": {
+      "$type": "string",
+      "$value": "0 1px 2px rgba(3, 68, 57, 0.05)",
+      "$description": "CSS box-shadow; green-tinted"
+    },
+    "sm": {
+      "$type": "string",
+      "$value": "0 1px 2px rgba(3, 68, 57, 0.05), 0 2px 8px rgba(3, 68, 57, 0.06)",
+      "$description": "CSS box-shadow; green-tinted"
+    },
+    "md": {
+      "$type": "string",
+      "$value": "0 2px 4px rgba(3, 68, 57, 0.04), 0 10px 24px -8px rgba(3, 68, 57, 0.12)",
+      "$description": "CSS box-shadow; green-tinted"
+    },
+    "lg": {
+      "$type": "string",
+      "$value": "0 4px 8px rgba(3, 68, 57, 0.05), 0 24px 48px -16px rgba(3, 68, 57, 0.16)",
+      "$description": "CSS box-shadow; green-tinted"
+    },
+    "gold": {
+      "$type": "string",
+      "$value": "0 6px 20px -6px rgba(203, 132, 21, 0.45)",
+      "$description": "CSS box-shadow; green-tinted"
+    }
+  },
+  "motion": {
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": "200ms"
+      },
+      "base": {
+        "$type": "duration",
+        "$value": "260ms"
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "320ms"
+      },
+      "reveal": {
+        "$type": "duration",
+        "$value": "400ms"
+      },
+      "stagger": {
+        "$type": "duration",
+        "$value": "70ms"
+      },
+      "dur-1": {
+        "$type": "duration",
+        "$value": "180ms"
+      },
+      "dur-2": {
+        "$type": "duration",
+        "$value": "300ms"
+      },
+      "dur-3": {
+        "$type": "duration",
+        "$value": "500ms"
+      },
+      "dur-4": {
+        "$type": "duration",
+        "$value": "700ms"
+      }
+    },
+    "easing": {
+      "out": {
+        "$type": "string",
+        "$value": "cubic-bezier(0.22, 1, 0.36, 1)"
+      },
+      "in-out": {
+        "$type": "string",
+        "$value": "cubic-bezier(0.65, 0, 0.35, 1)"
+      },
+      "out-long": {
+        "$type": "string",
+        "$value": "cubic-bezier(0.16, 1, 0.3, 1)"
+      },
+      "settle": {
+        "$type": "string",
+        "$value": "cubic-bezier(0.22, 1, 0.36, 1)"
+      }
+    },
+    "reveal-distance": {
+      "$type": "dimension",
+      "$value": "16px"
+    }
+  },
+  "decoration": {
+    "motif-rings-light": {
+      "$type": "string",
+      "$value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720' fill='none' stroke='%23CB8415' stroke-opacity='.07' stroke-width='1'%3E%3Ccircle cx='360' cy='360' r='72'/%3E%3Ccircle cx='360' cy='360' r='120'/%3E%3Ccircle cx='360' cy='360' r='172'/%3E%3Ccircle cx='360' cy='360' r='228'/%3E%3Ccircle cx='360' cy='360' r='288'/%3E%3Ccircle cx='360' cy='360' r='352'/%3E%3C/svg%3E\")",
+      "$description": "Decorative layer; never under body copy"
+    },
+    "motif-rings-dark": {
+      "$type": "string",
+      "$value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720' fill='none' stroke='%23F6E08E' stroke-opacity='.08' stroke-width='1'%3E%3Ccircle cx='360' cy='360' r='72'/%3E%3Ccircle cx='360' cy='360' r='120'/%3E%3Ccircle cx='360' cy='360' r='172'/%3E%3Ccircle cx='360' cy='360' r='228'/%3E%3Ccircle cx='360' cy='360' r='288'/%3E%3Ccircle cx='360' cy='360' r='352'/%3E%3C/svg%3E\")",
+      "$description": "Decorative layer; never under body copy"
+    },
+    "light-well": {
+      "$type": "string",
+      "$value": "linear-gradient(180deg, rgba(1, 27, 22, 0), rgba(1, 27, 22, 1))",
+      "$description": "Decorative layer; never under body copy"
+    },
+    "depth-base": {
+      "$type": "string",
+      "$value": "linear-gradient(175deg, #011B16 0%, #02231D 45%, #034439 120%)",
+      "$description": "Decorative layer; never under body copy"
+    },
+    "depth-ambient": {
+      "$type": "string",
+      "$value": "radial-gradient(90rem 60rem at 78% -20%, var(--green-glow), transparent 60%)",
+      "$description": "Decorative layer; never under body copy"
+    },
+    "depth-veil": {
+      "$type": "string",
+      "$value": "radial-gradient(70rem 50rem at 10% 110%, var(--veil-gold), transparent 55%)",
+      "$description": "Decorative layer; never under body copy"
+    },
+    "grain": {
+      "$type": "string",
+      "$value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E\")",
+      "$description": "Decorative layer; never under body copy"
+    }
+  },
+  "semantic": {
+    "green-glow": {
+      "$type": "string",
+      "$value": "rgba(18, 131, 107, 0.20)"
+    },
+    "veil-gold": {
+      "$type": "string",
+      "$value": "rgba(246, 224, 142, 0.055)"
+    },
+    "ghost-on-dark": {
+      "$type": "string",
+      "$value": "rgba(246, 224, 142, 0.08)"
+    },
+    "ghost-on-light": {
+      "$type": "string",
+      "$value": "rgba(3, 68, 57, 0.055)"
+    },
+    "hairline-on-dark-v2": {
+      "$type": "string",
+      "$value": "1px solid rgba(246, 224, 142, 0.16)"
+    },
+    "focus-ring": {
+      "$type": "string",
+      "$value": "{color.gold.700}",
+      "$description": "Alias of --gold-700"
+    },
+    "focus-ring-on-dark": {
+      "$type": "string",
+      "$value": "{color.gold.300}",
+      "$description": "Alias of --gold-300"
+    },
+    "success": {
+      "$type": "string",
+      "$value": "{color.green.700}",
+      "$description": "Alias of --green-700"
+    },
+    "surface-page": {
+      "$type": "string",
+      "$value": "{color.cream.100}",
+      "$description": "Alias of --cream-100"
+    },
+    "surface-card": {
+      "$type": "string",
+      "$value": "{color.cream.50}",
+      "$description": "Alias of --cream-50"
+    },
+    "surface-band": {
+      "$type": "string",
+      "$value": "{color.cream.200}",
+      "$description": "Alias of --cream-200"
+    },
+    "surface-dark": {
+      "$type": "string",
+      "$value": "{color.green.900}",
+      "$description": "Alias of --green-900"
+    },
+    "surface-darkest": {
+      "$type": "string",
+      "$value": "{color.green.950}",
+      "$description": "Alias of --green-950"
+    },
+    "text-primary": {
+      "$type": "string",
+      "$value": "{color.ink.900}",
+      "$description": "Alias of --ink-900"
+    },
+    "text-muted": {
+      "$type": "string",
+      "$value": "{color.ink.600}",
+      "$description": "Alias of --ink-600"
+    },
+    "text-heading": {
+      "$type": "string",
+      "$value": "{color.green.900}",
+      "$description": "Alias of --green-900"
+    },
+    "text-on-dark": {
+      "$type": "string",
+      "$value": "{color.functional.white}",
+      "$description": "Alias of --white"
+    },
+    "text-on-dark-muted": {
+      "$type": "string",
+      "$value": "{color.sage.200}",
+      "$description": "Alias of --sage-200"
+    },
+    "link": {
+      "$type": "string",
+      "$value": "{color.green.700}",
+      "$description": "Alias of --green-700"
+    },
+    "link-hover": {
+      "$type": "string",
+      "$value": "{color.green.900}",
+      "$description": "Alias of --green-900"
+    }
+  }
+}

@@ -53,6 +53,14 @@ Then open http://localhost:8080 — all internal URLs are root-absolute, so serv
 
 `.nojekyll` disables Jekyll processing so files are served exactly as committed.
 
+## Design system
+
+- `design-tokens.json` — the full token set (colors, gradients, type scale, spacing, radii, shadows, motion) in the W3C Design Tokens format, generated from `assets/css/tokens.css`. Regenerate it whenever `tokens.css` changes.
+- `assets/css/tokens.css` — the tokens as CSS custom properties (the values the site actually uses).
+- `assets/css/main.css` — component recipes (buttons, header, cards, index rows, steps, FAQ ledger, notes, footer).
+- Components are plain HTML/CSS (no React); the shipped pages in this repo are the reference implementations.
+- To sync into Claude Design: from this directory run `claude` and then type `/design-sync` at the prompt.
+
 ## Editing notes
 
 - Design tokens (colors, type scale, spacing) live in `assets/css/tokens.css`; page styles in `assets/css/main.css`. The system is documented in `docs/design-system.md`.
