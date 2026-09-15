@@ -2,7 +2,7 @@
 
 Static marketing site for **Generations Wellness**, a physician-directed hyperbaric oxygen therapy (HBOT) center at 1801 H Street, Suite C-1, Modesto, CA 95354.
 
-Built as a hand-authored static site (no framework, no build step) for maximum performance and SEO, designed to be hosted on **GitHub Pages** with the custom domain `www.generationswellness.net`.
+Built as a hand-authored static site (no framework, no build step) for maximum performance and SEO, hosted on **Vercel** at `https://www.generationswellness.net` (auto-deploys from `main`).
 
 ## Structure
 
@@ -18,7 +18,8 @@ assets/js/main.js       Navigation, reveals (progressive enhancement only)
 assets/img/             Brand assets extracted from the print leaflet
 docs/                   Design system, SEO strategy, competitor research — kept LOCAL only
                         (excluded via .gitignore so internal strategy is never published)
-sitemap.xml, robots.txt, 404.html, CNAME, .nojekyll
+sitemap.xml, robots.txt, 404.html, vercel.json
+tools/build_sitemap.py  Regenerates sitemap.xml from the page tree (run after adding/editing pages)
 ```
 
 ## Local preview
@@ -29,7 +30,7 @@ python3 -m http.server 8080
 
 Then open http://localhost:8080 — all internal URLs are root-absolute, so serve from the repo root.
 
-## Deploying to Vercel (current plan)
+## Deploying to Vercel (live)
 
 1. Push this repo to GitHub, then in Vercel: **Add New → Project → Import** `immersepe12/gw`.
 2. Framework preset: **Other** (plain static site — no build command, output directory is the repo root). Deploy.
@@ -39,19 +40,9 @@ Then open http://localhost:8080 — all internal URLs are root-absolute, so serv
    - Apex `generationswellness.net` → A → `76.76.21.21`
 5. After DNS propagates, submit `https://www.generationswellness.net/sitemap.xml` in Google Search Console.
 
-`404.html` at the repo root is served automatically for unknown routes. The `CNAME`/`.nojekyll` files are GitHub Pages artifacts — harmless on Vercel, kept in case of a future switch.
+`404.html` at the repo root is served automatically for unknown routes. `vercel.json` also adds security and cache headers, marks every `*.vercel.app` host `noindex`, 308-redirects `gw-sage.vercel.app` and the bare domain to `www`, and collapses `*/index.html` duplicates.
 
-## Deploying to GitHub Pages (alternative)
-
-1. Push this repository to GitHub (`main` branch).
-2. Repo → Settings → Pages → Source: **Deploy from a branch**, branch `main`, folder `/ (root)`.
-3. Custom domain: `www.generationswellness.net` (the `CNAME` file in this repo keeps it set). Enable **Enforce HTTPS** once the certificate is issued.
-4. DNS at the domain registrar:
-   - `www` → CNAME → `<github-username>.github.io`
-   - Apex `generationswellness.net` → A records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (redirects to www)
-5. After the first deploy, submit `https://www.generationswellness.net/sitemap.xml` in Google Search Console.
-
-`.nojekyll` disables Jekyll processing so files are served exactly as committed.
+After adding or changing pages: `python3 tools/build_sitemap.py` (use `--check` to verify it is current).
 
 ## Design system
 

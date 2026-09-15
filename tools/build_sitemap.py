@@ -13,15 +13,15 @@ carrying <meta name="robots" content="noindex">, and derives <lastmod> from:
 Output modes (--mode):
     auto    (default) single sitemap.xml while only the "pages" bucket has entries;
             switches to index + parts automatically once /conditions/, /learn/ or
-            /locations/ pages exist.
+            /service-area/ pages exist.
     single  always write one sitemap.xml (urlset)
     index   always write sitemap.xml as a <sitemapindex> plus sitemap-<bucket>.xml parts
 
 Buckets (first path segment -> part file):
     conditions/  -> sitemap-conditions.xml
     learn/       -> sitemap-learn.xml
-    locations/   -> sitemap-locations.xml
-    everything else (core pages, /faq/*, /compare/, /for-clinicians/, /cost/ ...)
+    service-area/ -> sitemap-service-area.xml
+    everything else (core pages, /faq/*, /compare/, /for-physicians/, /cost/ ...)
                  -> sitemap-pages.xml
 
 <changefreq> and <priority> are intentionally omitted: Google ignores both, and a
@@ -59,7 +59,7 @@ EXCLUDE_FILES = {"404.html"}
 BUCKETS: Dict[str, str] = {
     "conditions": "sitemap-conditions.xml",
     "learn": "sitemap-learn.xml",
-    "locations": "sitemap-locations.xml",
+    "service-area": "sitemap-service-area.xml",
 }
 DEFAULT_BUCKET_FILE = "sitemap-pages.xml"
 INDEX_FILE = "sitemap.xml"
