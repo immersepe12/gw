@@ -2,38 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.generationswellness.net/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.generationswellness.net/hyperbaric-oxygen-therapy/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.generationswellness.net/benefits/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-03T13:10:15+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.generationswellness.net/about/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-09-03T13:10:15+05:30</lastmod>
   </url>
   <url>
-    <loc>https://www.generationswellness.net/faq/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.generationswellness.net/benefits/</loc>
+    <lastmod>2026-09-03T13:10:15+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.generationswellness.net/contact/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-09-15T11:36:03+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.generationswellness.net/faq/</loc>
+    <lastmod>2026-09-03T13:10:15+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.generationswellness.net/hyperbaric-oxygen-therapy/</loc>
+    <lastmod>2026-09-03T13:10:15+05:30</lastmod>
   </url>
 </urlset>
