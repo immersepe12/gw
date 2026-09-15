@@ -56,9 +56,14 @@
           "postalCode": "95354",
           "addressCountry": "US"
         },
-        "availableService": {
-          "@id": "https://www.generationswellness.net/#hbot"
-        }
+        "availableService": [
+          {
+            "@id": "https://www.generationswellness.net/#hbot"
+          },
+          {
+            "@id": "https://www.generationswellness.net/#infusion"
+          }
+        ]
       },
       {
         "@type": "MedicalWebPage",
@@ -99,6 +104,15 @@
         "@id": "https://www.generationswellness.net/#hbot",
         "name": "Hyperbaric Oxygen Therapy",
         "alternateName": "HBOT",
+        "provider": {
+          "@id": "https://www.generationswellness.net/#clinic"
+        }
+      },
+      {
+        "@type": "MedicalTherapy",
+        "@id": "https://www.generationswellness.net/#infusion",
+        "name": "Infusion Therapy",
+        "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
         "provider": {
           "@id": "https://www.generationswellness.net/#clinic"
         }

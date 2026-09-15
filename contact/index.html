@@ -97,9 +97,14 @@
             "name": "Stanislaus County"
           }
         ],
-        "availableService": {
-          "@id": "https://www.generationswellness.net/#hbot"
-        }
+        "availableService": [
+          {
+            "@id": "https://www.generationswellness.net/#hbot"
+          },
+          {
+            "@id": "https://www.generationswellness.net/#infusion"
+          }
+        ]
       },
       {
         "@type": "ContactPage",
@@ -135,6 +140,15 @@
         "@id": "https://www.generationswellness.net/#hbot",
         "name": "Hyperbaric Oxygen Therapy",
         "alternateName": "HBOT",
+        "provider": {
+          "@id": "https://www.generationswellness.net/#clinic"
+        }
+      },
+      {
+        "@type": "MedicalTherapy",
+        "@id": "https://www.generationswellness.net/#infusion",
+        "name": "Infusion Therapy",
+        "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
         "provider": {
           "@id": "https://www.generationswellness.net/#clinic"
         }
@@ -211,7 +225,7 @@
         </nav>
         <p class="kicker kicker--on-dark">We're Ready When You Are</p>
         <h1 class="mask-on-load"><span class="line"><span class="line-inner">Contact <em class="text-gold-gradient">Generations</em> Wellness</span></span></h1>
-        <p class="lead">One call starts it all: a brief conversation, then a physician assessment, then — if HBOT is right for you — a personalized plan. No pressure, no obligation.</p>
+        <p class="lead">One call starts it all: a brief conversation, then a physician assessment, then — if HBOT or infusion therapy is right for you — a personalized plan. No pressure, no obligation.</p>
       </div>
     </header>
     <div class="hero-end-sentinel" aria-hidden="true"></div>

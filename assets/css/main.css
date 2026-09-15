@@ -584,7 +584,8 @@ html:not(.js) .page-hero { margin-top: 0; }
   gap: var(--space-4);
   margin-bottom: clamp(var(--space-8), 5vh, var(--space-12));
 }
-.hero-ledger .kicker { flex: none; }
+.hero-ledger .kicker { flex: 0 1 auto; min-width: 0; }
+@media (min-width: 48em) { .hero-ledger .kicker { flex: none; } }
 .hero-ledger::after {
   content: "";
   flex: 1;

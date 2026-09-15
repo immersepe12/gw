@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>document.documentElement.classList.add('js')</script>
   <title>About Generations Wellness | HBOT Center in Modesto, CA</title>
-  <meta name="description" content="Generations Wellness is a physician-directed hyperbaric oxygen therapy center in downtown Modesto. Holistic health, for every stage of life.">
+  <meta name="description" content="Generations Wellness is a physician-directed hyperbaric oxygen therapy and infusion center in downtown Modesto. Holistic health, for every stage of life.">
   <link rel="canonical" href="https://www.generationswellness.net/about/">
   <meta name="theme-color" content="#034439">
 
@@ -48,7 +48,7 @@
         "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
         "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
         "slogan": "Holistic Health, For Every Stage of Life",
-        "description": "Physician-directed hyperbaric oxygen therapy (HBOT) center in downtown Modesto, CA. Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness.",
+        "description": "Physician-directed hyperbaric oxygen therapy (HBOT) and infusion center in downtown Modesto, CA. Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness.",
         "telephone": "+13692220979",
         "email": "marketing@generationswellness.net",
         "address": {
@@ -60,9 +60,14 @@
           "addressCountry": "US"
         },
         "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
-        "availableService": {
-          "@id": "https://www.generationswellness.net/#hbot"
-        }
+        "availableService": [
+          {
+            "@id": "https://www.generationswellness.net/#hbot"
+          },
+          {
+            "@id": "https://www.generationswellness.net/#infusion"
+          }
+        ]
       },
       {
         "@type": "AboutPage",
@@ -98,6 +103,15 @@
         "@id": "https://www.generationswellness.net/#hbot",
         "name": "Hyperbaric Oxygen Therapy",
         "alternateName": "HBOT",
+        "provider": {
+          "@id": "https://www.generationswellness.net/#clinic"
+        }
+      },
+      {
+        "@type": "MedicalTherapy",
+        "@id": "https://www.generationswellness.net/#infusion",
+        "name": "Infusion Therapy",
+        "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
         "provider": {
           "@id": "https://www.generationswellness.net/#clinic"
         }
@@ -174,7 +188,7 @@
         </nav>
         <p class="kicker kicker--on-dark">Our Story &amp; Standards</p>
         <h1 class="mask-on-load"><span class="line"><span class="line-inner">About <em class="text-gold-gradient">Generations</em> Wellness</span></span></h1>
-        <p class="lead">A physician-directed hyperbaric oxygen therapy center in downtown Modesto — built on the belief that honest medicine and warm care belong in the same room.</p>
+        <p class="lead">A physician-directed hyperbaric and infusion center in downtown Modesto — built on the belief that honest medicine and warm care belong in the same room.</p>
       </div>
     </header>
     <div class="hero-end-sentinel" aria-hidden="true"></div>
@@ -187,7 +201,7 @@
             <p class="kicker">Our Mission</p>
             <h2>Holistic Health, For <em>Every</em> Stage of Life</h2>
             <p>Our name is our mission. Look closely at our emblem and you'll see it: the faces of generations — grandparents, parents, children — forming a single rose. Healing rarely involves just one person; it involves a family. We built Generations Wellness for the whole arc of life's healing journeys, from stubborn wounds that won't close to the long road back after radiation treatment.</p>
-            <p>Hyperbaric oxygen therapy is our craft. Honest, physician-directed care is our standard.</p>
+            <p>Hyperbaric oxygen therapy is our craft, alongside physician-ordered infusion therapy. Honest, physician-directed care is our standard.</p>
           </div>
           <div class="feature-media reveal">
             <img src="/assets/img/logo-badge.webp" width="999" height="821" loading="lazy"
@@ -214,6 +228,11 @@
           <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><strong>Medical oversight throughout.</strong> Your session plan — typically 20–40 sessions — is set, monitored, and adjusted by a physician as your tissue responds.</li>
           <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><strong>Coordination with your doctors.</strong> With your permission, we keep your existing providers informed so HBOT complements — never replaces — your medical treatment.</li>
         </ul>
+        <div class="prose mt-8 reveal">
+          <h3>Infusion Therapy</h3>
+          <p>Generations Wellness is both a hyperbaric and an infusion center. The same rule applies to infusions as to HBOT: they are provided only when a physician has reviewed your health condition and determined that an infusion is appropriate for you, and they are given in-clinic under medical supervision. Infusion therapy complements — and never replaces — the treatment prescribed by your own doctors.</p>
+          <p>To ask which infusion services may fit your care plan, <a href="tel:+13692220979">call (369) 222-0979</a>.</p>
+        </div>
         <p class="mt-8 reveal">See exactly what that looks like in practice: <a href="/hyperbaric-oxygen-therapy/">learn how our HBOT sessions work</a>.</p>
       </div>
     </section>

@@ -49,7 +49,7 @@
         "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
         "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
         "slogan": "Holistic Health, For Every Stage of Life",
-        "description": "Physician-directed hyperbaric oxygen therapy (HBOT) center in downtown Modesto, CA. Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness.",
+        "description": "Physician-directed hyperbaric oxygen therapy (HBOT) and infusion center in downtown Modesto, CA. Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness.",
         "telephone": "+13692220979",
         "email": "marketing@generationswellness.net",
         "address": {
@@ -99,8 +99,22 @@
             "name": "Stanislaus County"
           }
         ],
-        "availableService": {
-          "@id": "https://www.generationswellness.net/#hbot"
+        "availableService": [
+          {
+            "@id": "https://www.generationswellness.net/#hbot"
+          },
+          {
+            "@id": "https://www.generationswellness.net/#infusion"
+          }
+        ]
+      },
+      {
+        "@type": "MedicalTherapy",
+        "@id": "https://www.generationswellness.net/#infusion",
+        "name": "Infusion Therapy",
+        "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
+        "provider": {
+          "@id": "https://www.generationswellness.net/#clinic"
         }
       },
       {
@@ -183,7 +197,7 @@
       </svg>
       <div class="container container--wide">
         <div class="hero-ledger">
-          <p class="kicker kicker--on-dark">Physician-Directed Hyperbaric Medicine · Modesto, CA</p>
+          <p class="kicker kicker--on-dark">Physician-Directed Hyperbaric &amp; Infusion Center · Modesto, CA</p>
         </div>
         <div class="hero-grid">
           <h1 class="poster mask-on-load">
@@ -392,7 +406,7 @@
         <div class="valley-panel reveal">
           <p class="kicker">Rooted in the Central Valley</p>
           <h2>Serving Modesto <em>and</em> the Central Valley</h2>
-          <p>Our center sits on H Street in downtown Modesto, a short drive from anywhere in Stanislaus County via Highway 99. Patients visit us from Turlock, Ceres, Manteca, Ripon, Riverbank, Oakdale, and the Stockton area — many within a 15–40 minute drive.</p>
+          <p>Generations Wellness is a physician-directed hyperbaric and infusion center serving the Central Valley. Our center sits on H Street in downtown Modesto, a short drive from anywhere in Stanislaus County via Highway 99. Patients visit us from Turlock, Ceres, Manteca, Ripon, Riverbank, Oakdale, and the Stockton area — many within a 15–40 minute drive.</p>
           <p>Read about <a href="/about/">our physician-directed approach</a>, or find <a href="/contact/">directions to our Modesto center</a>.</p>
           <aside class="note-careplan mt-6" role="note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6l7-3z"/><path d="M12 8.5v4M12 15.5h.01"/></svg>
