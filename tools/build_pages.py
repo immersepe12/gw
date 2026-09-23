@@ -65,6 +65,7 @@ SITE_NODES = [
                     "addressRegion": "CA", "postalCode": "95354", "addressCountry": "US"},
         "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
         "availableService": [{"@id": f"{BASE}/#hbot"}, {"@id": f"{BASE}/#infusion"}],
+        "sameAs": ["https://www.facebook.com/people/Generation-Wellness/61594639832610/", "https://www.instagram.com/generations_wellness_/"],
     },
     {"@type": "MedicalTherapy", "@id": f"{BASE}/#hbot", "name": "Hyperbaric Oxygen Therapy", "alternateName": "HBOT",
      "provider": {"@id": f"{BASE}/#clinic"}},
@@ -183,6 +184,7 @@ def footer():
             <ul>
               <li><a href="{PHONE_HREF}">{PHONE}</a></li>
               <li><a href="mailto:marketing@generationswellness.net">marketing@generationswellness.net</a></li>
+              <li><a href="https://www.instagram.com/generations_wellness_/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/people/Generation-Wellness/61594639832610/" rel="noopener">Facebook</a></li>
               <li><a href="/contact/">Book a physician consultation</a></li>
             </ul>
             <p class="small mt-4">Physicians: we welcome referrals and will coordinate care with your office. <a href="/for-physicians/">Refer a patient</a>.</p>

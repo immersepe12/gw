@@ -38,118 +38,122 @@
   <link rel="preload" as="image" href="/assets/img/hero-chamber.webp" imagesrcset="/assets/img/hero-chamber-800.webp 800w, /assets/img/hero-chamber.webp 1502w" imagesizes="(min-width: 64em) 45vw, 100vw" type="image/webp">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "MedicalClinic",
-        "@id": "https://www.generationswellness.net/#clinic",
-        "name": "Generations Wellness",
-        "url": "https://www.generationswellness.net/",
-        "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
-        "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
-        "slogan": "Holistic Health, For Every Stage of Life",
-        "description": "Physician-directed hyperbaric oxygen therapy (HBOT) and infusion center in downtown Modesto, CA. Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness.",
-        "telephone": "+13692220979",
-        "email": "marketing@generationswellness.net",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "1801 H Street, Suite C-1",
-          "addressLocality": "Modesto",
-          "addressRegion": "CA",
-          "postalCode": "95354",
-          "addressCountry": "US"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://www.generationswellness.net/#clinic",
+      "name": "Generations Wellness",
+      "url": "https://www.generationswellness.net/",
+      "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
+      "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
+      "slogan": "Holistic Health, For Every Stage of Life",
+      "description": "Physician-directed hyperbaric oxygen therapy (HBOT) and infusion center in downtown Modesto, CA. Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness.",
+      "telephone": "+13692220979",
+      "email": "marketing@generationswellness.net",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1801 H Street, Suite C-1",
+        "addressLocality": "Modesto",
+        "addressRegion": "CA",
+        "postalCode": "95354",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Modesto"
         },
-        "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
-        "areaServed": [
-          {
-            "@type": "City",
-            "name": "Modesto"
-          },
-          {
-            "@type": "City",
-            "name": "Turlock"
-          },
-          {
-            "@type": "City",
-            "name": "Ceres"
-          },
-          {
-            "@type": "City",
-            "name": "Manteca"
-          },
-          {
-            "@type": "City",
-            "name": "Ripon"
-          },
-          {
-            "@type": "City",
-            "name": "Riverbank"
-          },
-          {
-            "@type": "City",
-            "name": "Oakdale"
-          },
-          {
-            "@type": "City",
-            "name": "Stockton"
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Stanislaus County"
-          }
-        ],
-        "availableService": [
-          {
-            "@id": "https://www.generationswellness.net/#hbot"
-          },
-          {
-            "@id": "https://www.generationswellness.net/#infusion"
-          }
-        ]
-      },
-      {
-        "@type": "MedicalTherapy",
-        "@id": "https://www.generationswellness.net/#infusion",
-        "name": "Infusion Therapy",
-        "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
-        "provider": {
-          "@id": "https://www.generationswellness.net/#clinic"
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://www.generationswellness.net/#physician",
-        "name": "Rajwinder Singh Bahia",
-        "honorificPrefix": "Dr.",
-        "honorificSuffix": "MD",
-        "jobTitle": "Physician",
-        "worksFor": {
-          "@id": "https://www.generationswellness.net/#clinic"
+        {
+          "@type": "City",
+          "name": "Turlock"
         },
-        "url": "https://www.generationswellness.net/about/"
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.generationswellness.net/#website",
-        "name": "Generations Wellness",
-        "alternateName": "Generations Wellness Modesto",
-        "url": "https://www.generationswellness.net/",
-        "publisher": {
-          "@id": "https://www.generationswellness.net/#clinic"
+        {
+          "@type": "City",
+          "name": "Ceres"
+        },
+        {
+          "@type": "City",
+          "name": "Manteca"
+        },
+        {
+          "@type": "City",
+          "name": "Ripon"
+        },
+        {
+          "@type": "City",
+          "name": "Riverbank"
+        },
+        {
+          "@type": "City",
+          "name": "Oakdale"
+        },
+        {
+          "@type": "City",
+          "name": "Stockton"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Stanislaus County"
         }
-      },
-      {
-        "@type": "MedicalTherapy",
-        "@id": "https://www.generationswellness.net/#hbot",
-        "name": "Hyperbaric Oxygen Therapy",
-        "alternateName": "HBOT",
-        "provider": {
-          "@id": "https://www.generationswellness.net/#clinic"
+      ],
+      "availableService": [
+        {
+          "@id": "https://www.generationswellness.net/#hbot"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#infusion"
         }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/people/Generation-Wellness/61594639832610/",
+        "https://www.instagram.com/generations_wellness_/"
+      ]
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#infusion",
+      "name": "Infusion Therapy",
+      "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
       }
-    ]
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.generationswellness.net/#physician",
+      "name": "Rajwinder Singh Bahia",
+      "honorificPrefix": "Dr.",
+      "honorificSuffix": "MD",
+      "jobTitle": "Physician",
+      "worksFor": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      },
+      "url": "https://www.generationswellness.net/about/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.generationswellness.net/#website",
+      "name": "Generations Wellness",
+      "alternateName": "Generations Wellness Modesto",
+      "url": "https://www.generationswellness.net/",
+      "publisher": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#hbot",
+      "name": "Hyperbaric Oxygen Therapy",
+      "alternateName": "HBOT",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -531,6 +535,7 @@
             <ul>
               <li><a href="tel:+13692220979">(369) 222-0979</a></li>
               <li><a href="mailto:marketing@generationswellness.net">marketing@generationswellness.net</a></li>
+              <li><a href="https://www.instagram.com/generations_wellness_/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/people/Generation-Wellness/61594639832610/" rel="noopener">Facebook</a></li>
               <li><a href="/contact/">Book a physician consultation</a></li>
             </ul>
             <p class="small mt-4">Physicians: we welcome referrals and will coordinate care with your office. <a href="/for-physicians/">Refer a patient</a>.</p>
