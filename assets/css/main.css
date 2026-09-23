@@ -1862,3 +1862,4 @@ address { font-style: normal; }
   .site-nav ul { gap: var(--space-3); }
   .site-nav a { font-size: 0.8125rem; }
 }
+.page-meta a { color: inherit; text-decoration: underline; text-decoration-color: rgba(246, 224, 142, 0.5); text-underline-offset: 3px; }

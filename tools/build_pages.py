@@ -25,6 +25,7 @@ CONTENT = ROOT / "content"
 BASE = "https://www.generationswellness.net"
 PHONE_HREF = "tel:+13692220979"
 PHONE = "(369) 222-0979"
+REVIEWED_ON = "2026-09-23"  # Dr. Bahia's sign-off, confirmed by the clinic
 CORE_PAGES = ["index.html", "hyperbaric-oxygen-therapy/index.html", "benefits/index.html",
               "about/index.html", "faq/index.html", "contact/index.html", "404.html"]
 CORE_TITLES = {
@@ -105,7 +106,6 @@ BANNED = [
     (r"FDA[- ]approved (therapy|treatment)", "'FDA-approved therapy' (use FDA-cleared indication)"),
     (r"\bdetox", "detox claim"), (r"\breverses?\b(?! osmosis)", "reversal claim"),
     (r"\{\{|\}\}", "unfilled placeholder"), (r"CLINIC TO CONFIRM", "unfilled placeholder"),
-    (r"[Mm]edically reviewed by", "review claim (Dr. Bahia has not reviewed pages yet)"),
     (r"\bstate-of-the-art\b|\belite\b", "hype language"),
 ]
 
@@ -229,11 +229,12 @@ def schema(meta, trail):
     web["breadcrumb"] = {"@id": url + "#breadcrumb"}
     web["datePublished"] = meta["published"]
     web["dateModified"] = meta["updated"]
-    web.pop("reviewedBy", None)
-    web.pop("lastReviewed", None)
+    reviewed = meta.get("reviewed", REVIEWED_ON)
+    web["reviewedBy"] = {"@id": f"{BASE}/#physician"}
+    web["lastReviewed"] = reviewed
     for n in page_nodes:
-        n.pop("reviewedBy", None)
-        n.pop("lastReviewed", None)
+        if n is not web and n.get("@type") in ("Article", "MedicalScholarlyArticle"):
+            n["reviewedBy"] = {"@id": f"{BASE}/#physician"}
     items = []
     for i, (name, u) in enumerate(trail, 1):
         item = {"@type": "ListItem", "position": i, "name": strip_tags(html.unescape(name))}
@@ -345,6 +346,8 @@ def render(meta, pages, by_url):
     import datetime
     d = datetime.date.fromisoformat(meta["updated"])
     updated_h = f"{d.strftime('%B')} {d.day}, {d.year}"
+    r = datetime.date.fromisoformat(meta.get("reviewed", REVIEWED_ON))
+    reviewed_h = f"{r.strftime('%B')} {r.day}, {r.year}"
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -423,7 +426,7 @@ def render(meta, pages, by_url):
         <p class="kicker kicker--on-dark">{meta["kicker"]}</p>
         <h1>{meta["h1"]}</h1>
         <p class="lead">{meta["lead"]}</p>
-        <p class="page-meta">Physician-directed care under Dr. Rajwinder Singh Bahia, MD · Updated <time datetime="{meta["updated"]}">{updated_h}</time></p>
+        <p class="page-meta">Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · <time datetime="{meta.get("reviewed", REVIEWED_ON)}">{reviewed_h}</time></p>
       </div>
     </header>
     <div class="hero-end-sentinel" aria-hidden="true"></div>
