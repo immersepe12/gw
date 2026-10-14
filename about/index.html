@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>document.documentElement.classList.add('js')</script>
-  <title>About Generations Wellness | HBOT Center in Modesto, CA</title>
-  <meta name="description" content="Generations Wellness is a physician-directed hyperbaric oxygen therapy and infusion center in downtown Modesto. Holistic health, for every stage of life.">
+  <title>About Generations Wellness Medical Practice | Modesto, CA</title>
+  <meta name="description" content="Generations Wellness Medical Practice is a physician-led outpatient practice in downtown Modesto. Holistic health, for every stage of life.">
   <link rel="canonical" href="https://www.generationswellness.net/about/">
   <meta name="theme-color" content="#034439">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Generations Wellness">
   <meta property="og:title" content="About Generations Wellness | HBOT Center in Modesto, CA">
-  <meta property="og:description" content="A physician-directed hyperbaric oxygen therapy center in downtown Modesto. Holistic health, for every stage of life.">
+  <meta property="og:description" content="A physician-led outpatient medical practice in downtown Modesto. Holistic health, for every stage of life.">
   <meta property="og:url" content="https://www.generationswellness.net/about/">
   <meta property="og:image" content="https://www.generationswellness.net/assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="About Generations Wellness | HBOT Center in Modesto, CA">
-  <meta name="twitter:description" content="A physician-directed hyperbaric oxygen therapy center in downtown Modesto. Holistic health, for every stage of life.">
+  <meta name="twitter:description" content="A physician-led outpatient medical practice in downtown Modesto. Holistic health, for every stage of life.">
   <meta name="twitter:image" content="https://www.generationswellness.net/assets/img/og-image.jpg">
   <meta name="twitter:image:alt" content="Patient resting inside a hyperbaric oxygen chamber at Generations Wellness in Modesto, CA">
 
@@ -43,13 +43,26 @@
     {
       "@type": "MedicalClinic",
       "@id": "https://www.generationswellness.net/#clinic",
-      "name": "Generations Wellness",
+      "name": "Generations Wellness Medical Practice",
+      "alternateName": "Generations Wellness",
       "url": "https://www.generationswellness.net/",
       "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
       "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
       "slogan": "Holistic Health, For Every Stage of Life",
-      "description": "Physician-directed hyperbaric oxygen therapy (HBOT) and infusion center in downtown Modesto, CA. Advanced oxygen-based therapy designed to support healing, recovery, and tissue wellness.",
+      "description": "Physician-led outpatient medical practice in downtown Modesto, CA, offering hyperbaric oxygen therapy, wound care, IV therapy, counseling, physical and occupational therapy, pediatric speech and developmental therapy, and pain management.",
       "telephone": "+13692220979",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+13692220979",
+          "contactType": "appointments"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+12098090022",
+          "contactType": "appointments"
+        }
+      ],
       "email": "marketing@generationswellness.net",
       "address": {
         "@type": "PostalAddress",
@@ -60,9 +73,39 @@
         "addressCountry": "US"
       },
       "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
+      "medicalSpecialty": [
+        "PhysicalTherapy",
+        "SpeechPathology",
+        "Psychiatric",
+        "PrimaryCare"
+      ],
       "availableService": [
         {
           "@id": "https://www.generationswellness.net/#hbot"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#wound-care"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#iv-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#counseling"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#physical-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#occupational-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#pediatric-speech-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#pediatric-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#pain-management"
         },
         {
           "@id": "https://www.generationswellness.net/#infusion"
@@ -72,6 +115,114 @@
         "https://www.facebook.com/people/Generation-Wellness/61594639832610/",
         "https://www.instagram.com/generations_wellness_/"
       ]
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#hbot",
+      "name": "Hyperbaric Oxygen Therapy",
+      "url": "https://www.generationswellness.net/hyperbaric-oxygen-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#wound-care",
+      "name": "Wound Care",
+      "url": "https://www.generationswellness.net/wound-care/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#iv-therapy",
+      "name": "IV Therapy",
+      "url": "https://www.generationswellness.net/iv-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "PsychologicalTreatment",
+      "@id": "https://www.generationswellness.net/#counseling",
+      "name": "Counseling",
+      "url": "https://www.generationswellness.net/counseling/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "PhysicalTherapy",
+      "@id": "https://www.generationswellness.net/#physical-therapy",
+      "name": "Physical Therapy",
+      "url": "https://www.generationswellness.net/physical-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#occupational-therapy",
+      "name": "Occupational Therapy",
+      "url": "https://www.generationswellness.net/occupational-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#pediatric-speech-therapy",
+      "name": "Pediatric Speech Therapy",
+      "url": "https://www.generationswellness.net/pediatric-speech-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#pediatric-therapy",
+      "name": "Pediatric Therapy",
+      "url": "https://www.generationswellness.net/pediatric-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#pain-management",
+      "name": "Pain Management",
+      "url": "https://www.generationswellness.net/pain-management/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#infusion",
+      "name": "Infusion Therapy",
+      "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.generationswellness.net/#physician",
+      "name": "Rajwinder Singh Bahia",
+      "honorificPrefix": "Dr.",
+      "honorificSuffix": "MD",
+      "jobTitle": "Medical Director",
+      "worksFor": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      },
+      "url": "https://www.generationswellness.net/about/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.generationswellness.net/#website",
+      "name": "Generations Wellness Medical Practice",
+      "url": "https://www.generationswellness.net/"
     },
     {
       "@type": "AboutPage",
@@ -101,42 +252,6 @@
           "item": "https://www.generationswellness.net/about/"
         }
       ]
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#hbot",
-      "name": "Hyperbaric Oxygen Therapy",
-      "alternateName": "HBOT",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#infusion",
-      "name": "Infusion Therapy",
-      "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://www.generationswellness.net/#physician",
-      "name": "Rajwinder Singh Bahia",
-      "honorificPrefix": "Dr.",
-      "honorificSuffix": "MD",
-      "jobTitle": "Physician",
-      "worksFor": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      },
-      "url": "https://www.generationswellness.net/about/"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.generationswellness.net/#website",
-      "name": "Generations Wellness",
-      "url": "https://www.generationswellness.net/"
     }
   ]
 }
@@ -156,18 +271,18 @@
       </a>
       <nav id="site-nav" class="site-nav" aria-label="Main">
         <ul>
+          <li><a href="/services/">Services</a></li>
           <li><a href="/hyperbaric-oxygen-therapy/">Hyperbaric Therapy</a></li>
-          <li><a href="/conditions/">Conditions</a></li>
           <li><a href="/cost/">Cost &amp; Insurance</a></li>
           <li><a href="/learn/">Learn</a></li>
           <li><a href="/about/" aria-current="page">About</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
         <div class="nav-cta">
-          <a class="btn btn--primary" href="/contact/">Book an Assessment</a>
+          <a class="btn btn--primary" href="/contact/">Book an Appointment</a>
         </div>
       </nav>
-      <a class="btn btn--primary btn--sm header-cta" href="/contact/">Book an Assessment</a>
+      <a class="btn btn--primary btn--sm header-cta" href="/contact/">Book an Appointment</a>
       <a class="btn btn--primary btn--sm header-call" href="tel:+13692220979"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Call</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="visually-hidden">Menu</span>
@@ -192,7 +307,7 @@
         </nav>
         <p class="kicker kicker--on-dark">Our Story &amp; Standards</p>
         <h1 class="mask-on-load"><span class="line"><span class="line-inner">About <em class="text-gold-gradient">Generations</em> Wellness</span></span></h1>
-        <p class="lead">A physician-directed hyperbaric and infusion center in downtown Modesto — built on the belief that honest medicine and warm care belong in the same room.</p>
+        <p class="lead">A physician-led outpatient medical practice in downtown Modesto, built on the belief that honest medicine and warm care belong in the same room.</p>
       </div>
     </header>
     <div class="hero-end-sentinel" aria-hidden="true"></div>
@@ -204,8 +319,8 @@
           <div class="feature-body reveal">
             <p class="kicker">Our Mission</p>
             <h2>Holistic Health, For <em>Every</em> Stage of Life</h2>
-            <p>Our name is our mission. Look closely at our emblem and you'll see it: the faces of generations — grandparents, parents, children — forming a single rose. Healing rarely involves just one person; it involves a family. We built Generations Wellness for the whole arc of life's healing journeys, from stubborn wounds that won't close to the long road back after radiation treatment.</p>
-            <p>Hyperbaric oxygen therapy is our craft, alongside physician-ordered infusion therapy. Honest, physician-directed care is our standard.</p>
+            <p>Our name is our mission. Look closely at our emblem and you'll see it: the faces of generations — grandparents, parents, children — forming a single rose. Healing rarely involves just one person; it involves a family. We built Generations Wellness for the whole arc of life's healing journeys, from a child's first words to recovery after surgery, from stubborn wounds to the stress that comes with all of it.</p>
+            <p>Today Generations Wellness Medical Practice brings nine outpatient services under one roof: hyperbaric oxygen therapy, wound care, IV therapy, counseling, physical therapy, occupational therapy, pediatric speech therapy, pediatric therapy and pain management. Honest, physician-led care is our standard. See <a href="/services/">all of our services</a>.</p>
           </div>
           <div class="feature-media reveal">
             <img src="/assets/img/logo-badge.webp" width="999" height="821" loading="lazy"
@@ -329,28 +444,31 @@
             <p class="footer-wordmark">Generations<span>Wellness</span></p>
             <p class="footer-tagline">Holistic Health, For Every Stage of Life</p>
           </div>
-          <nav class="footer-col" aria-label="Treatment">
-            <span class="kicker">Treatment</span>
+          <nav class="footer-col" aria-label="Services">
+            <span class="kicker">Services</span>
             <ul>
               <li><a href="/hyperbaric-oxygen-therapy/">Hyperbaric Oxygen Therapy</a></li>
-              <li><a href="/conditions/">Conditions We Treat</a></li>
-              <li><a href="/what-to-expect/">What to Expect</a></li>
-              <li><a href="/safety/">Safety &amp; Eligibility</a></li>
-              <li><a href="/cost/">Cost</a></li>
-              <li><a href="/insurance/">Insurance</a></li>
-              <li><a href="/for-physicians/">For Physicians</a></li>
+              <li><a href="/wound-care/">Wound Care</a></li>
+              <li><a href="/iv-therapy/">IV Therapy</a></li>
+              <li><a href="/counseling/">Counseling</a></li>
+              <li><a href="/physical-therapy/">Physical Therapy</a></li>
+              <li><a href="/occupational-therapy/">Occupational Therapy</a></li>
+              <li><a href="/pediatric-speech-therapy/">Pediatric Speech Therapy</a></li>
+              <li><a href="/pediatric-therapy/">Pediatric Therapy</a></li>
+              <li><a href="/pain-management/">Pain Management</a></li>
             </ul>
           </nav>
-          <nav class="footer-col" aria-label="Learn">
-            <span class="kicker">Learn</span>
+          <nav class="footer-col" aria-label="Patients">
+            <span class="kicker">Patients</span>
             <ul>
-              <li><a href="/learn/">Learn Hub</a></li>
-              <li><a href="/how-hbot-works/">How HBOT Works</a></li>
+              <li><a href="/services/">All Services</a></li>
+              <li><a href="/what-to-expect/">What to Expect</a></li>
+              <li><a href="/cost/">Cost</a></li>
+              <li><a href="/insurance/">Insurance</a></li>
+              <li><a href="/learn/">Learn</a></li>
               <li><a href="/faq/">FAQ</a></li>
-              <li><a href="/compare/">Compare Options</a></li>
-              <li><a href="/hbot-research/">HBOT Research</a></li>
-              <li><a href="/benefits/">Benefits</a></li>
               <li><a href="/service-area/">Service Area</a></li>
+              <li><a href="/for-physicians/">For Physicians</a></li>
             </ul>
           </nav>
           <div class="footer-col">
@@ -367,6 +485,7 @@
             <span class="kicker">Contact</span>
             <ul>
               <li><a href="tel:+13692220979">(369) 222-0979</a></li>
+              <li><a href="tel:+12098090022">(209) 809-0022</a></li>
               <li><a href="mailto:marketing@generationswellness.net">marketing@generationswellness.net</a></li>
               <li><a href="https://www.instagram.com/generations_wellness_/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/people/Generation-Wellness/61594639832610/" rel="noopener">Facebook</a></li>
               <li><a href="/contact/">Book a physician consultation</a></li>
@@ -374,7 +493,7 @@
             <p class="small mt-4">Physicians: we welcome referrals and will coordinate care with your office. <a href="/for-physicians/">Refer a patient</a>.</p>
           </div>
         </div>
-        <p class="footer-disclaimer"><strong>Medical Disclaimer:</strong> The information on this website is provided for general educational purposes only and is not medical advice, diagnosis, or treatment. Hyperbaric oxygen therapy (HBOT) at Generations Wellness is provided only after an assessment by a physician, who determines whether HBOT is appropriate as part of your care plan. HBOT complements — and never replaces — the medical treatment prescribed by your doctors. The FDA has cleared hyperbaric chambers for specific conditions; HBOT has not been proven safe or effective for other conditions. Individual results vary, and no outcome is guaranteed. If you believe you have a medical emergency, call 911. <a href="/medical-disclaimer/">Full medical disclaimer</a> · <a href="/privacy-policy/">Privacy policy</a> · <a href="/editorial-policy/">Editorial policy</a></p>
+        <p class="footer-disclaimer"><strong>Medical Disclaimer:</strong> The information on this website is provided for general educational purposes only and is not medical advice, diagnosis, or treatment. Services at Generations Wellness Medical Practice are provided after an appropriate assessment by a licensed clinician, who determines whether a treatment is right for you. Our care complements, and never replaces, the treatment prescribed by your other doctors. Hyperbaric chambers are FDA-cleared for specific conditions only. Individual results vary, and no outcome is promised. If you have a medical emergency, call 911. If you are in crisis or thinking about suicide, call or text 988. <a href="/medical-disclaimer/">Full medical disclaimer</a> · <a href="/privacy-policy/">Privacy policy</a> · <a href="/editorial-policy/">Editorial policy</a></p>
       </div>
     </div>
     <div class="footer-bottom">
