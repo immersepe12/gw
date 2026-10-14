@@ -37,44 +37,63 @@ CORE_TITLES = {
     "/contact/": ("Contact & Directions", "Call, visit 1801 H Street, or book a physician assessment."),
 }
 
-NAV = [("/hyperbaric-oxygen-therapy/", "Hyperbaric Therapy"), ("/conditions/", "Conditions"),
+PHONE2_HREF = "tel:+12098090022"
+PHONE2 = "(209) 809-0022"
+PRACTICE = "Generations Wellness Medical Practice"
+
+# The practice's service lines. Hub pages live at the root-level slug.
+SERVICES = [
+    ("hbot", "/hyperbaric-oxygen-therapy/", "Hyperbaric Oxygen Therapy", "MedicalTherapy"),
+    ("wound-care", "/wound-care/", "Wound Care", "MedicalTherapy"),
+    ("iv-therapy", "/iv-therapy/", "IV Therapy", "MedicalTherapy"),
+    ("counseling", "/counseling/", "Counseling", "PsychologicalTreatment"),
+    ("physical-therapy", "/physical-therapy/", "Physical Therapy", "PhysicalTherapy"),
+    ("occupational-therapy", "/occupational-therapy/", "Occupational Therapy", "MedicalTherapy"),
+    ("pediatric-speech-therapy", "/pediatric-speech-therapy/", "Pediatric Speech Therapy", "MedicalTherapy"),
+    ("pediatric-therapy", "/pediatric-therapy/", "Pediatric Therapy", "MedicalTherapy"),
+    ("pain-management", "/pain-management/", "Pain Management", "MedicalTherapy"),
+]
+
+NAV = [("/services/", "Services"), ("/hyperbaric-oxygen-therapy/", "Hyperbaric Therapy"),
        ("/cost/", "Cost &amp; Insurance"), ("/learn/", "Learn"), ("/about/", "About"), ("/contact/", "Contact")]
 
 FOOTER_COLS = [
-    ("Treatment", [("/hyperbaric-oxygen-therapy/", "Hyperbaric Oxygen Therapy"), ("/conditions/", "Conditions We Treat"),
-                   ("/what-to-expect/", "What to Expect"), ("/safety/", "Safety &amp; Eligibility"),
-                   ("/cost/", "Cost"), ("/insurance/", "Insurance"), ("/for-physicians/", "For Physicians")]),
-    ("Learn", [("/learn/", "Learn Hub"), ("/how-hbot-works/", "How HBOT Works"), ("/faq/", "FAQ"),
-               ("/compare/", "Compare Options"), ("/hbot-research/", "HBOT Research"),
-               ("/benefits/", "Benefits"), ("/service-area/", "Service Area")]),
+    ("Services", [(u, n) for _, u, n, _ in SERVICES]),
+    ("Patients", [("/services/", "All Services"), ("/what-to-expect/", "What to Expect"), ("/cost/", "Cost"),
+                  ("/insurance/", "Insurance"), ("/learn/", "Learn"), ("/faq/", "FAQ"),
+                  ("/service-area/", "Service Area"), ("/for-physicians/", "For Physicians")]),
 ]
 
 SITE_NODES = [
     {
         "@type": "MedicalClinic",
         "@id": f"{BASE}/#clinic",
-        "name": "Generations Wellness",
+        "name": PRACTICE,
+        "alternateName": "Generations Wellness",
         "url": f"{BASE}/",
         "logo": f"{BASE}/assets/img/icon-512.png",
         "image": f"{BASE}/assets/img/og-image.jpg",
         "slogan": "Holistic Health, For Every Stage of Life",
-        "description": "Physician-directed hyperbaric oxygen therapy (HBOT) and infusion center in downtown Modesto, CA.",
+        "description": "Physician-led outpatient medical practice in downtown Modesto, CA, offering hyperbaric oxygen therapy, wound care, IV therapy, counseling, physical and occupational therapy, pediatric speech and developmental therapy, and pain management.",
         "telephone": "+13692220979",
+        "contactPoint": [{"@type": "ContactPoint", "telephone": "+13692220979", "contactType": "appointments"},
+                         {"@type": "ContactPoint", "telephone": "+12098090022", "contactType": "appointments"}],
         "email": "marketing@generationswellness.net",
         "address": {"@type": "PostalAddress", "streetAddress": "1801 H Street, Suite C-1", "addressLocality": "Modesto",
                     "addressRegion": "CA", "postalCode": "95354", "addressCountry": "US"},
         "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
-        "availableService": [{"@id": f"{BASE}/#hbot"}, {"@id": f"{BASE}/#infusion"}],
+        "medicalSpecialty": ["PhysicalTherapy", "SpeechPathology", "Psychiatric", "PrimaryCare"],
+        "availableService": [{"@id": f"{BASE}/#{k}"} for k, _, _, _ in SERVICES] + [{"@id": f"{BASE}/#infusion"}],
         "sameAs": ["https://www.facebook.com/people/Generation-Wellness/61594639832610/", "https://www.instagram.com/generations_wellness_/"],
     },
-    {"@type": "MedicalTherapy", "@id": f"{BASE}/#hbot", "name": "Hyperbaric Oxygen Therapy", "alternateName": "HBOT",
-     "provider": {"@id": f"{BASE}/#clinic"}},
+    *[{"@type": t, "@id": f"{BASE}/#{k}", "name": n, "url": f"{BASE}{u}", "provider": {"@id": f"{BASE}/#clinic"}}
+      for k, u, n, t in SERVICES],
     {"@type": "MedicalTherapy", "@id": f"{BASE}/#infusion", "name": "Infusion Therapy",
      "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
      "provider": {"@id": f"{BASE}/#clinic"}},
     {"@type": "Person", "@id": f"{BASE}/#physician", "name": "Rajwinder Singh Bahia", "honorificPrefix": "Dr.",
-     "honorificSuffix": "MD", "jobTitle": "Physician", "worksFor": {"@id": f"{BASE}/#clinic"}, "url": f"{BASE}/about/"},
-    {"@type": "WebSite", "@id": f"{BASE}/#website", "name": "Generations Wellness", "url": f"{BASE}/"},
+     "honorificSuffix": "MD", "jobTitle": "Medical Director", "worksFor": {"@id": f"{BASE}/#clinic"}, "url": f"{BASE}/about/"},
+    {"@type": "WebSite", "@id": f"{BASE}/#website", "name": PRACTICE, "url": f"{BASE}/"},
 ]
 
 CTA = {
@@ -90,6 +109,9 @@ CTA = {
     "default": ("Your Next Step", "Begin With a <em class=\"text-gold-gradient\">Physician</em> Assessment",
                 "Every course starts with an honest conversation and a physician assessment. No pressure, no obligation.",
                 ("Book a Physician Assessment", "/contact/"), ("What to Expect", "/what-to-expect/")),
+    "service": ("Your Next Step", "Book an <em class=\"text-gold-gradient\">Appointment</em>",
+                "Call either number to ask a question or book a visit. Our team will tell you what to bring and what happens first.",
+                ("Book an Appointment", "/contact/"), ("All Services", "/services/")),
 }
 
 RINGS = ('<svg class="rings rings--live" viewBox="0 0 720 720" fill="none" aria-hidden="true">\n'
@@ -147,7 +169,7 @@ def nav(current):
     if current == "/contact/":
         cta = f'<a class="btn btn--primary" href="{PHONE_HREF}">Call {PHONE}</a>'
     else:
-        cta = '<a class="btn btn--primary" href="/contact/">Book an Assessment</a>'
+        cta = '<a class="btn btn--primary" href="/contact/">Book an Appointment</a>'
     return (f'<nav id="site-nav" class="site-nav" aria-label="Main">\n        <ul>\n{items}\n        </ul>\n'
             f'        <div class="nav-cta">\n          {cta}\n        </div>\n      </nav>')
 
@@ -183,6 +205,7 @@ def footer():
             <span class="kicker">Contact</span>
             <ul>
               <li><a href="{PHONE_HREF}">{PHONE}</a></li>
+              <li><a href="{PHONE2_HREF}">{PHONE2}</a></li>
               <li><a href="mailto:marketing@generationswellness.net">marketing@generationswellness.net</a></li>
               <li><a href="https://www.instagram.com/generations_wellness_/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/people/Generation-Wellness/61594639832610/" rel="noopener">Facebook</a></li>
               <li><a href="/contact/">Book a physician consultation</a></li>
@@ -190,7 +213,7 @@ def footer():
             <p class="small mt-4">Physicians: we welcome referrals and will coordinate care with your office. <a href="/for-physicians/">Refer a patient</a>.</p>
           </div>
         </div>
-        <p class="footer-disclaimer"><strong>Medical Disclaimer:</strong> The information on this website is provided for general educational purposes only and is not medical advice, diagnosis, or treatment. Hyperbaric oxygen therapy (HBOT) at Generations Wellness is provided only after an assessment by a physician, who determines whether HBOT is appropriate as part of your care plan. HBOT complements — and never replaces — the medical treatment prescribed by your doctors. The FDA has cleared hyperbaric chambers for specific conditions; HBOT has not been proven safe or effective for other conditions. Individual results vary, and no outcome is guaranteed. If you believe you have a medical emergency, call 911. <a href="/medical-disclaimer/">Full medical disclaimer</a> · <a href="/privacy-policy/">Privacy policy</a> · <a href="/editorial-policy/">Editorial policy</a></p>
+        <p class="footer-disclaimer"><strong>Medical Disclaimer:</strong> The information on this website is provided for general educational purposes only and is not medical advice, diagnosis, or treatment. Services at Generations Wellness Medical Practice are provided after an appropriate assessment by a licensed clinician, who determines whether a treatment is right for you. Our care complements, and never replaces, the treatment prescribed by your other doctors. Hyperbaric chambers are FDA-cleared for specific conditions only. Individual results vary, and no outcome is promised. If you have a medical emergency, call 911. If you are in crisis or thinking about suicide, call or text 988. <a href="/medical-disclaimer/">Full medical disclaimer</a> · <a href="/privacy-policy/">Privacy policy</a> · <a href="/editorial-policy/">Editorial policy</a></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -232,10 +255,11 @@ def schema(meta, trail):
     web["datePublished"] = meta["published"]
     web["dateModified"] = meta["updated"]
     reviewed = meta.get("reviewed", REVIEWED_ON)
-    web["reviewedBy"] = {"@id": f"{BASE}/#physician"}
-    web["lastReviewed"] = reviewed
+    if reviewed:
+        web["reviewedBy"] = {"@id": f"{BASE}/#physician"}
+        web["lastReviewed"] = reviewed
     for n in page_nodes:
-        if n is not web and n.get("@type") in ("Article", "MedicalScholarlyArticle"):
+        if reviewed and n is not web and n.get("@type") in ("Article", "MedicalScholarlyArticle"):
             n["reviewedBy"] = {"@id": f"{BASE}/#physician"}
     items = []
     for i, (name, u) in enumerate(trail, 1):
@@ -348,8 +372,15 @@ def render(meta, pages, by_url):
     import datetime
     d = datetime.date.fromisoformat(meta["updated"])
     updated_h = f"{d.strftime('%B')} {d.day}, {d.year}"
-    r = datetime.date.fromisoformat(meta.get("reviewed", REVIEWED_ON))
-    reviewed_h = f"{r.strftime('%B')} {r.day}, {r.year}"
+    rv = meta.get("reviewed", REVIEWED_ON)
+    if rv:
+        r = datetime.date.fromisoformat(rv)
+        rh = f"{r.strftime('%B')} {r.day}, {r.year}"
+        byline = (f'Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · '
+                  f'<time datetime="{rv}">{rh}</time>')
+    else:
+        byline = (f'{PRACTICE} · Medical director Dr. Rajwinder Singh Bahia, MD · Updated '
+                  f'<time datetime="{meta["updated"]}">{updated_h}</time>')
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -397,7 +428,7 @@ def render(meta, pages, by_url):
 
   <header class="site-header">
     <div class="container container--wide header-inner">
-      <a class="brand" href="/" aria-label="Generations Wellness — home">
+      <a class="brand" href="/" aria-label="Generations Wellness Medical Practice — home">
         <img class="brand-mark" src="/assets/img/logo-coin-96.png" alt="" width="96" height="96">
         <span class="brand-text">
           <span class="brand-name">Generations</span>
@@ -405,7 +436,7 @@ def render(meta, pages, by_url):
         </span>
       </a>
       {nav(url)}
-      <a class="btn btn--primary btn--sm header-cta" href="/contact/">Book an Assessment</a>
+      <a class="btn btn--primary btn--sm header-cta" href="/contact/">Book an Appointment</a>
       <a class="btn btn--primary btn--sm header-call" href="{PHONE_HREF}">{CALL_SVG}Call</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="visually-hidden">Menu</span>
@@ -428,7 +459,7 @@ def render(meta, pages, by_url):
         <p class="kicker kicker--on-dark">{meta["kicker"]}</p>
         <h1>{meta["h1"]}</h1>
         <p class="lead">{meta["lead"]}</p>
-        <p class="page-meta">Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · <time datetime="{meta.get("reviewed", REVIEWED_ON)}">{reviewed_h}</time></p>
+        <p class="page-meta">{byline}</p>
       </div>
     </header>
     <div class="hero-end-sentinel" aria-hidden="true"></div>
@@ -543,9 +574,12 @@ def main():
         raise SystemExit("duplicate url in content/")
     known = set(by_url) | set(CORE_TITLES)
     if "--allow-planned" in sys.argv:
-        plan = ROOT / "docs" / "seo" / "page-list.md"
-        if plan.exists():
-            known |= set(re.findall(r"\| \d+ \| (/\S*/) \|", plan.read_text())) | {"/learn/"}
+        for plan in (ROOT / "docs" / "seo" / "page-list.md", ROOT / "docs" / "v2" / "page-list-v2.md"):
+            if plan.exists():
+                known |= set(re.findall(r"\| *\d+ *\| *(/\S*/) *\|", plan.read_text()))
+        known |= {"/learn/", "/hyperbaric-oxygen-therapy/", "/wound-care/", "/iv-therapy/", "/counseling/",
+                  "/physical-therapy/", "/occupational-therapy/", "/pediatric-speech-therapy/",
+                  "/pediatric-therapy/", "/pain-management/", "/services/"}
     only = [a.split("=", 1)[1] for a in sys.argv if a.startswith("--only=")]
     qa_pages = [p for p in pages if not only or any(str(p["_src"]).endswith(o) or o in str(p["_src"]) for o in only)]
     errors, warnings = qa(qa_pages, known)
