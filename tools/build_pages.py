@@ -84,7 +84,7 @@ SITE_NODES = [
         "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
         "medicalSpecialty": ["PhysicalTherapy", "SpeechPathology", "Psychiatric", "PrimaryCare"],
         "availableService": [{"@id": f"{BASE}/#{k}"} for k, _, _, _ in SERVICES] + [{"@id": f"{BASE}/#infusion"}],
-        "sameAs": ["https://www.facebook.com/people/Generation-Wellness/61594639832610/", "https://www.instagram.com/generations_wellness_/"],
+        "sameAs": ["https://www.facebook.com/people/Generations-Wellness/61594639832610/", "https://www.instagram.com/generations_wellness_/"],
     },
     *[{"@type": t, "@id": f"{BASE}/#{k}", "name": n, "url": f"{BASE}{u}", "provider": {"@id": f"{BASE}/#clinic"}}
       for k, u, n, t in SERVICES],
@@ -207,7 +207,7 @@ def footer():
               <li><a href="{PHONE_HREF}">{PHONE}</a></li>
               <li><a href="{PHONE2_HREF}">{PHONE2}</a></li>
               <li><a href="mailto:marketing@generationswellness.net">marketing@generationswellness.net</a></li>
-              <li><a href="https://www.instagram.com/generations_wellness_/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/people/Generation-Wellness/61594639832610/" rel="noopener">Facebook</a></li>
+              <li><a href="https://www.instagram.com/generations_wellness_/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/people/Generations-Wellness/61594639832610/" rel="noopener">Facebook</a></li>
               <li><a href="/contact/">Book a physician consultation</a></li>
             </ul>
             <p class="small mt-4">Physicians: we welcome referrals and will coordinate care with your office. <a href="/for-physicians/">Refer a patient</a>.</p>
