@@ -83,22 +83,13 @@
       ],
       "availableService": [
         {
-          "@id": "https://www.generationswellness.net/#hbot"
-        },
-        {
-          "@id": "https://www.generationswellness.net/#wound-care"
-        },
-        {
-          "@id": "https://www.generationswellness.net/#iv-therapy"
-        },
-        {
-          "@id": "https://www.generationswellness.net/#counseling"
-        },
-        {
           "@id": "https://www.generationswellness.net/#physical-therapy"
         },
         {
-          "@id": "https://www.generationswellness.net/#occupational-therapy"
+          "@id": "https://www.generationswellness.net/#pain-management"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#counseling"
         },
         {
           "@id": "https://www.generationswellness.net/#pediatric-speech-therapy"
@@ -107,7 +98,16 @@
           "@id": "https://www.generationswellness.net/#pediatric-therapy"
         },
         {
-          "@id": "https://www.generationswellness.net/#pain-management"
+          "@id": "https://www.generationswellness.net/#occupational-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#wound-care"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#iv-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#hbot"
         },
         {
           "@id": "https://www.generationswellness.net/#infusion"
@@ -117,42 +117,6 @@
         "https://www.facebook.com/people/Generations-Wellness/61594639832610/",
         "https://www.instagram.com/generations_wellness_/"
       ]
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#hbot",
-      "name": "Hyperbaric Oxygen Therapy",
-      "url": "https://www.generationswellness.net/hyperbaric-oxygen-therapy/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#wound-care",
-      "name": "Wound Care",
-      "url": "https://www.generationswellness.net/wound-care/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#iv-therapy",
-      "name": "IV Therapy",
-      "url": "https://www.generationswellness.net/iv-therapy/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "PsychologicalTreatment",
-      "@id": "https://www.generationswellness.net/#counseling",
-      "name": "Counseling",
-      "url": "https://www.generationswellness.net/counseling/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
     },
     {
       "@type": "PhysicalTherapy",
@@ -165,9 +129,18 @@
     },
     {
       "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#occupational-therapy",
-      "name": "Occupational Therapy",
-      "url": "https://www.generationswellness.net/occupational-therapy/",
+      "@id": "https://www.generationswellness.net/#pain-management",
+      "name": "Pain Management",
+      "url": "https://www.generationswellness.net/pain-management/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "PsychologicalTreatment",
+      "@id": "https://www.generationswellness.net/#counseling",
+      "name": "Counseling",
+      "url": "https://www.generationswellness.net/counseling/",
       "provider": {
         "@id": "https://www.generationswellness.net/#clinic"
       }
@@ -192,9 +165,36 @@
     },
     {
       "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#pain-management",
-      "name": "Pain Management",
-      "url": "https://www.generationswellness.net/pain-management/",
+      "@id": "https://www.generationswellness.net/#occupational-therapy",
+      "name": "Occupational Therapy",
+      "url": "https://www.generationswellness.net/occupational-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#wound-care",
+      "name": "Wound Care",
+      "url": "https://www.generationswellness.net/wound-care/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#iv-therapy",
+      "name": "IV Therapy",
+      "url": "https://www.generationswellness.net/iv-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#hbot",
+      "name": "Hyperbaric Oxygen Therapy",
+      "url": "https://www.generationswellness.net/hyperbaric-oxygen-therapy/",
       "provider": {
         "@id": "https://www.generationswellness.net/#clinic"
       }
@@ -283,26 +283,51 @@
 <body class="page-article">
   <a class="skip-link" href="#main">Skip to main content</a>
 
+  <!-- utility -->
+  <div class="utility-bar">
+    <div class="container container--wide utility-inner">
+      <p class="utility-place"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Outpatient medical practice · 1801 H Street, Suite C-1, Modesto</span></p>
+      <p class="utility-phones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="tel:+13692220979">(369) 222-0979</a><span aria-hidden="true">·</span><a href="tel:+12098090022">(209) 809-0022</a><span class="utility-sep" aria-hidden="true"></span><span>Visits by appointment</span></p>
+    </div>
+  </div>
+  <!-- /utility -->
   <header class="site-header">
     <div class="container container--wide header-inner">
       <a class="brand" href="/" aria-label="Generations Wellness Medical Practice — home">
         <img class="brand-mark" src="/assets/img/logo-coin-96.png" alt="" width="96" height="96">
         <span class="brand-text">
-          <span class="brand-name">Generations</span>
-          <span class="brand-sub">Wellness</span>
+          <span class="brand-name">Generations Wellness</span>
+          <span class="brand-sub">Medical Practice</span>
         </span>
       </a>
       <nav id="site-nav" class="site-nav" aria-label="Main">
         <ul>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/hyperbaric-oxygen-therapy/">Hyperbaric Therapy</a></li>
-          <li><a href="/cost/">Cost &amp; Insurance</a></li>
+          <li class="has-menu"><a href="/services/" class="menu-trigger" aria-current="page">Services<svg class="chev-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="mega"><div class="mega-inner">
+              <p class="mega-kicker">Our Services · Outpatient care in Modesto</p>
+              <ul class="mega-grid">
+              <li><a href="/physical-therapy/"><span class="mega-name">Physical Therapy</span><span class="mega-desc">Pain, injury and post-surgery rehab</span></a></li>
+              <li><a href="/pain-management/"><span class="mega-name">Pain Management</span><span class="mega-desc">Physician-led, non-opioid-first pain care</span></a></li>
+              <li><a href="/counseling/"><span class="mega-name">Counseling</span><span class="mega-desc">Talk therapy, in person or by video</span></a></li>
+              <li><a href="/pediatric-speech-therapy/"><span class="mega-name">Pediatric Speech Therapy</span><span class="mega-desc">Speech, language and feeding for kids</span></a></li>
+              <li><a href="/pediatric-therapy/"><span class="mega-name">Pediatric Therapy</span><span class="mega-desc">Motor and developmental therapy for kids</span></a></li>
+              <li><a href="/occupational-therapy/"><span class="mega-name">Occupational Therapy</span><span class="mega-desc">Everyday skills, hands and daily living</span></a></li>
+              <li><a href="/wound-care/"><span class="mega-name">Wound Care</span><span class="mega-desc">Care for wounds that are slow to heal</span></a></li>
+              <li><a href="/iv-therapy/"><span class="mega-name">IV Therapy</span><span class="mega-desc">Physician-ordered infusions after screening</span></a></li>
+              <li><a href="/hyperbaric-oxygen-therapy/"><span class="mega-name">Hyperbaric Oxygen Therapy</span><span class="mega-desc">Medical-grade HBOT, hard-shell chambers</span></a></li>
+              </ul>
+              <a class="mega-all" href="/services/">See all services and how to start &rarr;</a>
+            </div></div>
+          </li>
+          <li><a href="/new-patients/">New Patients</a></li>
+          <li><a href="/self-pay-pricing/">Pricing</a></li>
           <li><a href="/learn/">Learn</a></li>
           <li><a href="/about/">About</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
         <div class="nav-cta">
           <a class="btn btn--primary" href="/contact/">Book an Appointment</a>
+          <p class="nav-phones"><a href="tel:+13692220979">(369) 222-0979</a> · <a href="tel:+12098090022">(209) 809-0022</a></p>
         </div>
       </nav>
       <a class="btn btn--primary btn--sm header-cta" href="/contact/">Book an Appointment</a>
@@ -589,15 +614,15 @@
           <nav class="footer-col" aria-label="Services">
             <span class="kicker">Services</span>
             <ul>
-              <li><a href="/hyperbaric-oxygen-therapy/">Hyperbaric Oxygen Therapy</a></li>
-              <li><a href="/wound-care/">Wound Care</a></li>
-              <li><a href="/iv-therapy/">IV Therapy</a></li>
-              <li><a href="/counseling/">Counseling</a></li>
               <li><a href="/physical-therapy/">Physical Therapy</a></li>
-              <li><a href="/occupational-therapy/">Occupational Therapy</a></li>
+              <li><a href="/pain-management/">Pain Management</a></li>
+              <li><a href="/counseling/">Counseling</a></li>
               <li><a href="/pediatric-speech-therapy/">Pediatric Speech Therapy</a></li>
               <li><a href="/pediatric-therapy/">Pediatric Therapy</a></li>
-              <li><a href="/pain-management/">Pain Management</a></li>
+              <li><a href="/occupational-therapy/">Occupational Therapy</a></li>
+              <li><a href="/wound-care/">Wound Care</a></li>
+              <li><a href="/iv-therapy/">IV Therapy</a></li>
+              <li><a href="/hyperbaric-oxygen-therapy/">Hyperbaric Oxygen Therapy</a></li>
             </ul>
           </nav>
           <nav class="footer-col" aria-label="Patients">

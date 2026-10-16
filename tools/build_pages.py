@@ -43,19 +43,19 @@ PRACTICE = "Generations Wellness Medical Practice"
 
 # The practice's service lines. Hub pages live at the root-level slug.
 SERVICES = [
-    ("hbot", "/hyperbaric-oxygen-therapy/", "Hyperbaric Oxygen Therapy", "MedicalTherapy"),
-    ("wound-care", "/wound-care/", "Wound Care", "MedicalTherapy"),
-    ("iv-therapy", "/iv-therapy/", "IV Therapy", "MedicalTherapy"),
-    ("counseling", "/counseling/", "Counseling", "PsychologicalTreatment"),
     ("physical-therapy", "/physical-therapy/", "Physical Therapy", "PhysicalTherapy"),
-    ("occupational-therapy", "/occupational-therapy/", "Occupational Therapy", "MedicalTherapy"),
+    ("pain-management", "/pain-management/", "Pain Management", "MedicalTherapy"),
+    ("counseling", "/counseling/", "Counseling", "PsychologicalTreatment"),
     ("pediatric-speech-therapy", "/pediatric-speech-therapy/", "Pediatric Speech Therapy", "MedicalTherapy"),
     ("pediatric-therapy", "/pediatric-therapy/", "Pediatric Therapy", "MedicalTherapy"),
-    ("pain-management", "/pain-management/", "Pain Management", "MedicalTherapy"),
+    ("occupational-therapy", "/occupational-therapy/", "Occupational Therapy", "MedicalTherapy"),
+    ("wound-care", "/wound-care/", "Wound Care", "MedicalTherapy"),
+    ("iv-therapy", "/iv-therapy/", "IV Therapy", "MedicalTherapy"),
+    ("hbot", "/hyperbaric-oxygen-therapy/", "Hyperbaric Oxygen Therapy", "MedicalTherapy"),
 ]
 
-NAV = [("/services/", "Services"), ("/hyperbaric-oxygen-therapy/", "Hyperbaric Therapy"),
-       ("/cost/", "Cost &amp; Insurance"), ("/learn/", "Learn"), ("/about/", "About"), ("/contact/", "Contact")]
+NAV = [("/services/", "Services"), ("/new-patients/", "New Patients"),
+       ("/self-pay-pricing/", "Pricing"), ("/learn/", "Learn"), ("/about/", "About"), ("/contact/", "Contact")]
 
 FOOTER_COLS = [
     ("Services", [(u, n) for _, u, n, _ in SERVICES]),
@@ -162,16 +162,81 @@ def load_pages():
     return pages
 
 
+SERVICE_BLURBS = {
+    "/hyperbaric-oxygen-therapy/": "Medical-grade HBOT, hard-shell chambers",
+    "/wound-care/": "Care for wounds that are slow to heal",
+    "/iv-therapy/": "Physician-ordered infusions after screening",
+    "/counseling/": "Talk therapy, in person or by video",
+    "/physical-therapy/": "Pain, injury and post-surgery rehab",
+    "/occupational-therapy/": "Everyday skills, hands and daily living",
+    "/pediatric-speech-therapy/": "Speech, language and feeding for kids",
+    "/pediatric-therapy/": "Motor and developmental therapy for kids",
+    "/pain-management/": "Physician-led, non-opioid-first pain care",
+}
+CHEVRON = ('<svg class="chev-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+           'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>')
+PIN_SVG = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" '
+           'stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>')
+
+
 def nav(current):
     cur = ' aria-current="page"'
-    items = "\n".join(
-        f'          <li><a href="{u}"{cur if u == current else ""}>{label}</a></li>' for u, label in NAV)
+    in_services = current == "/services/" or any(current.startswith(u) for _, u, _, _ in SERVICES)
+    items = []
+    for u, label in NAV:
+        if u == "/services/":
+            links = "\n".join(
+                f'              <li><a href="{su}"{cur if su == current else ""}><span class="mega-name">{n}</span>'
+                f'<span class="mega-desc">{SERVICE_BLURBS[su]}</span></a></li>' for _, su, n, _ in SERVICES)
+            items.append(
+                f'          <li class="has-menu"><a href="/services/" class="menu-trigger"{cur if in_services else ""}>Services{CHEVRON}</a>\n'
+                f'            <div class="mega"><div class="mega-inner">\n'
+                f'              <p class="mega-kicker">Our Services · Outpatient care in Modesto</p>\n'
+                f'              <ul class="mega-grid">\n{links}\n              </ul>\n'
+                f'              <a class="mega-all" href="/services/">See all services and how to start &rarr;</a>\n'
+                f'            </div></div>\n          </li>')
+        elif u == "/hyperbaric-oxygen-therapy/":
+            continue
+        else:
+            items.append(f'          <li><a href="{u}"{cur if u == current else ""}>{label}</a></li>')
     if current == "/contact/":
         cta = f'<a class="btn btn--primary" href="{PHONE_HREF}">Call {PHONE}</a>'
     else:
         cta = '<a class="btn btn--primary" href="/contact/">Book an Appointment</a>'
-    return (f'<nav id="site-nav" class="site-nav" aria-label="Main">\n        <ul>\n{items}\n        </ul>\n'
-            f'        <div class="nav-cta">\n          {cta}\n        </div>\n      </nav>')
+    body = "\n".join(items)
+    return (f'<nav id="site-nav" class="site-nav" aria-label="Main">\n        <ul>\n{body}\n        </ul>\n'
+            f'        <div class="nav-cta">\n          {cta}\n          <p class="nav-phones"><a href="{PHONE_HREF}">{PHONE}</a> · <a href="{PHONE2_HREF}">{PHONE2}</a></p>\n        </div>\n      </nav>')
+
+
+def site_header(url):
+    return f'''<!-- utility -->
+  <div class="utility-bar">
+    <div class="container container--wide utility-inner">
+      <p class="utility-place">{PIN_SVG}<span>Outpatient medical practice · 1801 H Street, Suite C-1, Modesto</span></p>
+      <p class="utility-phones">{CALL_SVG}<a href="{PHONE_HREF}">{PHONE}</a><span aria-hidden="true">·</span><a href="{PHONE2_HREF}">{PHONE2}</a><span class="utility-sep" aria-hidden="true"></span><span>Visits by appointment</span></p>
+    </div>
+  </div>
+  <!-- /utility -->
+  <header class="site-header">
+    <div class="container container--wide header-inner">
+      <a class="brand" href="/" aria-label="{PRACTICE} — home">
+        <img class="brand-mark" src="/assets/img/logo-coin-96.png" alt="" width="96" height="96">
+        <span class="brand-text">
+          <span class="brand-name">Generations Wellness</span>
+          <span class="brand-sub">Medical Practice</span>
+        </span>
+      </a>
+      {nav(url)}
+      <a class="btn btn--primary btn--sm header-cta" href="{PHONE_HREF if url == "/contact/" else "/contact/"}">{"Call " + PHONE if url == "/contact/" else "Book an Appointment"}</a>
+      <a class="btn btn--primary btn--sm header-call" href="{PHONE_HREF}">{CALL_SVG}Call</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden">Menu</span>
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="progress-line" aria-hidden="true"></div>
+  </header>'''
 
 
 def footer():
@@ -426,26 +491,7 @@ def render(meta, pages, by_url):
 <body class="page-{meta.get("type", "page")}">
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="container container--wide header-inner">
-      <a class="brand" href="/" aria-label="Generations Wellness Medical Practice — home">
-        <img class="brand-mark" src="/assets/img/logo-coin-96.png" alt="" width="96" height="96">
-        <span class="brand-text">
-          <span class="brand-name">Generations</span>
-          <span class="brand-sub">Wellness</span>
-        </span>
-      </a>
-      {nav(url)}
-      <a class="btn btn--primary btn--sm header-cta" href="/contact/">Book an Appointment</a>
-      <a class="btn btn--primary btn--sm header-call" href="{PHONE_HREF}">{CALL_SVG}Call</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="visually-hidden">Menu</span>
-        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-    <div class="progress-line" aria-hidden="true"></div>
-  </header>
+  {site_header(url)}
 
   <main id="main">
     <header class="page-hero depth">
@@ -560,7 +606,8 @@ def refresh_core():
         f = ROOT / rel
         s = f.read_text()
         url = "/" if rel in ("index.html", "404.html") else "/" + rel.replace("index.html", "")
-        s2 = re.sub(r'<nav id="site-nav".*?</nav>', lambda m: nav(url if rel != "404.html" else ""), s, count=1, flags=re.S)
+        s2 = re.sub(r'(?:<!-- utility -->.*?<!-- /utility -->\s*)?<header class="site-header">.*?</header>',
+                    lambda m: site_header(url if rel != "404.html" else ""), s, count=1, flags=re.S)
         s2 = re.sub(r'<footer class="site-footer">.*?</footer>', lambda m: footer(), s2, count=1, flags=re.S)
         if s2 != s:
             f.write_text(s2)
