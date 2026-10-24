@@ -26,17 +26,18 @@
   <meta name="twitter:title" content="Is Hyperbaric Oxygen Therapy Worth It? An Honest Guide">
   <meta name="twitter:description" content="It can be for a cleared condition, confirmed by a physician, at medical pressure. Not for unproven uses or 1.3 ATA chambers. A decision framework.">
   <meta name="twitter:image" content="https://www.generationswellness.net/assets/img/og-image.jpg">
+  <meta name="twitter:image:alt" content="Patient resting inside a hyperbaric oxygen chamber at Generations Wellness in Modesto, CA">
 
   <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/assets/img/favicon-64.png" sizes="64x64" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/tokens.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- css -->
+  <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.min.css?v=da5a1c2a50">
+  <!-- /css -->
 
   <script type="application/ld+json">
 {
@@ -74,12 +75,94 @@
         "postalCode": "95354",
         "addressCountry": "US"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.6452296,
+        "longitude": -120.9912123
+      },
       "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Modesto",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Ceres",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Turlock",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Riverbank",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Oakdale",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Salida",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Manteca",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Ripon",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Stockton",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Stanislaus County, California"
+        }
+      ],
+      "isAcceptingNewPatients": true,
       "medicalSpecialty": [
-        "PhysicalTherapy",
-        "SpeechPathology",
-        "Psychiatric",
-        "PrimaryCare"
+        "Physiotherapy",
+        "SpeechPathology"
       ],
       "availableService": [
         {
@@ -251,6 +334,12 @@
       },
       "datePublished": "2026-09-17",
       "dateModified": "2026-09-17",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.generationswellness.net/assets/img/og-image.jpg",
+        "width": 1200,
+        "height": 630
+      },
       "reviewedBy": {
         "@id": "https://www.generationswellness.net/#physician"
       },
@@ -659,6 +748,14 @@
         </div>
         <ul class="index">
           <li>
+            <a class="index-row" href="/learn/">
+              <span class="idx" aria-hidden="true"></span>
+              <div class="index-title"><h3>Learn About HBOT</h3></div>
+              <p class="index-desc">Plain-language guides to hyperbaric oxygen therapy: how it works, side effects, sessions, what to wear, costs, and honest answers on the research.</p>
+              <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li>
             <a class="index-row" href="/cost/">
               <span class="idx" aria-hidden="true"></span>
               <div class="index-title"><h3>HBOT Cost: Per Session and Per Course</h3></div>
@@ -686,7 +783,7 @@
             <a class="index-row" href="/compare/mild-vs-medical-grade-hbot/">
               <span class="idx" aria-hidden="true"></span>
               <div class="index-title"><h3>Mild (1.3 ATA) vs. Medical-Grade HBOT</h3></div>
-              <p class="index-desc">Mild hyperbaric (1.3 ATA on air) and medical-grade HBOT (2.0–2.5 ATA on 100% oxygen) compared: oxygen dose, UHMS definition, FDA clearance, and evidence.</p>
+              <p class="index-desc">1.3 ATA mild chambers vs 2.0–2.5 ATA medical-grade HBOT: oxygen dose, FDA clearance, what the evidence supports and when 1.3 ATA is not enough.</p>
               <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </li>
@@ -695,6 +792,22 @@
               <span class="idx" aria-hidden="true"></span>
               <div class="index-title"><h3>Conditions HBOT Is Cleared For</h3></div>
               <p class="index-desc">Every FDA-cleared and UHMS-recognized use of hyperbaric oxygen therapy, which are treated in an outpatient center vs. hospital, and what is not cleared.</p>
+              <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="index-row" href="/learn/what-to-wear-and-bring-to-hbot/">
+              <span class="idx" aria-hidden="true"></span>
+              <div class="index-title"><h3>What to Wear and Bring to HBOT</h3></div>
+              <p class="index-desc">Wear 100% cotton, skip lotions and electronics. A clear checklist for hyperbaric sessions: glasses, jewelry, makeup, hearing aids, CGMs, food and coffee.</p>
+              <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="index-row" href="/learn/hyperbaric-oxygen-therapy-side-effects/">
+              <span class="idx" aria-hidden="true"></span>
+              <div class="index-title"><h3>HBOT Side Effects: Common vs. Rare</h3></div>
+              <p class="index-desc">Common: ear pressure, temporary nearsightedness, fatigue. Rare: oxygen-toxicity seizure, lung effects. Incidence figures, causes and prevention.</p>
               <svg class="index-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </li>
@@ -713,7 +826,7 @@
           <a class="btn btn--primary" href="/contact/">Book a Physician Assessment</a>
           <a class="btn btn--secondary-on-dark" href="/what-to-expect/">What to Expect</a>
         </div>
-        <p class="cta-phone">Prefer to talk? <a href="tel:+13692220979">(369) 222-0979</a></p>
+        <p class="cta-phone">Prefer to talk? <a href="tel:+13692220979">(369) 222-0979</a> · <a href="tel:+12098090022">(209) 809-0022</a></p>
       </div>
     </section>
   </main>
@@ -747,8 +860,8 @@
             <span class="kicker">Patients</span>
             <ul>
               <li><a href="/services/">All Services</a></li>
-              <li><a href="/what-to-expect/">What to Expect</a></li>
-              <li><a href="/cost/">Cost</a></li>
+              <li><a href="/new-patients/">New Patients</a></li>
+              <li><a href="/cost/">HBOT Cost</a></li>
               <li><a href="/insurance/">Insurance</a></li>
               <li><a href="/learn/">Learn</a></li>
               <li><a href="/faq/">FAQ</a></li>
@@ -764,7 +877,8 @@
               Modesto, CA 95354<br>
               <a href="https://www.google.com/maps/search/?api=1&amp;query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354" rel="noopener">Get directions</a>
             </address>
-            <p class="small mt-4">Sessions by appointment.</p>
+            <p class="small mt-4">Visits by appointment.</p>
+            <p class="small mt-4">Serving the Central Valley, including <a href="/service-area/turlock/">Turlock</a>, <a href="/service-area/manteca/">Manteca</a>, <a href="/service-area/stockton/">Stockton</a> and <a href="/service-area/merced/">Merced</a>. <a href="/service-area/">All towns we serve</a>.</p>
           </div>
           <div class="footer-col">
             <span class="kicker">Contact</span>
@@ -789,6 +903,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js?v=9e79241d7e" defer></script>
 </body>
 </html>

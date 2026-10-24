@@ -7,6 +7,7 @@
   <title>HBOT Benefits: Who Hyperbaric Oxygen Therapy May Help</title>
   <meta name="description" content="How HBOT may support wound healing, radiation-related tissue injury, selected diabetic wounds, and skin grafts. Physician-directed care in Modesto.">
   <link rel="canonical" href="https://www.generationswellness.net/benefits/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#034439">
 
   <meta property="og:type" content="website">
@@ -30,11 +31,11 @@
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/tokens.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- css -->
+  <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.min.css?v=da5a1c2a50">
+  <!-- /css -->
 
   <script type="application/ld+json">
 {
@@ -72,31 +73,104 @@
         "postalCode": "95354",
         "addressCountry": "US"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.6452296,
+        "longitude": -120.9912123
+      },
       "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Modesto",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Ceres",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Turlock",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Riverbank",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Oakdale",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Salida",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Manteca",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Ripon",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Stockton",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Stanislaus County, California"
+        }
+      ],
+      "isAcceptingNewPatients": true,
       "medicalSpecialty": [
-        "PhysicalTherapy",
-        "SpeechPathology",
-        "Psychiatric",
-        "PrimaryCare"
+        "Physiotherapy",
+        "SpeechPathology"
       ],
       "availableService": [
-        {
-          "@id": "https://www.generationswellness.net/#hbot"
-        },
-        {
-          "@id": "https://www.generationswellness.net/#wound-care"
-        },
-        {
-          "@id": "https://www.generationswellness.net/#iv-therapy"
-        },
-        {
-          "@id": "https://www.generationswellness.net/#counseling"
-        },
         {
           "@id": "https://www.generationswellness.net/#physical-therapy"
         },
         {
-          "@id": "https://www.generationswellness.net/#occupational-therapy"
+          "@id": "https://www.generationswellness.net/#pain-management"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#counseling"
         },
         {
           "@id": "https://www.generationswellness.net/#pediatric-speech-therapy"
@@ -105,7 +179,16 @@
           "@id": "https://www.generationswellness.net/#pediatric-therapy"
         },
         {
-          "@id": "https://www.generationswellness.net/#pain-management"
+          "@id": "https://www.generationswellness.net/#occupational-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#wound-care"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#iv-therapy"
+        },
+        {
+          "@id": "https://www.generationswellness.net/#hbot"
         },
         {
           "@id": "https://www.generationswellness.net/#infusion"
@@ -115,42 +198,6 @@
         "https://www.facebook.com/people/Generations-Wellness/61594639832610/",
         "https://www.instagram.com/generations_wellness_/"
       ]
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#hbot",
-      "name": "Hyperbaric Oxygen Therapy",
-      "url": "https://www.generationswellness.net/hyperbaric-oxygen-therapy/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#wound-care",
-      "name": "Wound Care",
-      "url": "https://www.generationswellness.net/wound-care/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#iv-therapy",
-      "name": "IV Therapy",
-      "url": "https://www.generationswellness.net/iv-therapy/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
-    },
-    {
-      "@type": "PsychologicalTreatment",
-      "@id": "https://www.generationswellness.net/#counseling",
-      "name": "Counseling",
-      "url": "https://www.generationswellness.net/counseling/",
-      "provider": {
-        "@id": "https://www.generationswellness.net/#clinic"
-      }
     },
     {
       "@type": "PhysicalTherapy",
@@ -163,9 +210,18 @@
     },
     {
       "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#occupational-therapy",
-      "name": "Occupational Therapy",
-      "url": "https://www.generationswellness.net/occupational-therapy/",
+      "@id": "https://www.generationswellness.net/#pain-management",
+      "name": "Pain Management",
+      "url": "https://www.generationswellness.net/pain-management/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "PsychologicalTreatment",
+      "@id": "https://www.generationswellness.net/#counseling",
+      "name": "Counseling",
+      "url": "https://www.generationswellness.net/counseling/",
       "provider": {
         "@id": "https://www.generationswellness.net/#clinic"
       }
@@ -190,9 +246,36 @@
     },
     {
       "@type": "MedicalTherapy",
-      "@id": "https://www.generationswellness.net/#pain-management",
-      "name": "Pain Management",
-      "url": "https://www.generationswellness.net/pain-management/",
+      "@id": "https://www.generationswellness.net/#occupational-therapy",
+      "name": "Occupational Therapy",
+      "url": "https://www.generationswellness.net/occupational-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#wound-care",
+      "name": "Wound Care",
+      "url": "https://www.generationswellness.net/wound-care/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#iv-therapy",
+      "name": "IV Therapy",
+      "url": "https://www.generationswellness.net/iv-therapy/",
+      "provider": {
+        "@id": "https://www.generationswellness.net/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://www.generationswellness.net/#hbot",
+      "name": "Hyperbaric Oxygen Therapy",
+      "url": "https://www.generationswellness.net/hyperbaric-oxygen-therapy/",
       "provider": {
         "@id": "https://www.generationswellness.net/#clinic"
       }
@@ -571,8 +654,8 @@
             <span class="kicker">Patients</span>
             <ul>
               <li><a href="/services/">All Services</a></li>
-              <li><a href="/what-to-expect/">What to Expect</a></li>
-              <li><a href="/cost/">Cost</a></li>
+              <li><a href="/new-patients/">New Patients</a></li>
+              <li><a href="/cost/">HBOT Cost</a></li>
               <li><a href="/insurance/">Insurance</a></li>
               <li><a href="/learn/">Learn</a></li>
               <li><a href="/faq/">FAQ</a></li>
@@ -588,7 +671,8 @@
               Modesto, CA 95354<br>
               <a href="https://www.google.com/maps/search/?api=1&amp;query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354" rel="noopener">Get directions</a>
             </address>
-            <p class="small mt-4">Sessions by appointment.</p>
+            <p class="small mt-4">Visits by appointment.</p>
+            <p class="small mt-4">Serving the Central Valley, including <a href="/service-area/turlock/">Turlock</a>, <a href="/service-area/manteca/">Manteca</a>, <a href="/service-area/stockton/">Stockton</a> and <a href="/service-area/merced/">Merced</a>. <a href="/service-area/">All towns we serve</a>.</p>
           </div>
           <div class="footer-col">
             <span class="kicker">Contact</span>
@@ -613,6 +697,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js?v=9e79241d7e" defer></script>
 </body>
 </html>

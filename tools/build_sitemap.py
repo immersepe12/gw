@@ -118,8 +118,38 @@ def normalise_date(value: str) -> str:
     return parsed.replace(microsecond=0).isoformat()
 
 
+_CONTENT_UPDATED: Optional[Dict[str, str]] = None
+
+
+def content_updated(root: Path) -> Dict[str, str]:
+    """{url: META "updated"} for generated pages (content/**/*.html). This is the editorial
+    last-modified date, bumped only when a page's content meaningfully changes."""
+    global _CONTENT_UPDATED
+    if _CONTENT_UPDATED is None:
+        import json
+        _CONTENT_UPDATED = {}
+        for f in (root / "content").rglob("*.html"):
+            m = re.match(r"\s*<!--META\s*(\{.*?\})\s*-->", f.read_text(encoding="utf-8"), re.S)
+            if m:
+                meta = json.loads(m.group(1))
+                if meta.get("url") and meta.get("updated"):
+                    _CONTENT_UPDATED[meta["url"]] = meta["updated"]
+    return _CONTENT_UPDATED
+
+
 def lastmod_for(root: Path, path: Path, html: str) -> Tuple[str, str]:
-    """Return (lastmod, source)."""
+    """Return (lastmod, source) as YYYY-MM-DD. Generated pages use their META "updated";
+    hand-authored pages use the last git commit (or mtime when uncommitted)."""
+    rel_dir = path.parent.relative_to(root).as_posix()
+    url = "/" if rel_dir in ("", ".") else f"/{rel_dir}/"
+    upd = content_updated(root).get(url)
+    if upd:
+        return normalise_date(upd)[:10], "content-meta"
+    lm, src = _lastmod_raw(root, path, html)
+    return lm[:10], src
+
+
+def _lastmod_raw(root: Path, path: Path, html: str) -> Tuple[str, str]:
     m = MODIFIED_META_RE.search(html)
     if m:
         try:
