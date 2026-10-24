@@ -29,8 +29,8 @@ REVIEWED_ON = "2026-09-23"  # Dr. Bahia's sign-off, confirmed by the clinic
 CORE_PAGES = ["index.html", "hyperbaric-oxygen-therapy/index.html", "benefits/index.html",
               "about/index.html", "faq/index.html", "contact/index.html", "404.html"]
 CORE_TITLES = {
-    "/": ("Home", "Physician-directed hyperbaric oxygen therapy in downtown Modesto."),
-    "/hyperbaric-oxygen-therapy/": ("How HBOT Works at Our Center", "What a session feels like, how many sessions, and safety."),
+    "/": ("Generations Wellness Home", "Physician-led outpatient medical practice in downtown Modesto."),
+    "/hyperbaric-oxygen-therapy/": ("Hyperbaric Oxygen Therapy in Modesto", "Physician-directed HBOT in hard-shell chambers in downtown Modesto, for FDA-cleared indications."),
     "/benefits/": ("Benefits & Who HBOT May Help", "The conditions HBOT is cleared for, described honestly."),
     "/about/": ("About Generations Wellness", "Our physician-directed approach, led by Dr. Rajwinder Singh Bahia, MD."),
     "/faq/": ("HBOT Questions, Answered", "Cost, safety, sessions, what to wear, and getting started."),
@@ -59,10 +59,15 @@ NAV = [("/services/", "Services"), ("/new-patients/", "New Patients"),
 
 FOOTER_COLS = [
     ("Services", [(u, n) for _, u, n, _ in SERVICES]),
-    ("Patients", [("/services/", "All Services"), ("/what-to-expect/", "What to Expect"), ("/cost/", "Cost"),
+    ("Patients", [("/services/", "All Services"), ("/new-patients/", "New Patients"), ("/cost/", "HBOT Cost"),
                   ("/insurance/", "Insurance"), ("/learn/", "Learn"), ("/faq/", "FAQ"),
                   ("/service-area/", "Service Area"), ("/for-physicians/", "For Physicians")]),
 ]
+
+# Google Maps pin for 1801 H St C-1 (The Shops at Lincoln School), per coordinator 2026-10-24.
+AREA_SERVED = ([{"@type": "City", "name": c, "containedInPlace": {"@type": "State", "name": "California"}}
+                for c in ("Modesto", "Ceres", "Turlock", "Riverbank", "Oakdale", "Salida", "Manteca", "Ripon", "Stockton")]
+               + [{"@type": "AdministrativeArea", "name": "Stanislaus County, California"}])
 
 SITE_NODES = [
     {
@@ -81,8 +86,11 @@ SITE_NODES = [
         "email": "marketing@generationswellness.net",
         "address": {"@type": "PostalAddress", "streetAddress": "1801 H Street, Suite C-1", "addressLocality": "Modesto",
                     "addressRegion": "CA", "postalCode": "95354", "addressCountry": "US"},
+        "geo": {"@type": "GeoCoordinates", "latitude": 37.6452296, "longitude": -120.9912123},
         "hasMap": "https://www.google.com/maps/search/?api=1&query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354",
-        "medicalSpecialty": ["PhysicalTherapy", "SpeechPathology", "Psychiatric", "PrimaryCare"],
+        "areaServed": AREA_SERVED,
+        "isAcceptingNewPatients": True,
+        "medicalSpecialty": ["Physiotherapy", "SpeechPathology"],
         "availableService": [{"@id": f"{BASE}/#{k}"} for k, _, _, _ in SERVICES] + [{"@id": f"{BASE}/#infusion"}],
         "sameAs": ["https://www.facebook.com/people/Generations-Wellness/61594639832610/", "https://www.instagram.com/generations_wellness_/"],
     },
@@ -109,6 +117,9 @@ CTA = {
     "default": ("Your Next Step", "Begin With a <em class=\"text-gold-gradient\">Physician</em> Assessment",
                 "Every course starts with an honest conversation and a physician assessment. No pressure, no obligation.",
                 ("Book a Physician Assessment", "/contact/"), ("What to Expect", "/what-to-expect/")),
+    "es": ("Su siguiente paso", "Empiece con una <em class=\"text-gold-gradient\">evaluación médica</em>",
+           "Llame a cualquiera de nuestros dos números para hacer una pregunta o pedir una cita. Antes de cualquier tratamiento, un médico revisa su caso.",
+           ("Llamar al (369) 222-0979", PHONE_HREF), ("Contacto y cómo llegar", "/contact/")),
     "service": ("Your Next Step", "Book an <em class=\"text-gold-gradient\">Appointment</em>",
                 "Call either number to ask a question or book a visit. Our team will tell you what to bring and what happens first.",
                 ("Book an Appointment", "/contact/"), ("All Services", "/services/")),
@@ -264,7 +275,8 @@ def footer():
               Modesto, CA 95354<br>
               <a href="https://www.google.com/maps/search/?api=1&amp;query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354" rel="noopener">Get directions</a>
             </address>
-            <p class="small mt-4">Sessions by appointment.</p>
+            <p class="small mt-4">Visits by appointment.</p>
+            <p class="small mt-4">Serving the Central Valley, including <a href="/service-area/turlock/">Turlock</a>, <a href="/service-area/manteca/">Manteca</a>, <a href="/service-area/stockton/">Stockton</a> and <a href="/service-area/merced/">Merced</a>. <a href="/service-area/">All towns we serve</a>.</p>
           </div>
           <div class="footer-col">
             <span class="kicker">Contact</span>
@@ -292,15 +304,28 @@ def footer():
 
 def crumbs_for(meta, by_url):
     url = meta["url"]
-    trail = [("Home", "/")]
+    trail = [("Inicio" if meta.get("lang") == "es" else "Home", "/")]
     parts = [p for p in url.strip("/").split("/") if p]
     for i in range(1, len(parts)):
         u = "/" + "/".join(parts[:i]) + "/"
         parent = by_url.get(u)
-        name = parent.get("crumb") if parent else parts[i - 1].replace("-", " ").title()
+        if parent is None and u not in CORE_TITLES:
+            continue  # no page at this level (e.g. /es/): don't link to a 404
+        name = parent.get("crumb") if parent else CORE_TITLES[u][0]
         trail.append((name, u))
     trail.append((meta["crumb"], url))
     return trail
+
+
+SERVICE_HUBS = {u: (k, n) for k, u, n, _ in SERVICES}
+
+
+def service_hub(url):
+    """The service hub (url, key, name) a page belongs to, or None."""
+    first = "/" + url.strip("/").split("/")[0] + "/" if url.strip("/") else "/"
+    if first in SERVICE_HUBS:
+        return (first,) + SERVICE_HUBS[first]
+    return None
 
 
 def schema(meta, trail):
@@ -314,15 +339,37 @@ def schema(meta, trail):
     web.setdefault("url", url)
     web["name"] = meta["title"]
     web["description"] = meta["description"]
-    web.setdefault("inLanguage", "en-US")
+    web["inLanguage"] = "es-US" if meta.get("lang") == "es" else web.get("inLanguage", "en-US")
     web["isPartOf"] = {"@id": f"{BASE}/#website"}
     web["breadcrumb"] = {"@id": url + "#breadcrumb"}
     web["datePublished"] = meta["published"]
     web["dateModified"] = meta["updated"]
+    img = og_image(meta)
+    web["primaryImageOfPage"] = {"@type": "ImageObject", "url": BASE + img[0], "width": img[1], "height": img[2]}
     reviewed = meta.get("reviewed", REVIEWED_ON)
     if reviewed:
         web["reviewedBy"] = {"@id": f"{BASE}/#physician"}
         web["lastReviewed"] = reviewed
+    hub = service_hub(meta["url"])
+    if meta.get("type") == "service" or (hub and meta.get("type") == "hub"):
+        # Service pages describe a service, not an article: MedicalWebPage + Service.
+        page_nodes = [n for n in page_nodes if n.get("@type") not in ("Article", "MedicalScholarlyArticle")]
+        if web.get("@type") in ("WebPage", "Article"):
+            web["@type"] = "MedicalWebPage"
+        svc = next((n for n in page_nodes if n.get("@type") == "Service"), None)
+        if svc is None:
+            svc = {"@type": "Service", "@id": url + "#service"}
+            page_nodes.append(svc)
+        svc.setdefault("name", strip_tags(html.unescape(meta.get("card_title") or meta["h1"])))
+        svc.setdefault("url", url)
+        if hub:
+            svc.setdefault("serviceType", hub[2])
+            web.setdefault("about", {"@id": f"{BASE}/#{hub[1]}"})
+        svc["provider"] = {"@id": f"{BASE}/#clinic"}
+        svc["areaServed"] = AREA_SERVED
+        svc.setdefault("availableChannel", {"@type": "ServiceChannel", "serviceLocation": {"@id": f"{BASE}/#clinic"},
+                                            "servicePhone": "+13692220979"})
+        web["mainEntity"] = {"@id": svc["@id"]}
     for n in page_nodes:
         if reviewed and n is not web and n.get("@type") in ("Article", "MedicalScholarlyArticle"):
             n["reviewedBy"] = {"@id": f"{BASE}/#physician"}
@@ -337,18 +384,51 @@ def schema(meta, trail):
     return json.dumps(graph, indent=2, ensure_ascii=False).replace("</", "<\\/")
 
 
-def related(meta, by_url):
-    urls = meta.get("related", [])
+def card(u, by_url):
+    if u in by_url:
+        return by_url[u].get("card_title") or strip_tags(by_url[u]["h1"]), by_url[u]["description"]
+    if u in CORE_TITLES:
+        return CORE_TITLES[u]
+    return None
+
+
+def parent_of(url):
+    parts = url.strip("/").split("/")
+    return "/" + "/".join(parts[:-1]) + "/" if len(parts) > 1 else None
+
+
+def related_urls(meta, by_url, exclude=()):
+    """Hand-picked related URLs, plus the parent hub and the two nearest siblings,
+    minus anything already listed on the page (hub index) and the page itself."""
+    url = meta["url"]
+    urls = list(meta.get("related", []))
+    parent = parent_of(url)
+    if parent and (parent in by_url or parent in CORE_TITLES):
+        if parent not in urls:
+            urls.insert(0, parent)
+        sibs = sorted(u for u in by_url if parent_of(u) == parent and not by_url[u].get("noindex"))
+        if url in sibs and len(sibs) > 1:
+            i = sibs.index(url)
+            for j in (i + 1, i - 1):
+                sib = sibs[j % len(sibs)]
+                if sib != url and sib not in urls:
+                    urls.append(sib)
+    seen, out = set(), []
+    for u in urls:
+        if u == url or u in exclude or u in seen or card(u, by_url) is None:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out
+
+
+def related(meta, by_url, exclude=()):
+    urls = related_urls(meta, by_url, exclude)
     if not urls:
         return ""
     rows = []
     for u in urls:
-        if u in by_url:
-            t, d = by_url[u].get("card_title") or strip_tags(by_url[u]["h1"]), by_url[u]["description"]
-        elif u in CORE_TITLES:
-            t, d = CORE_TITLES[u]
-        else:
-            continue
+        t, d = card(u, by_url)
         rows.append(f'''          <li>
             <a class="index-row" href="{u}">
               <span class="idx" aria-hidden="true"></span>
@@ -357,12 +437,13 @@ def related(meta, by_url):
               {ARROW_SVG}
             </a>
           </li>''')
+    es = meta.get("lang") == "es"
     return f'''
     <section class="section section--card-bg related">
       <div class="container">
         <div class="section-head">
-          <p class="kicker">Keep Reading</p>
-          <h2>Related Pages</h2>
+          <p class="kicker">{"Siga leyendo" if es else "Keep Reading"}</p>
+          <h2>{"Páginas relacionadas (en inglés)" if es else "Related Pages"}</h2>
           <span class="gold-rule"></span>
         </div>
         <ul class="index">
@@ -372,13 +453,18 @@ def related(meta, by_url):
     </section>'''
 
 
-def hub_children(meta, pages):
+def hub_kids(meta, pages):
     if not meta.get("hub"):
-        return ""
+        return []
     url = meta["url"]
     kids = [p for p in pages if p["url"] != url and p["url"].startswith(url)
             and p["url"][len(url):].strip("/").count("/") == 0]
     kids += [p for p in pages if p["url"] in meta.get("hub_extra", [])]
+    return kids
+
+
+def hub_children(meta, pages):
+    kids = hub_kids(meta, pages)
     if not kids:
         return ""
     rows = "\n".join(f'''          <li>
@@ -417,9 +503,114 @@ def cta_band(meta):
           <a class="btn btn--primary" href="{p_href}">{p_label}</a>
           <a class="btn btn--secondary-on-dark" href="{s_href}">{s_label}</a>
         </div>
-        <p class="cta-phone">Prefer to talk? <a href="{PHONE_HREF}">{PHONE}</a></p>
+        <p class="cta-phone">{"¿Prefiere llamar?" if meta.get("lang") == "es" else "Prefer to talk?"} <a href="{PHONE_HREF}">{PHONE}</a> · <a href="{PHONE2_HREF}">{PHONE2}</a></p>
       </div>
     </section>'''
+
+
+HBOT_SECTIONS = {"hyperbaric-oxygen-therapy", "conditions", "compare", "learn", "hbot-research", "cost", "insurance",
+                 "safety", "what-to-expect", "how-hbot-works", "benefits", "for-physicians", "our-standards", "es"}
+OG_IMAGES = {
+    "hbot": ("/assets/img/og-image.jpg", 1200, 630,
+             "Patient resting inside a hyperbaric oxygen chamber at Generations Wellness in Modesto, CA"),
+    "iv": ("/assets/img/og-iv-therapy.jpg", 705, 369,
+           "Patient relaxing in the IV therapy lounge at Generations Wellness Medical Practice in Modesto"),
+    "practice": ("/assets/img/og-practice.jpg", 1200, 630,
+                 "Generations Wellness Medical Practice logo, Modesto, CA"),
+}
+
+
+def og_image(meta):
+    """(path, width, height, alt): the HBOT chamber photo only on HBOT pages, the IV lounge photo on
+    IV pages, and the neutral practice logo card everywhere else (no stock photos invented)."""
+    if meta.get("og_image") in OG_IMAGES:
+        return OG_IMAGES[meta["og_image"]]
+    first = meta["url"].strip("/").split("/")[0]
+    if first == "iv-therapy":
+        return OG_IMAGES["iv"]
+    if first in HBOT_SECTIONS:
+        return OG_IMAGES["hbot"]
+    return OG_IMAGES["practice"]
+
+
+CSS_SOURCES = ["assets/css/fonts.css", "assets/css/tokens.css", "assets/css/main.css"]
+CSS_OUT = "assets/css/site.min.css"
+FONT_PRELOADS = ["/assets/fonts/fraunces-normal-latin.woff2", "/assets/fonts/fraunces-italic-latin.woff2"]
+
+
+def minify_css(css):
+    """Conservative minifier: strips comments and redundant whitespace, never touches strings,
+    and keeps the space before ':' (descendant + pseudo-class selectors) and around + - in calc()."""
+    out, i, n = [], 0, len(css)
+    while i < n:
+        c = css[i]
+        if c in "\"'":
+            j = i + 1
+            while j < n and css[j] != c:
+                j += 2 if css[j] == "\\" else 1
+            out.append(css[i:j + 1])
+            i = j + 1
+        elif css.startswith("/*", i):
+            j = css.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+        elif c.isspace():
+            j = i
+            while j < n and css[j].isspace():
+                j += 1
+            prev = out[-1][-1:] if out else ""
+            nxt = css[j:j + 1]
+            if prev and prev not in "{};," and nxt not in "{};,":
+                out.append(" ")
+            i = j
+        else:
+            if c in "{}" and out and out[-1] == " ":
+                out.pop()
+            if c == "}" and out and out[-1] == ";":
+                out.pop()
+            out.append(c)
+            i += 1
+    return "".join(out).strip() + "\n"
+
+
+def build_css():
+    """Merge fonts + tokens + main into one minified stylesheet; return a cache-busting version."""
+    import hashlib
+    css = "\n".join((ROOT / f).read_text() for f in CSS_SOURCES)
+    mini = minify_css(css)
+    (ROOT / CSS_OUT).write_text(mini)
+    return hashlib.sha256(mini.encode()).hexdigest()[:10]
+
+
+def css_block(version):
+    pre = "\n".join(f'  <link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' for f in FONT_PRELOADS)
+    return f'<!-- css -->\n{pre}\n  <link rel="stylesheet" href="/{CSS_OUT}?v={version}">\n  <!-- /css -->'
+
+
+CSS_VERSION = None
+
+
+def css_version():
+    global CSS_VERSION
+    if CSS_VERSION is None:
+        import hashlib
+        p = ROOT / CSS_OUT
+        CSS_VERSION = hashlib.sha256(p.read_bytes()).hexdigest()[:10] if p.exists() else "0"
+    return CSS_VERSION
+
+
+def js_version():
+    import hashlib
+    return hashlib.sha256((ROOT / "assets/js/main.js").read_bytes()).hexdigest()[:10]
+
+
+def hreflang_links(meta):
+    alts = meta.get("hreflang")
+    if not alts:
+        return ""
+    lines = [f'  <link rel="alternate" hreflang="{lang}" href="{BASE}{u}">' for lang, u in alts.items()]
+    if "en" in alts:
+        lines.append(f'  <link rel="alternate" hreflang="x-default" href="{BASE}{alts["en"]}">')
+    return "\n" + "\n".join(lines)
 
 
 def render(meta, pages, by_url):
@@ -427,6 +618,8 @@ def render(meta, pages, by_url):
     trail = crumbs_for(meta, by_url)
     title, desc = esc(meta["title"]), esc(meta["description"])
     og_type = "article" if meta.get("type") in ("article", "research", "condition", "compare") else "website"
+    es = meta.get("lang") == "es"
+    img, img_w, img_h, img_alt = og_image(meta)
     article_meta = ""
     if og_type == "article":
         article_meta = (f'\n  <meta property="article:published_time" content="{meta["published"]}">'
@@ -443,18 +636,24 @@ def render(meta, pages, by_url):
         rh = f"{r.strftime('%B')} {r.day}, {r.year}"
         byline = (f'Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · '
                   f'<time datetime="{rv}">{rh}</time>')
+    elif es:
+        meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre",
+                 "octubre", "noviembre", "diciembre"]
+        byline = (f'{PRACTICE} · Director médico: Dr. Rajwinder Singh Bahia, MD · Actualizado el '
+                  f'<time datetime="{meta["updated"]}">{d.day} de {meses[d.month - 1]} de {d.year}</time>')
     else:
         byline = (f'{PRACTICE} · Medical director Dr. Rajwinder Singh Bahia, MD · Updated '
                   f'<time datetime="{meta["updated"]}">{updated_h}</time>')
+    kids = {p["url"] for p in hub_kids(meta, pages)}
     return f'''<!DOCTYPE html>
-<html lang="en">
+<html lang="{"es" if es else "en"}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>document.documentElement.classList.add('js')</script>
   <title>{title}</title>
   <meta name="description" content="{desc}">
-  <link rel="canonical" href="{BASE}{url}">
+  <link rel="canonical" href="{BASE}{url}">{hreflang_links(meta)}
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#034439">
 
@@ -463,26 +662,23 @@ def render(meta, pages, by_url):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:url" content="{BASE}{url}">
-  <meta property="og:image" content="{BASE}/assets/img/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Patient resting inside a hyperbaric oxygen chamber at Generations Wellness in Modesto, CA">
-  <meta property="og:locale" content="en_US">{article_meta}
+  <meta property="og:image" content="{BASE}{img}">
+  <meta property="og:image:width" content="{img_w}">
+  <meta property="og:image:height" content="{img_h}">
+  <meta property="og:image:alt" content="{esc(img_alt)}">
+  <meta property="og:locale" content="{"es_US" if es else "en_US"}">{article_meta}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">
-  <meta name="twitter:image" content="{BASE}/assets/img/og-image.jpg">
+  <meta name="twitter:image" content="{BASE}{img}">
+  <meta name="twitter:image:alt" content="{esc(img_alt)}">
 
   <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/assets/img/favicon-64.png" sizes="64x64" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/tokens.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  {css_block(css_version())}
 
   <script type="application/ld+json">
 {schema(meta, trail)}
@@ -511,12 +707,12 @@ def render(meta, pages, by_url):
     <div class="hero-end-sentinel" aria-hidden="true"></div>
 
 {meta["_body"]}
-{hub_children(meta, pages)}{related(meta, by_url)}{cta_band(meta)}
+{hub_children(meta, pages)}{related(meta, by_url, kids)}{cta_band(meta)}
   </main>
 
   {footer()}
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js?v={js_version()}" defer></script>
 </body>
 </html>
 '''
@@ -552,10 +748,13 @@ def qa(pages, known_urls):
         for key in ("url", "title", "description", "h1", "crumb", "kicker", "lead", "published", "updated"):
             if not p.get(key):
                 errors.append(f"{src}: META missing '{key}'")
-        if len(p.get("title", "")) > 60:
-            warnings.append(f"{src}: title {len(p['title'])} chars (>60)")
-        if len(p.get("description", "")) > 160:
-            warnings.append(f"{src}: description {len(p['description'])} chars (>160)")
+        tl, dl = len(p.get("title", "")), len(p.get("description", ""))
+        if tl > TITLE_MAX:
+            errors.append(f"{src}: title {tl} chars (>{TITLE_MAX})")
+        elif tl < TITLE_MIN:
+            warnings.append(f"{src}: title {tl} chars (<{TITLE_MIN})")
+        if not DESC_MIN <= dl <= DESC_MAX:
+            errors.append(f"{src}: description {dl} chars (want {DESC_MIN}-{DESC_MAX})")
         body = p["_body"]
         if re.search(r"<h1[\s>]", body):
             errors.append(f"{src}: body must not contain <h1> (the hero renders it)")
@@ -601,6 +800,73 @@ def qa(pages, known_urls):
     return errors, warnings
 
 
+TITLE_MIN, TITLE_MAX = 30, 60
+DESC_MIN, DESC_MAX = 140, 160
+MIN_INBOUND = 5
+
+
+def _main_html(doc):
+    m = re.search(r"<main[\s>].*?</main>", doc, re.S)
+    main = m.group(0) if m else ""
+    return re.sub(r'<nav class="breadcrumbs".*?</nav>', "", main, flags=re.S)
+
+
+def qa_rendered(docs, check_inbound):
+    """Checks on the final HTML: one H1, no skipped heading levels, no repeated H2/H3 text, unique
+    titles/descriptions, and contextual inbound links (links inside <main>, minus breadcrumbs, from
+    other pages; header/footer navigation is not counted)."""
+    errors, warnings = [], []
+    titles, descs = {}, {}
+    for url, doc in docs.items():
+        h1 = len(re.findall(r"<h1[\s>]", doc))
+        if h1 != 1:
+            errors.append(f"{url}: {h1} <h1> elements (want exactly 1)")
+        levels = [int(x) for x in re.findall(r"<h([1-6])[\s>]", doc)]
+        for a, b in zip(levels, levels[1:]):
+            if b > a + 1:
+                errors.append(f"{url}: heading level skips from h{a} to h{b}")
+                break
+        seen = {}
+        for lvl, txt in re.findall(r"<h([23])[^>]*>(.*?)</h\1>", _main_html(doc), re.S):
+            t = re.sub(r"\s+", " ", strip_tags(txt)).strip().lower()
+            t = (lvl, t)
+            if t in seen:
+                errors.append(f"{url}: repeated h{lvl} \"{t[1][:50]}\"")
+            seen[t] = 1
+        t = re.search(r"<title>(.*?)</title>", doc, re.S)
+        d = re.search(r'<meta name="description" content="([^"]*)"', doc)
+        if t:
+            titles.setdefault(html.unescape(t.group(1)), []).append(url)
+        if d:
+            descs.setdefault(html.unescape(d.group(1)), []).append(url)
+    for k, v in list(titles.items()) + list(descs.items()):
+        if len(v) > 1:
+            errors.append(f"duplicate title/description on {v}: {k[:60]}")
+    inbound = {u: set() for u in docs}
+    for src, doc in docs.items():
+        for href in set(re.findall(r'href="(/[^"#?]*)"', _main_html(doc))):
+            if href in inbound and href != src:
+                inbound[href].add(src)
+    for u, check in check_inbound.items():
+        if check and len(inbound.get(u, ())) < MIN_INBOUND:
+            warnings.append(f"{u}: only {len(inbound.get(u, ()))} contextual inbound links (want {MIN_INBOUND}+)")
+    return errors, warnings, inbound
+
+
+def sync_site_graph(s):
+    """Replace the site-wide nodes (#clinic, services, #physician, #website) in a core page's JSON-LD
+    with the current SITE_NODES, keeping its page-specific nodes."""
+    m = re.search(r'(<script type="application/ld\+json">\s*)(\{.*?\})(\s*</script>)', s, re.S)
+    if not m:
+        return s
+    data = json.loads(m.group(2))
+    site_ids = {n["@id"] for n in SITE_NODES}
+    page_nodes = [n for n in data.get("@graph", []) if n.get("@id") not in site_ids]
+    data["@graph"] = [dict(n) for n in SITE_NODES] + page_nodes
+    out = json.dumps(data, indent=2, ensure_ascii=False).replace("</", "<\\/")
+    return s[:m.start(2)] + out + s[m.end(2):]
+
+
 def refresh_core():
     for rel in CORE_PAGES:
         f = ROOT / rel
@@ -609,11 +875,17 @@ def refresh_core():
         s2 = re.sub(r'(?:<!-- utility -->.*?<!-- /utility -->\s*)?<header class="site-header">.*?</header>',
                     lambda m: site_header(url if rel != "404.html" else ""), s, count=1, flags=re.S)
         s2 = re.sub(r'<footer class="site-footer">.*?</footer>', lambda m: footer(), s2, count=1, flags=re.S)
+        s2 = re.sub(r'(?:<!-- css -->.*?<!-- /css -->|<link rel="preconnect" href="https://fonts.googleapis.com">.*?'
+                    r'<link rel="stylesheet" href="/assets/css/main.css">)',
+                    lambda m: css_block(css_version()), s2, count=1, flags=re.S)
+        s2 = re.sub(r'src="/assets/js/main\.js[^"]*"', f'src="/assets/js/main.js?v={js_version()}"', s2)
+        s2 = sync_site_graph(s2)
         if s2 != s:
             f.write_text(s2)
 
 
 def main():
+    global CSS_VERSION
     check_only = "--check" in sys.argv
     pages = load_pages()
     by_url = {p["url"]: p for p in pages}
@@ -632,10 +904,27 @@ def main():
     errors, warnings = qa(qa_pages, known)
     if only:
         warnings = [w for w in warnings if not w.startswith("/")]
+    if not check_only:
+        CSS_VERSION = build_css()
+    docs = {p["url"]: render(p, pages, by_url) for p in pages}
+    core_docs = {}
+    for rel in CORE_PAGES:
+        if rel == "404.html":
+            continue
+        u = "/" if rel == "index.html" else "/" + rel.replace("index.html", "")
+        core_docs[u] = (ROOT / rel).read_text()
+    check_inbound = {p["url"]: p.get("type") in ("service", "hub", "location") and not only for p in pages}
+    e2, w2, inbound = qa_rendered({**docs, **core_docs}, check_inbound)
+    e2 = [e for e in e2 if not only or any(e.startswith(p["url"] + ":") for p in qa_pages)]
+    errors += e2
+    warnings += w2
     for w in warnings:
         print("warn:", w)
     for e in errors:
         print("ERROR:", e)
+    if "--inbound" in sys.argv:
+        for u in sorted(inbound, key=lambda u: len(inbound[u])):
+            print(f"{len(inbound[u]):3d}  {u}")
     if errors:
         print(f"\n{len(errors)} error(s); nothing written.")
         sys.exit(1)
@@ -645,9 +934,9 @@ def main():
     for p in pages:
         out = ROOT / p["url"].strip("/") / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(render(p, pages, by_url))
+        out.write_text(docs[p["url"]])
     refresh_core()
-    print(f"built {len(pages)} page(s); refreshed nav/footer on {len(CORE_PAGES)} core pages.")
+    print(f"built {len(pages)} page(s) + {CSS_OUT}; refreshed nav/footer/css/schema on {len(CORE_PAGES)} core pages.")
 
 
 if __name__ == "__main__":

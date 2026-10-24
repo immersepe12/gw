@@ -13,11 +13,11 @@
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/tokens.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- css -->
+  <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.min.css?v=da5a1c2a50">
+  <!-- /css -->
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -126,8 +126,8 @@
             <span class="kicker">Patients</span>
             <ul>
               <li><a href="/services/">All Services</a></li>
-              <li><a href="/what-to-expect/">What to Expect</a></li>
-              <li><a href="/cost/">Cost</a></li>
+              <li><a href="/new-patients/">New Patients</a></li>
+              <li><a href="/cost/">HBOT Cost</a></li>
               <li><a href="/insurance/">Insurance</a></li>
               <li><a href="/learn/">Learn</a></li>
               <li><a href="/faq/">FAQ</a></li>
@@ -143,7 +143,8 @@
               Modesto, CA 95354<br>
               <a href="https://www.google.com/maps/search/?api=1&amp;query=Generations+Wellness+1801+H+Street+Suite+C-1+Modesto+CA+95354" rel="noopener">Get directions</a>
             </address>
-            <p class="small mt-4">Sessions by appointment.</p>
+            <p class="small mt-4">Visits by appointment.</p>
+            <p class="small mt-4">Serving the Central Valley, including <a href="/service-area/turlock/">Turlock</a>, <a href="/service-area/manteca/">Manteca</a>, <a href="/service-area/stockton/">Stockton</a> and <a href="/service-area/merced/">Merced</a>. <a href="/service-area/">All towns we serve</a>.</p>
           </div>
           <div class="footer-col">
             <span class="kicker">Contact</span>
@@ -168,6 +169,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js?v=9e79241d7e" defer></script>
 </body>
 </html>
