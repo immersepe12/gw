@@ -328,7 +328,56 @@ def service_hub(url):
     return None
 
 
-def schema(meta, trail):
+FAQ_EXEMPT = {"/privacy-policy/", "/medical-disclaimer/", "/editorial-policy/", "/404/"}
+FAQ_MIN = 5
+
+
+def _plain(fragment):
+    fragment = re.sub(r"<svg.*?</svg>", "", fragment, flags=re.S)
+    fragment = re.sub(r"</p>\s*<p[^>]*>", " ", fragment)
+    return re.sub(r"\s+", " ", html.unescape(strip_tags(fragment))).strip()
+
+
+def extract_faqs(doc):
+    """Visible FAQ Q&As: every <details> inside the page (summary = question, .faq-answer = answer)."""
+    out = []
+    for d in re.findall(r"<details[\s>].*?</details>", doc, re.S):
+        q = re.search(r"<summary[^>]*>(.*?)</summary>", d, re.S)
+        a = re.search(r'<div class="faq-answer"[^>]*>(.*)</div>', d, re.S)
+        if q and a:
+            out.append((_plain(q.group(1)), _plain(a.group(1))))
+    return out
+
+
+def faq_node(url, faqs, lang="en-US"):
+    return {"@type": "FAQPage", "@id": url + "#faq", "url": url, "inLanguage": lang,
+            "isPartOf": {"@id": url + "#webpage"},
+            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
+                           for q, a in faqs]}
+
+
+def sync_faq_schema(s, url):
+    """Core pages: drop any FAQPage node from the main graph and (re)write one separate FAQPage
+    ld+json block generated from the visible FAQ, so it survives rebuilds and always matches."""
+    s = re.sub(r'\s*<script type="application/ld\+json" id="faq-jsonld">.*?</script>', "", s, flags=re.S)
+    m = re.search(r'(<script type="application/ld\+json">\s*)(\{.*?\})(\s*</script>)', s, re.S)
+    if m:
+        data = json.loads(m.group(2))
+        if "FAQPage" in json.dumps(data):
+            data["@graph"] = [n for n in data.get("@graph", []) if n.get("@type") != "FAQPage"]
+            out = json.dumps(data, indent=2, ensure_ascii=False).replace("</", "<\\/")
+            s = s[:m.start(2)] + out + s[m.end(2):]
+            m = re.search(r'(<script type="application/ld\+json">\s*)(\{.*?\})(\s*</script>)', s, re.S)
+    faqs = extract_faqs(_main_html(s) or s)
+    if faqs and m:
+        node = {"@context": "https://schema.org", **faq_node(BASE + url, faqs)}
+        block = ('\n  <script type="application/ld+json" id="faq-jsonld">\n'
+                 + json.dumps(node, indent=2, ensure_ascii=False).replace("</", "<\\/") + "\n  </script>")
+        s = s[:m.end()] + block + s[m.end():]
+    return s
+
+
+def schema(meta, trail, body=""):
     url = BASE + meta["url"]
     nodes = [dict(n) for n in SITE_NODES]
     page_nodes = json.loads(json.dumps(meta.get("schema", [])))
@@ -380,6 +429,9 @@ def schema(meta, trail):
             item["item"] = BASE + u
         items.append(item)
     page_nodes.append({"@type": "BreadcrumbList", "@id": url + "#breadcrumb", "itemListElement": items})
+    faqs = extract_faqs(body)
+    if faqs:
+        page_nodes.append(faq_node(url, faqs, "es-US" if meta.get("lang") == "es" else "en-US"))
     graph = {"@context": "https://schema.org", "@graph": nodes + page_nodes}
     return json.dumps(graph, indent=2, ensure_ascii=False).replace("</", "<\\/")
 
@@ -681,7 +733,7 @@ def render(meta, pages, by_url):
   {css_block(css_version())}
 
   <script type="application/ld+json">
-{schema(meta, trail)}
+{schema(meta, trail, meta["_body"])}
   </script>
 </head>
 <body class="page-{meta.get("type", "page")}">
@@ -759,7 +811,7 @@ def qa(pages, known_urls):
         if re.search(r"<h1[\s>]", body):
             errors.append(f"{src}: body must not contain <h1> (the hero renders it)")
         if "FAQPage" in json.dumps(p.get("schema", [])):
-            errors.append(f"{src}: FAQPage schema is reserved for /faq/")
+            errors.append(f"{src}: do not hand-write FAQPage in META; the build generates it from the visible FAQ")
         text = strip_tags(body) + " " + p.get("lead", "") + " " + p.get("description", "")
         for pat, why in BANNED:
             for m in re.finditer(pat, text, re.I):
@@ -839,6 +891,23 @@ def qa_rendered(docs, check_inbound):
             titles.setdefault(html.unescape(t.group(1)), []).append(url)
         if d:
             descs.setdefault(html.unescape(d.group(1)), []).append(url)
+    for url, doc in docs.items():
+        visible = extract_faqs(_main_html(doc))
+        schema_qs = []
+        for blk in re.findall(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', doc, re.S):
+            data = json.loads(blk.replace("<\\/", "</"))
+            for n in data.get("@graph", [data]):
+                if n.get("@type") == "FAQPage":
+                    schema_qs.append([(q["name"], q["acceptedAnswer"]["text"]) for q in n["mainEntity"]])
+        if len(schema_qs) > 1:
+            errors.append(f"{url}: {len(schema_qs)} FAQPage nodes (want 1)")
+        if url not in FAQ_EXEMPT:
+            if len(visible) < FAQ_MIN:
+                errors.append(f"{url}: {len(visible)} visible FAQs (want {FAQ_MIN}+)")
+            if not schema_qs:
+                errors.append(f"{url}: visible FAQ but no FAQPage schema")
+        if schema_qs and schema_qs[0] != visible:
+            errors.append(f"{url}: FAQPage questions/answers do not match the visible FAQ")
     for k, v in list(titles.items()) + list(descs.items()):
         if len(v) > 1:
             errors.append(f"duplicate title/description on {v}: {k[:60]}")
@@ -880,6 +949,8 @@ def refresh_core():
                     lambda m: css_block(css_version()), s2, count=1, flags=re.S)
         s2 = re.sub(r'src="/assets/js/main\.js[^"]*"', f'src="/assets/js/main.js?v={js_version()}"', s2)
         s2 = sync_site_graph(s2)
+        if rel != "404.html":
+            s2 = sync_faq_schema(s2, url)
         if s2 != s:
             f.write_text(s2)
 
@@ -912,7 +983,7 @@ def main():
         if rel == "404.html":
             continue
         u = "/" if rel == "index.html" else "/" + rel.replace("index.html", "")
-        core_docs[u] = (ROOT / rel).read_text()
+        core_docs[u] = sync_faq_schema((ROOT / rel).read_text(), u)
     check_inbound = {p["url"]: p.get("type") in ("service", "hub", "location") and not only for p in pages}
     e2, w2, inbound = qa_rendered({**docs, **core_docs}, check_inbound)
     e2 = [e for e in e2 if not only or any(e.startswith(p["url"] + ":") for p in qa_pages)]
