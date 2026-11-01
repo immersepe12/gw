@@ -686,8 +686,14 @@ def render(meta, pages, by_url):
     if rv:
         r = datetime.date.fromisoformat(rv)
         rh = f"{r.strftime('%B')} {r.day}, {r.year}"
-        byline = (f'Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · '
-                  f'<time datetime="{rv}">{rh}</time>')
+        if es:
+            meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre",
+                     "octubre", "noviembre", "diciembre"]
+            byline = (f'Revisado médicamente por <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · '
+                      f'<time datetime="{rv}">{r.day} de {meses[r.month - 1]} de {r.year}</time>')
+        else:
+            byline = (f'Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · '
+                      f'<time datetime="{rv}">{rh}</time>')
     elif es:
         meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre",
                  "octubre", "noviembre", "diciembre"]
