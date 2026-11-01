@@ -34,7 +34,7 @@
   <!-- css -->
   <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.min.css?v=da5a1c2a50">
+  <link rel="stylesheet" href="/assets/css/site.min.css?v=c2cf9c935a">
   <!-- /css -->
 
   <script type="application/ld+json">
@@ -45,7 +45,11 @@
       "@type": "MedicalClinic",
       "@id": "https://www.generationswellness.net/#clinic",
       "name": "Generations Wellness Medical Practice",
-      "alternateName": "Generations Wellness",
+      "alternateName": [
+        "Generations Wellness",
+        "Generations Wellness Modesto"
+      ],
+      "disambiguatingDescription": "Physician-led outpatient medical practice in Modesto, California; not affiliated with similarly named businesses in other states.",
       "url": "https://www.generationswellness.net/",
       "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
       "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
@@ -194,6 +198,80 @@
           "@id": "https://www.generationswellness.net/#infusion"
         }
       ],
+      "knowsAbout": [
+        "Hyperbaric oxygen therapy",
+        "Wound care",
+        "Diabetic foot ulcers",
+        "IV therapy",
+        "Physical therapy",
+        "Occupational therapy",
+        "Pediatric speech therapy",
+        "Pediatric developmental therapy",
+        "Counseling",
+        "Non-opioid pain management",
+        "Radiation injury",
+        "Skin grafts and flaps"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#physical-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pain-management"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#counseling"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pediatric-speech-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pediatric-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#occupational-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#wound-care"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#iv-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#hbot"
+            }
+          }
+        ]
+      },
       "sameAs": [
         "https://www.facebook.com/people/Generations-Wellness/61594639832610/",
         "https://www.instagram.com/generations_wellness_/"
@@ -296,6 +374,19 @@
       "honorificPrefix": "Dr.",
       "honorificSuffix": "MD",
       "jobTitle": "Medical Director",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Physician",
+        "occupationalCategory": "29-1216"
+      },
+      "medicalSpecialty": "InternalMedicine",
+      "description": "Medical director of Generations Wellness Medical Practice in Modesto, CA.",
+      "knowsAbout": [
+        "Hyperbaric medicine",
+        "Wound care",
+        "Pain management",
+        "Internal medicine"
+      ],
       "worksFor": {
         "@id": "https://www.generationswellness.net/#clinic"
       },
@@ -343,6 +434,13 @@
         "@id": "https://www.generationswellness.net/#physician"
       },
       "lastReviewed": "2026-10-24",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "#quick-answer",
+          "h1"
+        ]
+      },
       "mainEntity": {
         "@id": "https://www.generationswellness.net/physical-therapy/shoulder-pain/#service"
       }
@@ -603,6 +701,7 @@
         <p class="kicker kicker--on-dark">Shoulder Pain</p>
         <h1>Shoulder Pain <em class="text-gold-gradient">Physical Therapy</em></h1>
         <p class="lead">Physical therapy is a first-line treatment for most shoulder pain, including rotator cuff problems and frozen shoulder. A licensed physical therapist checks how your shoulder moves and which muscles are weak or irritated, then guides exercises that help you reach, lift and sleep with less pain.</p>
+        <div class="quick-answer" id="quick-answer"><p><strong class="quick-answer-label">Quick answer:</strong> Physical therapy is a first-line treatment for most shoulder pain, including rotator cuff problems and frozen shoulder. At Generations Wellness in Modesto, a licensed physical therapist checks how your shoulder moves and which muscles are weak or irritated, then guides exercises that help you reach, lift and sleep with less pain. Shoulder pain with chest pressure needs 911.</p></div>
         <p class="page-meta">Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · <time datetime="2026-10-24">October 24, 2026</time></p>
       </div>
     </header>

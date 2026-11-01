@@ -37,7 +37,7 @@
   <!-- css -->
   <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.min.css?v=da5a1c2a50">
+  <link rel="stylesheet" href="/assets/css/site.min.css?v=c2cf9c935a">
   <!-- /css -->
 
   <script type="application/ld+json">
@@ -48,7 +48,11 @@
       "@type": "MedicalClinic",
       "@id": "https://www.generationswellness.net/#clinic",
       "name": "Generations Wellness Medical Practice",
-      "alternateName": "Generations Wellness",
+      "alternateName": [
+        "Generations Wellness",
+        "Generations Wellness Modesto"
+      ],
+      "disambiguatingDescription": "Physician-led outpatient medical practice in Modesto, California; not affiliated with similarly named businesses in other states.",
       "url": "https://www.generationswellness.net/",
       "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
       "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
@@ -197,6 +201,80 @@
           "@id": "https://www.generationswellness.net/#infusion"
         }
       ],
+      "knowsAbout": [
+        "Hyperbaric oxygen therapy",
+        "Wound care",
+        "Diabetic foot ulcers",
+        "IV therapy",
+        "Physical therapy",
+        "Occupational therapy",
+        "Pediatric speech therapy",
+        "Pediatric developmental therapy",
+        "Counseling",
+        "Non-opioid pain management",
+        "Radiation injury",
+        "Skin grafts and flaps"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#physical-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pain-management"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#counseling"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pediatric-speech-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pediatric-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#occupational-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#wound-care"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#iv-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#hbot"
+            }
+          }
+        ]
+      },
       "sameAs": [
         "https://www.facebook.com/people/Generations-Wellness/61594639832610/",
         "https://www.instagram.com/generations_wellness_/"
@@ -299,6 +377,19 @@
       "honorificPrefix": "Dr.",
       "honorificSuffix": "MD",
       "jobTitle": "Medical Director",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Physician",
+        "occupationalCategory": "29-1216"
+      },
+      "medicalSpecialty": "InternalMedicine",
+      "description": "Medical director of Generations Wellness Medical Practice in Modesto, CA.",
+      "knowsAbout": [
+        "Hyperbaric medicine",
+        "Wound care",
+        "Pain management",
+        "Internal medicine"
+      ],
       "worksFor": {
         "@id": "https://www.generationswellness.net/#clinic"
       },
@@ -343,6 +434,13 @@
         "url": "https://www.generationswellness.net/assets/img/og-image.jpg",
         "width": 1200,
         "height": 630
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "#quick-answer",
+          "h1"
+        ]
       }
     },
     {
@@ -497,6 +595,7 @@
         <p class="kicker kicker--on-dark">Medical-Grade HBOT · Downtown Modesto</p>
         <h1 class="mask-on-load"><span class="line"><span class="line-inner"><em class="text-gold-gradient">Hyperbaric</em> Oxygen Therapy in Modesto: Hard-Shell Chambers</span></span></h1>
         <p class="lead">Generations Wellness Medical Practice offers physician-directed hyperbaric oxygen therapy (HBOT) in hard-shell monoplace chambers at 1801 H Street in downtown Modesto. HBOT is used for the conditions hyperbaric chambers are FDA-cleared for, and every course starts with a physician assessment. Call (369) 222-0979 or (209) 809-0022 to ask whether it fits your care.</p>
+        <div class="quick-answer" id="quick-answer"><p><strong class="quick-answer-label">Quick answer:</strong> Hyperbaric oxygen therapy means breathing near-100% oxygen inside a pressurized chamber. At Generations Wellness Medical Practice in downtown Modesto, HBOT is physician-directed, given in hard-shell monoplace chambers, and used for the conditions hyperbaric chambers are FDA-cleared for. Every course starts with a physician assessment that decides whether HBOT fits your care.</p></div>
         <p class="page-meta">Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · <time datetime="2026-10-24">October 24, 2026</time> · <a href="/es/camara-hiperbarica/" hreflang="es" lang="es">Leer en español</a></p>
       </div>
     </header>

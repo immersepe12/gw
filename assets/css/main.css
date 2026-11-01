@@ -1948,3 +1948,19 @@ address { font-style: normal; }
   .nav-phones { margin: var(--space-4) 0 0; font-size: 0.875rem; color: var(--sage-200); }
   .nav-phones a { color: var(--cream-50); }
 }
+
+/* ---------------------------------------------------------------- quick answer (GEO) */
+.quick-answer {
+  margin-top: var(--space-6);
+  max-width: 46rem;
+  padding: var(--space-4) var(--space-5);
+  background: rgba(255, 253, 240, 0.06);
+  border: 1px solid rgba(246, 224, 142, 0.18);
+  border-left: 4px solid var(--gold-500);
+  border-radius: var(--radius-sm);
+}
+.quick-answer p { color: var(--cream-50); margin: 0; font-size: 1.0625rem; line-height: 1.6; }
+.quick-answer-label { color: var(--gold-300); font-weight: 600; }
+.quick-answer--light { background: var(--surface-card); border-color: var(--cream-200); border-left-color: var(--gold-600); }
+.quick-answer--light p { color: var(--ink-900); }
+.quick-answer--light .quick-answer-label { color: var(--gold-800); }

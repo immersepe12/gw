@@ -74,7 +74,8 @@ SITE_NODES = [
         "@type": "MedicalClinic",
         "@id": f"{BASE}/#clinic",
         "name": PRACTICE,
-        "alternateName": "Generations Wellness",
+        "alternateName": ["Generations Wellness", "Generations Wellness Modesto"],
+        "disambiguatingDescription": "Physician-led outpatient medical practice in Modesto, California; not affiliated with similarly named businesses in other states.",
         "url": f"{BASE}/",
         "logo": f"{BASE}/assets/img/icon-512.png",
         "image": f"{BASE}/assets/img/og-image.jpg",
@@ -92,6 +93,11 @@ SITE_NODES = [
         "isAcceptingNewPatients": True,
         "medicalSpecialty": ["Physiotherapy", "SpeechPathology"],
         "availableService": [{"@id": f"{BASE}/#{k}"} for k, _, _, _ in SERVICES] + [{"@id": f"{BASE}/#infusion"}],
+        "knowsAbout": ["Hyperbaric oxygen therapy", "Wound care", "Diabetic foot ulcers", "IV therapy", "Physical therapy",
+                       "Occupational therapy", "Pediatric speech therapy", "Pediatric developmental therapy", "Counseling",
+                       "Non-opioid pain management", "Radiation injury", "Skin grafts and flaps"],
+        "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@id": f"{BASE}/#{k}"}} for k, _, _, _ in SERVICES]},
         "sameAs": ["https://www.facebook.com/people/Generations-Wellness/61594639832610/", "https://www.instagram.com/generations_wellness_/"],
     },
     *[{"@type": t, "@id": f"{BASE}/#{k}", "name": n, "url": f"{BASE}{u}", "provider": {"@id": f"{BASE}/#clinic"}}
@@ -100,7 +106,11 @@ SITE_NODES = [
      "description": "Physician-ordered infusion therapy, provided in-clinic under medical supervision only after a physician determines it is appropriate.",
      "provider": {"@id": f"{BASE}/#clinic"}},
     {"@type": "Person", "@id": f"{BASE}/#physician", "name": "Rajwinder Singh Bahia", "honorificPrefix": "Dr.",
-     "honorificSuffix": "MD", "jobTitle": "Medical Director", "worksFor": {"@id": f"{BASE}/#clinic"}, "url": f"{BASE}/about/"},
+     "honorificSuffix": "MD", "jobTitle": "Medical Director",
+     "hasOccupation": {"@type": "Occupation", "name": "Physician", "occupationalCategory": "29-1216"},
+     "medicalSpecialty": "InternalMedicine",
+     "description": "Medical director of Generations Wellness Medical Practice in Modesto, CA.",
+     "knowsAbout": ["Hyperbaric medicine", "Wound care", "Pain management", "Internal medicine"], "worksFor": {"@id": f"{BASE}/#clinic"}, "url": f"{BASE}/about/"},
     {"@type": "WebSite", "@id": f"{BASE}/#website", "name": PRACTICE, "url": f"{BASE}/"},
 ]
 
@@ -399,6 +409,8 @@ def schema(meta, trail, body=""):
     if reviewed:
         web["reviewedBy"] = {"@id": f"{BASE}/#physician"}
         web["lastReviewed"] = reviewed
+    if meta.get("quick_answer"):
+        web["speakable"] = {"@type": "SpeakableSpecification", "cssSelector": ["#quick-answer", "h1"]}
     hub = service_hub(meta["url"])
     if meta.get("type") == "service" or (hub and meta.get("type") == "hub"):
         # Service pages describe a service, not an article: MedicalWebPage + Service.
@@ -434,6 +446,15 @@ def schema(meta, trail, body=""):
         page_nodes.append(faq_node(url, faqs, "es-US" if meta.get("lang") == "es" else "en-US"))
     graph = {"@context": "https://schema.org", "@graph": nodes + page_nodes}
     return json.dumps(graph, indent=2, ensure_ascii=False).replace("</", "<\\/")
+
+
+def quick_answer_html(meta):
+    qa = meta.get("quick_answer")
+    if not qa:
+        return ""
+    label = "Respuesta rápida" if meta.get("lang") == "es" else "Quick answer"
+    return (f'        <div class="quick-answer" id="quick-answer"><p><strong class="quick-answer-label">{label}:</strong> '
+            f'{esc(qa)}</p></div>\n')
 
 
 def card(u, by_url):
@@ -759,7 +780,7 @@ def render(meta, pages, by_url):
         <p class="kicker kicker--on-dark">{meta["kicker"]}</p>
         <h1>{meta["h1"]}</h1>
         <p class="lead">{meta["lead"]}</p>
-        <p class="page-meta">{byline}</p>
+{quick_answer_html(meta)}        <p class="page-meta">{byline}</p>
       </div>
     </header>
     <div class="hero-end-sentinel" aria-hidden="true"></div>
@@ -818,7 +839,10 @@ def qa(pages, known_urls):
             errors.append(f"{src}: body must not contain <h1> (the hero renders it)")
         if "FAQPage" in json.dumps(p.get("schema", [])):
             errors.append(f"{src}: do not hand-write FAQPage in META; the build generates it from the visible FAQ")
-        text = strip_tags(body) + " " + p.get("lead", "") + " " + p.get("description", "")
+        qwords = len(p.get("quick_answer", "").split())
+        if p.get("quick_answer") and not 40 <= qwords <= 60:
+            errors.append(f"{src}: quick_answer {qwords} words (want 40-60)")
+        text = strip_tags(body) + " " + p.get("lead", "") + " " + p.get("description", "") + " " + p.get("quick_answer", "")
         for pat, why in BANNED:
             for m in re.finditer(pat, text, re.I):
                 ctx = text[max(0, m.start() - 60):m.end() + 60].replace("\n", " ")

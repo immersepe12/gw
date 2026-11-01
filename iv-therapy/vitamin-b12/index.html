@@ -34,7 +34,7 @@
   <!-- css -->
   <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.min.css?v=da5a1c2a50">
+  <link rel="stylesheet" href="/assets/css/site.min.css?v=c2cf9c935a">
   <!-- /css -->
 
   <script type="application/ld+json">
@@ -45,7 +45,11 @@
       "@type": "MedicalClinic",
       "@id": "https://www.generationswellness.net/#clinic",
       "name": "Generations Wellness Medical Practice",
-      "alternateName": "Generations Wellness",
+      "alternateName": [
+        "Generations Wellness",
+        "Generations Wellness Modesto"
+      ],
+      "disambiguatingDescription": "Physician-led outpatient medical practice in Modesto, California; not affiliated with similarly named businesses in other states.",
       "url": "https://www.generationswellness.net/",
       "logo": "https://www.generationswellness.net/assets/img/icon-512.png",
       "image": "https://www.generationswellness.net/assets/img/og-image.jpg",
@@ -194,6 +198,80 @@
           "@id": "https://www.generationswellness.net/#infusion"
         }
       ],
+      "knowsAbout": [
+        "Hyperbaric oxygen therapy",
+        "Wound care",
+        "Diabetic foot ulcers",
+        "IV therapy",
+        "Physical therapy",
+        "Occupational therapy",
+        "Pediatric speech therapy",
+        "Pediatric developmental therapy",
+        "Counseling",
+        "Non-opioid pain management",
+        "Radiation injury",
+        "Skin grafts and flaps"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#physical-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pain-management"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#counseling"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pediatric-speech-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#pediatric-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#occupational-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#wound-care"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#iv-therapy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.generationswellness.net/#hbot"
+            }
+          }
+        ]
+      },
       "sameAs": [
         "https://www.facebook.com/people/Generations-Wellness/61594639832610/",
         "https://www.instagram.com/generations_wellness_/"
@@ -296,6 +374,19 @@
       "honorificPrefix": "Dr.",
       "honorificSuffix": "MD",
       "jobTitle": "Medical Director",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Physician",
+        "occupationalCategory": "29-1216"
+      },
+      "medicalSpecialty": "InternalMedicine",
+      "description": "Medical director of Generations Wellness Medical Practice in Modesto, CA.",
+      "knowsAbout": [
+        "Hyperbaric medicine",
+        "Wound care",
+        "Pain management",
+        "Internal medicine"
+      ],
       "worksFor": {
         "@id": "https://www.generationswellness.net/#clinic"
       },
@@ -342,6 +433,13 @@
         "@id": "https://www.generationswellness.net/#physician"
       },
       "lastReviewed": "2026-10-24",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "#quick-answer",
+          "h1"
+        ]
+      },
       "mainEntity": {
         "@id": "https://www.generationswellness.net/iv-therapy/vitamin-b12/#service"
       }
@@ -594,6 +692,7 @@
         <p class="kicker kicker--on-dark">IV Therapy</p>
         <h1>Vitamin B12: Deficiency, <em class="text-gold-gradient">Shots</em> and IV</h1>
         <p class="lead">Vitamin B12 helps your body make red blood cells and keep nerves healthy. If a blood test shows you are low, B12 shots or high-dose pills are the standard treatments. B12 is also in our Energy Drip, but for people with normal levels, extra B12 has no proven benefit.</p>
+        <div class="quick-answer" id="quick-answer"><p><strong class="quick-answer-label">Quick answer:</strong> Vitamin B12 helps your body make red blood cells and keep nerves healthy. If a blood test shows you are low, B12 shots or high-dose pills are the standard treatments. B12 is also an ingredient in the Energy Drip at Generations Wellness in Modesto, but for people with normal levels, extra B12 has no proven benefit.</p></div>
         <p class="page-meta">Medically reviewed by <a href="/about/">Dr. Rajwinder Singh Bahia, MD</a> · <time datetime="2026-10-24">October 24, 2026</time></p>
       </div>
     </header>
